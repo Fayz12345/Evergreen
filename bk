@@ -1,0 +1,1 @@
+ // "start": "npx kill-port 5001 3001 && concurrently \"npm run server\" \"npm run client\"",

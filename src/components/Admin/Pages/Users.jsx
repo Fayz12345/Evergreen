@@ -1,29 +1,32 @@
-import AdminNavigation from '../Layout/AdminNavigation';
-import TitleHeader from '../../TitleHeader';
-import React, { useState, useEffect } from 'react';
+// Import necessary dependencies and components
 
-// Helper functions to manage local storage
-const loadFromLocalStorage = () => {
-  const data = localStorage.getItem('users');
-  return data ? JSON.parse(data) : [];
-};
-
-const saveToLocalStorage = (data) => {
-  localStorage.setItem('users', JSON.stringify(data));
-};
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Import Axios to fetch data
+import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
-  const [users, setUsers] = useState(loadFromLocalStorage());
+  const [users, setUsers] = useState([]); // State for fetched users
+  const navigate = useNavigate(); // Initialize the navigation hook
   const [newUser, setNewUser] = useState({
-    name: '',
-    role: 'User', // Default role
+    fullName: '',
+    role: 'salesrep', // Default role
     email: '',
     avatar: '', // Avatar URL or base64 image
   });
 
+  // Fetch users from the backend (from UserList.js logic)
   useEffect(() => {
-    saveToLocalStorage(users);
-  }, [users]);
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/Users`); // Fetch users
+        setUsers(response.data); // Set the fetched users in state
+      } catch (error) {
+        console.error('Error fetching Users:', error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,61 +44,42 @@ const Users = () => {
     }
   };
 
-  const generateAvatar = (name) => {
-    const initials = name
-      ? name
-          .split(' ')
-          .map((n) => n[0])
-          .join('')
-      : 'U';
-    return `https://ui-avatars.com/api/?name=${initials}&background=random&size=64`;
-  };
-
-  const addUser = () => {
-    if (newUser.name && newUser.role && newUser.email) {
-      const updatedUsers = [...users, { ...newUser, password: '123456' }];
-      setUsers(updatedUsers);
-      localStorage.setItem('users', JSON.stringify(updatedUsers)); // Store users array
-      setNewUser({ name: '', role: 'User', email: '', avatar: '' });
+  
+  const addUser = async () => {
+    if (newUser.fullName && newUser.role && newUser.email) {
+      try {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/addUsers`, newUser);
+        setUsers([...users, response.data]); // Add the new user to the list
+        setNewUser({ fullName: '', role: 'User', email: '', avatar: '' }); // Clear the form
+        navigate('/admin/users');
+      } catch (error) {
+        console.error('Error adding user:', error);
+      }
     }
   };
-  
-  // const clearUsers = () => {
-  //   setUsers([]);
-  //   localStorage.removeItem('users');
-  // };
 
-    return (
-      <>
-          <div>
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='z-1 sidebar border border-right col-2 col-md-1 p-0 bg-body-tertiary shadow vh-100 position-fixed d-flex align-items-center justify-content-center'>
-            <div className='bg-body-tertiary h-100' tabIndex='-1' id='sidebarMenu' aria-labelledby='sidebarMenuLabel'>
-              <div className='d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto h-100'>
-                <AdminNavigation />
-              </div>
-            </div>
-          </div>
-
-          <main className='ms-auto col-10 col-xs-9 col-md-11 px-md-4'>
-            <TitleHeader  heading={'Users'} />
-            <div className=" mt-5">
-      <h1 className="mb-4">User Management</h1>
+  return (
+    <>
+      <div className='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom'>
+        <h1 className='h2'>Users</h1>
+        <div className='btn-toolbar mb-2 mb-md-0 mx-2'>
+          <button className="btn btn-primary" onClick={() => navigate('/admin/users')}>
+            Go to Users List
+          </button>
+        </div>
+      </div>
 
       {/* Add User Form */}
       <div className="mb-4">
         <h2>Add New User</h2>
-
-        {/* Row 1: Name and Role */}
         <div className="row">
           <div className="col-md-6 mb-2">
             <input
               type="text"
               className="form-control"
               placeholder="User Name"
-              name="name"
-              value={newUser.name}
+              name="fullName"
+              value={newUser.fullName}
               onChange={handleInputChange}
             />
           </div>
@@ -106,14 +90,13 @@ const Users = () => {
               value={newUser.role}
               onChange={handleInputChange}
             >
-              <option value="Admin">Admin</option>
-              <option value="User">User</option>
-              <option value="Viewer">Viewer</option>
+              <option value="admin">Admin</option>
+              <option value="customer">Customer</option>
+              <option value="salesrep">Sales Rep</option>
             </select>
           </div>
         </div>
 
-        {/* Row 2: Email and Avatar Upload */}
         <div className="row">
           <div className="col-md-6 mb-2">
             <input
@@ -135,7 +118,6 @@ const Users = () => {
           </div>
         </div>
 
-        {/* Add User Button */}
         <div className="row">
           <div className="col-md-12 d-flex align-items-center">
             <button className="btn btn-primary w-100" onClick={addUser}>
@@ -145,55 +127,8 @@ const Users = () => {
         </div>
       </div>
 
-      {/* User List */}
-      <div className="mt-4">
-        <h2>User List</h2>
-        {users.length > 0 ? (
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Avatar</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <img
-                      src={user.avatar || generateAvatar(user.name)}
-                      alt={user.name}
-                      style={{ width: '40px', height: '40px', borderRadius: '50%' }}
-                    />
-                  </td>
-                  <td>{user.name}</td>
-                  <td>{user.role}</td>
-                  <td>{user.email}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No users added yet.</p>
-        )}
-      </div>
+    </>
+  );
+};
 
-      {/* Clear Users Button */}
-      {/* <button className="btn btn-danger mt-3" onClick={clearUsers}>
-        Clear All Users
-      </button> */}
-    </div>
-                
-          </main>
-        </div>
-      </div>
-    </div></>
-    );
-  }
-  
-  export default Users;
-  
+export default Users;

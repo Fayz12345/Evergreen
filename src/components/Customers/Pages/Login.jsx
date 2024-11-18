@@ -1,74 +1,117 @@
-// src/components/LoginForm.js
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [error, setError] = useState('');
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
 
-    // const handleLogin = (e) => {
-    //     e.preventDefault();
-    //     const user = JSON.parse(localStorage.getItem('user'));
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token);
+  };
 
-    //     if (user && user.email === email && user.password === password) {
-    //         alert('Login successful!');
-    //         navigate('/'); // Redirect to dashboard or another page
-    //     } else {
-    //         setError('Invalid email or password');
-    //     }
-    // };
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const users = JSON.parse(localStorage.getItem('users')) || []; // Retrieve all users
-    
-        const validUser = users.find(
-            (user) => user.email === email && user.password === password
-        );
-    
-        if (validUser) {
-            alert('Login successful!');
-            navigate('/'); // Redirect to the dashboard
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!captchaToken) {
+      setError("Please complete the CAPTCHA verification.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${apiUrl}/login`, { username, password });
+
+      if (response.status === 200) {
+        const { token, user } = response.data;
+        const storage = rememberMe ? localStorage : sessionStorage;
+        storage.setItem('token', token);
+        storage.setItem('user', JSON.stringify(user));
+        storage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('isLoggedIn', 'true');
+
+        if (rememberMe) {
+          localStorage.setItem('savedUsername', username);
+          localStorage.setItem('savedPassword', password);
+          localStorage.setItem('rememberMe', 'true');
         } else {
-            setError('Invalid email or password');
+          localStorage.removeItem('savedUsername');
+          localStorage.removeItem('savedPassword');
+          localStorage.removeItem('rememberMe');
         }
-    };
-    
 
-    return (
-        <div className="container mt-5">
-            <h2 className="text-center">Login</h2>
-            <form onSubmit={handleLogin} className="mt-4">
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input
-                        type="email"
-                        className={`form-control ${error ? 'is-invalid' : ''}`}
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input
-                        type="password"
-                        className={`form-control ${error ? 'is-invalid' : ''}`}
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                {error && <div className="text-danger mb-3">{error}</div>}
-                <div className="text-center mt-4">
-                    <button type="submit" className="btn btn-primary">Login</button>
-                </div>
+        navigate(response.data.redirectPath);
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || 'Login failed. Please try again.');
+    }
+  };
+
+  return (
+    <div className="full-screen-container">
+        
+      <div className="col-md-6">
+      
+        <div className="card shadow text-left">
+          <div className="card-header">
+            <h3 >Login</h3>
+          </div>
+          <div className="card-body">
+            <form onSubmit={handleLogin}>
+              <div className="form-group mb-3">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="username"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="Enter password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="form-check mb-3">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="rememberMe"
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                />
+                <label htmlFor="rememberMe" className="form-check-label">Remember Me</label>
+              </div>
+
+              {/* hCaptcha Component */}
+              <HCaptcha
+                sitekey="cc96a0b6-5124-4398-a7ee-420c16046a96"  // Replace with your actual hCaptcha site key
+                onVerify={handleCaptchaChange}
+              />
+
+              {error && <p className="text-danger">{error}</p>}
+              <button type="submit" className="btn btn-success w-100">Login</button>
             </form>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Login;

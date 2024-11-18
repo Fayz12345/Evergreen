@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
-import AdminNavigation from '../Layout/AdminNavigation';
 import TitleHeader from '../../TitleHeader';
 
 import ReactPaginate from 'react-paginate';
@@ -120,24 +119,12 @@ const Trade = () => {
   const paginatedDevices = history.slice(offset, offset + itemsPerPage);
   const pageCount = Math.ceil(history.length / itemsPerPage);
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="z-1 sidebar border border-right col-2 col-md-1 p-0 bg-body-tertiary shadow vh-100 position-fixed d-flex align-items-center justify-content-center">
-          <div className="bg-body-tertiary h-100" tabIndex="-1" id="sidebarMenu">
-            <div className="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto h-100">
-              <AdminNavigation />
-            </div>
-          </div>
-        </div>
+   <>
+          <TitleHeader heading="Trade-In" />
 
-        <main className="ms-auto col-10 col-xs-9 col-md-11 px-md-4">
-          <TitleHeader heading="Devices" />
-
-          <div className=" mt-5">
-            <h1 className="mb-4">Trade-In Page</h1>
 
             <div className="mb-4">
-              <h2>Manual Trade-In Entry</h2>
+              <h2>Manual</h2>
 
               {/* Customer Name */}
               <div className="row">
@@ -232,7 +219,7 @@ const Trade = () => {
             </div>
 
             <div className="mt-4">
-              <h2>Trade-In History</h2>
+              <h2>History</h2>
               {history.length > 0 ? (
                 <>
                 <table className="table table-striped">
@@ -294,10 +281,9 @@ const Trade = () => {
             {/* <button className="btn btn-danger mt-3" onClick={clearHistory}>
               Clear History
             </button> */}
-          </div>
-        </main>
-      </div>
-    </div>
+       
+        
+    </>
   );
 };
 

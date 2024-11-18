@@ -1,0 +1,17 @@
+.dropdown-item.no-hover-bg {
+    background-color: transparent !important;
+  }
+  
+  .dropdown-item.no-hover-bg:hover,
+  .dropdown-item.no-hover-bg:focus {
+    background-color: transparent !important;
+    color: inherit; /* Maintain original text color */
+    outline: none;
+  }
+  .sidebar {
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+  
+  button {
+    transition: all 0.3s ease;
+  }

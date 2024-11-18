@@ -1,91 +1,125 @@
-// src/components/Incentive.jsx
 import React, { useState, useEffect } from 'react';
-import AdminNavigation from '../Layout/AdminNavigation';
+import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import TitleHeader from '../../TitleHeader';
-
-// Helper function to load data from localStorage
-const loadFromLocalStorage = (key) => {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : [];
-};
-
+import '../Layout/Pagination.css'; // Add a CSS file for pagination styling
+import CountUp from 'react-countup';
 const Incentive = () => {
-  const [tradeInHistory] = useState(loadFromLocalStorage('tradeInHistory'));
+  const [incentiveHistory, setIncentiveHistory] = useState([]);
   const [totalIncentive, setTotalIncentive] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10; // Define the number of items per page
 
-  // Calculate total incentive on component mount or when history changes
+  // Get logged-in user ID from session storage
+  const userId = sessionStorage.getItem('user');
+
+  // Fetch incentive history from the backend
   useEffect(() => {
-    const incentive = tradeInHistory.reduce((acc, entry) => acc + entry.quantity * 100, 0);
-    setTotalIncentive(incentive);
-  }, [tradeInHistory]);
+    const fetchIncentiveHistory = async () => {
+      try {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/incentive/history`, {
+          addedBy: userId
+        });
+        setIncentiveHistory(response.data);
 
-  // const clearIncentives = () => {
-  //   setTradeInHistory([]);
-  //   localStorage.removeItem('tradeInHistory');
-  //   setTotalIncentive(0);
-  // };
+        // Calculate total incentive earned
+        const total = response.data.reduce((acc, entry) => acc + entry.incentiveEarned, 0);
+        setTotalIncentive(total);
+      } catch (error) {
+        console.error('Error fetching incentive history:', error);
+      }
+    };
+
+    fetchIncentiveHistory();
+  }, [userId]);
+
+  // Calculate the data to display for the current page
+  const offset = currentPage * itemsPerPage;
+  const currentData = incentiveHistory.slice(offset, offset + itemsPerPage);
+
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
 
   return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='z-1 sidebar border border-right col-2 col-md-1 p-0 bg-body-tertiary shadow vh-100 position-fixed d-flex align-items-center justify-content-center'>
-          <div className='bg-body-tertiary h-100' tabIndex='-1' id='sidebarMenu'>
-            <div className='d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto h-100'>
-              <AdminNavigation />
-            </div>
-          </div>
+    <>
+       <TitleHeader heading="Sales Rep Incentives" />
+      {/* Bootstrap Card for Total Incentive */}
+      <div className="card text-white bg-primary mb-4 text-center">
+        <div className="card-body">
+          <h5 className="card-title">Total Incentives Earned</h5>
+          <p className="card-text display-4">
+            $
+            <CountUp
+              end={totalIncentive}
+              duration={2.5}
+              separator=","
+              decimals={2}
+              decimal="."
+            />
+          </p>
         </div>
-
-        <main className='ms-auto col-10 col-xs-9 col-md-11 px-md-4'>
-          <TitleHeader heading="Sales Rep Incentives" />
-
-          <div className="container mt-5">
-            <h1 className="mb-4">Incentive Dashboard</h1>
-
-            <div className="mb-4">
-              <h2>Total Incentive Earned</h2>
-              <h3>${totalIncentive}</h3>
-            </div>
-
-            <div className="mt-4">
-              <h2>Trade-In History</h2>
-              {tradeInHistory.length > 0 ? (
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Customer Name</th>
-                      <th>Device</th>
-                      <th>Condition</th>
-                      <th>Quantity</th>
-                      <th>Incentive Earned</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {tradeInHistory.map((entry, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{entry.name}</td>
-                        <td>{entry.device}</td>
-                        <td>{entry.condition}</td>
-                        <td>{entry.quantity}</td>
-                        <td>${entry.quantity * 100}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <p>No trade-in history available.</p>
-              )}
-            </div>
-
-            {/* <button className="btn btn-danger mt-3" onClick={clearIncentives}>
-              Clear Incentives
-            </button> */}
-          </div>
-        </main>
       </div>
-    </div>
+      <div className="mt-4">
+        <h2>History</h2>
+        {currentData.length > 0 ? (
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Customer Name</th>
+                <th>Device</th>
+                <th>Condition</th>
+                <th>Quantity</th>
+                <th>Incentive Earned</th>
+                <th>Status</th>
+                <th>Trade Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentData.map((entry, index) => (
+                <tr key={entry.tradeId}>
+                  <td>{offset + index + 1}</td>
+                  <td>{entry.customerName}</td>
+                  <td>{entry.device}</td>
+                  <td>{entry.condition}</td>
+                  <td>{entry.quantity}</td>
+                  <td>${entry.incentiveEarned.toFixed(2)}</td>
+                  <td>
+                    {entry.status === 'approved'
+                      ? 'Received'
+                      : entry.status === 'rejected'
+                      ? 'Rejected'
+                      : 'Under Review'}
+                  </td>
+                  <td>{new Date(entry.tradeDate).toLocaleDateString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No incentive history available.</p>
+        )}
+
+        {/* Pagination Controls */}
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          pageCount={Math.ceil(incentiveHistory.length / itemsPerPage)}
+          onPageChange={handlePageChange}
+          containerClassName={'pagination justify-content-center mt-4'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          activeClassName={'active'}
+          disabledClassName={'disabled'}
+          forcePage={currentPage} // Keep the current page in sync
+        />
+      </div>
+    </>
   );
 };
 

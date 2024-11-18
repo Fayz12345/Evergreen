@@ -1,213 +1,205 @@
-import AdminNavigation from '../Layout/AdminNavigation';
-import TitleHeader from '../../TitleHeader';
 import React, { useState, useEffect } from 'react';
-import CSVReader from 'react-csv-reader'; // Import CSV Reader
-
-// Helper functions to manage local storage
-const loadFromLocalStorage = () => {
-  const data = localStorage.getItem('customers');
-  return data ? JSON.parse(data) : [];
-};
-
-const saveToLocalStorage = (data) => {
-  localStorage.setItem('customers', JSON.stringify(data));
-};
-
-// Sample CSV content
-const sampleCSVContent = `name,address,email
-John Doe,123 Elm Street,johndoe@example.com
-Jane Smith,456 Oak Avenue,janesmith@example.com
-Alice Johnson,789 Pine Road,alicej@example.com`;
-
-const createSampleCSV = () => {
-  const blob = new Blob([sampleCSVContent], { type: 'text/csv' });
-  return URL.createObjectURL(blob);
-};
-
+import axios from 'axios';
+import CSVReader from 'react-csv-reader';
+import { useNavigate } from 'react-router-dom';
 const Customers = () => {
-  const [customers, setCustomers] = useState(loadFromLocalStorage());
-  const [newCustomer, setNewCustomer] = useState({
-    name: '',
-    address: '',
-    email: '',
-  });
-  const [editIndex, setEditIndex] = useState(null); // Track customer being edited
+  const [customers, setCustomers] = useState([]);
+  const [newCustomer, setNewCustomer] = useState({ fullName: '', address: '', email: '' });
+  const [editIndex, setEditIndex] = useState(null);
+  const [csvData, setCsvData] = useState([]); // Store CSV data
+  const [activeTab, setActiveTab] = useState('form'); // Track active tab
+  const navigate = useNavigate(); // For navigation on submission
 
   useEffect(() => {
-    saveToLocalStorage(customers);
-  }, [customers]);
+    fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/customers`);
+      setCustomers(response.data);
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewCustomer({ ...newCustomer, [name]: value });
   };
 
-  const addOrUpdateCustomer = () => {
-    if (newCustomer.name && newCustomer.address && newCustomer.email) {
-      if (editIndex !== null) {
-        // Update existing customer
-        const updatedCustomers = [...customers];
-        updatedCustomers[editIndex] = newCustomer;
-        setCustomers(updatedCustomers);
-        setEditIndex(null); // Reset edit mode
-      } else {
-        // Add new customer
-        setCustomers((prev) => [...prev, newCustomer]);
+  const addOrUpdateCustomer = async () => {
+    if (newCustomer.fullName && newCustomer.address && newCustomer.email) {
+      try {
+        const customerData = {
+          fullName: newCustomer.fullName,
+          address: newCustomer.address,
+          email: newCustomer.email,
+          role: 'customer',
+          username: newCustomer.email,
+          password: '123456',
+        };
+
+        if (editIndex !== null) {
+          const encryptedId = customers[editIndex]._id;
+          await axios.put(`${process.env.REACT_APP_API_URL}/updatecustomer/${encryptedId}`, customerData);
+
+          setEditIndex(null);
+          
+        } else {
+          await axios.post(`${process.env.REACT_APP_API_URL}/add-customers`, customerData);
+        }
+        navigate('/admin/customers'); // Redirect to the customers list 
+        setNewCustomer({ fullName: '', address: '', email: '' });
+        fetchCustomers();
+      } catch (error) {
+        console.error('Error adding or updating customer:', error);
       }
-      setNewCustomer({ name: '', address: '', email: '' });
     }
   };
 
-  const handleEdit = (index) => {
-    setNewCustomer(customers[index]);
-    setEditIndex(index);
-  };
-
-  const handleDelete = (index) => {
-    const updatedCustomers = customers.filter((_, i) => i !== index);
-    setCustomers(updatedCustomers);
-  };
-
-  // const clearCustomers = () => {
-  //   setCustomers([]);
-  //   localStorage.removeItem('customers');
-  // };
-
   const handleCSVUpload = (data) => {
-    const uploadedCustomers = data.map((row) => ({
-      name: row[0],
+    setCsvData(data);
+  };
+
+  const uploadCSVData = async () => {
+    const batchId = Date.now();
+    const uploadedCustomers = csvData.map((row) => ({
+      fullName: row[0],
       address: row[1],
       email: row[2],
+      role: 'customer',
+      username: row[2],
+      password: '123456',
+      batchId,
     }));
-    setCustomers((prev) => [...prev, ...uploadedCustomers]);
+
+    for (const customer of uploadedCustomers) {
+      try {
+        await axios.post(`${process.env.REACT_APP_API_URL}/add-customers`, customer);
+        
+        navigate('/admin/customers'); // Redirect to the customers list 
+      } catch (error) {
+        console.error('Error uploading customer:', error);
+      }
+    }
+    fetchCustomers();
   };
 
+  const downloadSampleCSV = () => {
+    const sampleData = 'Full Name,Address,Email\nJohn Doe,123 Main St,johndoe@example.com\n';
+    const blob = new Blob([sampleData], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute('download', 'sample_customers.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleNavigateToCustomers = () => {
+    navigate('/admin/customers');
+  };
   return (
     <>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="z-1 sidebar border border-right col-2 col-md-1 p-0 bg-body-tertiary shadow vh-100 position-fixed d-flex align-items-center justify-content-center">
-            <div className="bg-body-tertiary h-100" tabIndex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-              <div className="d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto h-100">
-                <AdminNavigation />
+      <div className='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom'>
+            <h1 className='h2'>Customers</h1>
+            <div className='btn-toolbar mb-2 mb-md-0 mx-2'>
+                 <button className="btn btn-primary" onClick={handleNavigateToCustomers}>
+                    Go to Customers List
+                </button>
+            </div>
+        </div>
+      
+      <ul className="nav nav-tabs mb-3">
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === 'form' ? 'active' : ''}`}
+            onClick={() => setActiveTab('form')}
+          >
+            Add Customer
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === 'csv' ? 'active' : ''}`}
+            onClick={() => setActiveTab('csv')}
+          >
+            Batch Upload
+          </button>
+        </li>
+      </ul>
+
+      <div className="tab-content">
+        {activeTab === 'form' && (
+          <div className="tab-pane active">
+            <div className="card p-4 shadow-sm">
+              <h4 className="mb-4">{editIndex !== null ? 'Edit Customer' : 'Add New Customer'}</h4>
+              <div className="row mb-3 ">
+                <div className="col-md-6">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Full Name"
+                    name="fullName"
+                    value={newCustomer.fullName || ''}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-6">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Address"
+                    name="address"
+                    value={newCustomer.address || ''}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-6">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Email"
+                    name="email"
+                    value={newCustomer.email || ''}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-6">
+                  <button className="btn btn-primary w-100" onClick={addOrUpdateCustomer}>
+                    {editIndex !== null ? 'Update Customer' : 'Add Customer'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+        )}
 
-          <main className="ms-auto col-10 col-xs-9 col-md-11 px-md-4">
-            <TitleHeader heading={'Customers'} />
-            <div className=" mt-5">
-              <h1 className="mb-4">Customer Management</h1>
-
-              {/* Add/Edit Customer Form */}
-              <div className="mb-4">
-                <h2>{editIndex !== null ? 'Edit Customer' : 'Add New Customer'}</h2>
-
-                <div className="row">
-                  <div className="col-md-6 mb-2">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Customer Name"
-                      name="name"
-                      value={newCustomer.name}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className="col-md-6 mb-2">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Address"
-                      name="address"
-                      value={newCustomer.address}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6 mb-2">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email"
-                      name="email"
-                      value={newCustomer.email}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className="col-md-6 d-flex align-items-center">
-                    <button className="btn btn-primary w-100" onClick={addOrUpdateCustomer}>
-                      {editIndex !== null ? 'Update Customer' : 'Add Customer'}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* CSV Upload Section */}
-              <div className="mb-4">
-                <h2>Upload Customers via CSV</h2>
+        {activeTab === 'csv' && (
+          <div className="tab-pane active">
+            <div className="card p-4 shadow-sm">
+              <h4 className="mb-4">Batch Upload via CSV</h4>
+              <div className="input-group mb-3">
                 <CSVReader onFileLoaded={handleCSVUpload} />
-                <a
-                  href={createSampleCSV()}
-                  download="sample-customers.csv"
-                  className="btn btn-secondary mt-3"
-                >
-                  Download Sample CSV
-                </a>
               </div>
-
-              {/* Customer List */}
-              <div className="mt-4">
-                <h2>Customer List</h2>
-                {customers.length > 0 ? (
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {customers.map((customer, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>{customer.name}</td>
-                          <td>{customer.address}</td>
-                          <td>{customer.email}</td>
-                          <td>
-                            <button
-                              className="btn btn-warning btn-sm me-2"
-                              onClick={() => handleEdit(index)}
-                            >
-                              Edit
-                            </button>
-                            <button
-                              className="btn btn-danger btn-sm"
-                              onClick={() => handleDelete(index)}
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                ) : (
-                  <p>No customers added yet.</p>
-                )}
+              <div className="d-flex">
+                <button className="btn btn-primary me-2" onClick={uploadCSVData}>
+                  Upload CSV Data
+                </button>
+                <button className="btn btn-secondary" onClick={downloadSampleCSV}>
+                  Download Sample 
+                </button>
               </div>
-
-              {/* <button className="btn btn-danger mt-3" onClick={clearCustomers}>
-                Clear All Customers
-              </button> */}
             </div>
-          </main>
-        </div>
+          </div>
+        )}
       </div>
     </>
   );

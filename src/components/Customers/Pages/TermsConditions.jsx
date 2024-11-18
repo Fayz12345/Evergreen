@@ -1,18 +1,30 @@
 import React from 'react';
-import { Container } from 'react-bootstrap'; 
 import '../Layout/TermsConditions.css'; // Optional for any custom styling
-
+import { Container, Row, Col} from 'react-bootstrap';
+import { Fade } from 'react-reveal'; // Import animation from react-reveal (Install via npm)
 const TermsConditions = () => {
     return (
-        <Container className="my-5">
-            <h1 className=" mb-4">Terms and Conditions</h1>
-            <hr className="my-4 w-100 border border-dark" />
-
-            <p>
-                Your Terms and Conditions section is like a contract between you and your customers. 
+        <>
+            <section className="slider text-white bg-dark py-5 mt-5">
+                <Container>
+                    <Row className="justify-content-center text-center mt-5">
+                        <Col lg={9} md={12}>
+                            <Fade top>
+                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Terms & Conditions</h1>
+                                <p className="lead text-white mb-4"> Your Terms and Conditions section is like a contract between you and your customers. 
                 You make information and services available to your customers, and your customers must 
-                follow your rules.
-            </p>
+                follow your rules.</p>
+                               
+                            </Fade>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+        
+        
+       
+        <Container className="my-5" fluid="xl">
+          
 
             <h3 className="mt-4">Common Terms</h3>
             <ul>
@@ -45,6 +57,8 @@ const TermsConditions = () => {
                 If you have any questions or need further information, please don't hesitate to contact us.
             </p>
         </Container>
+
+        </>
     );
 };
 

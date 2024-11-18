@@ -67,3 +67,89 @@ h2 {
         flex-direction: column;
     }
 }
+.fixed-height-card {
+    height: 250px; /* Adjust height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .trade-in-section {
+    background-color: #f8f9fa; /* Light background */
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .trade-in-section h2 {
+    font-weight: bold;
+  }
+  
+  .trade-in-section h3 {
+    color: #333;
+  }
+  
+  .trade-in-section p {
+    color: #555;
+    line-height: 1.6;
+  }
+  .separator {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 1.5rem 0;
+    opacity: 0.6;
+    width:100%;                                                   
+  }
+  .flip-card {
+    perspective: 1000px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+    /* background-color: #f8f9fa; */
+    color: #212529;
+    padding: 20px;
+  }
+  .modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensure the modal takes up full vertical space */
+}
+.modal-body-scrollable {
+  max-height: 70vh; /* Adjust the max height as needed */
+  overflow-y: auto;
+}
+.modal-body-scrollable {
+  max-height: 70vh; /* Keep modal body height limited */
+  overflow-y: auto;
+}
+
+.fixed-card-height {
+  height: 200px; /* Set a fixed height for all cards */
+}
+
+.fixed-card-height .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.high-z-index-modal .modal-content {
+  z-index: 1055; /* Increase this if needed */
+}
