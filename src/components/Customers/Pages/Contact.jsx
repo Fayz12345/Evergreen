@@ -2,11 +2,15 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import '../Layout/ContactForm.css';
 import { Container, Row, Col} from 'react-bootstrap';
-import { Fade } from 'react-reveal'; // Import animation from react-reveal (Install via npm)
+import { motion } from 'framer-motion';
 // import Map from './Map';
 const Contact = () => {
     const form = useRef();
     const [status, setStatus] = useState('');
+    const fadeVariants = {
+        hidden: { opacity: 0, y: -50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+      };
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -62,11 +66,10 @@ const Contact = () => {
                 <Container>
                     <Row className="justify-content-center text-center mt-5">
                         <Col lg={9} md={12}>
-                            <Fade top>
-                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Contact Us</h1>
-                                <p className="lead text-white mb-4">We’d love to hear from you!</p>
-                               
-                            </Fade>
+                        <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
+                            <h1 className="animated fadeInUp mb-3 mt-5 text-white">Contact Us</h1>
+                            <p className="lead text-white mb-4">We’d love to hear from you!</p>
+                            </motion.div>
                         </Col>
                     </Row>
                 </Container>
@@ -123,7 +126,7 @@ const Contact = () => {
                     <form ref={form} onSubmit={sendEmail}>
                         <div className="form-group mb-3">
                             {/* <label>Name</label> */}
-                            <input type="text" name="user_name" className="form-control" required Placeholder="Name*" />
+                            <input type="text" name="user_name" className="form-control" required placeholder="Name*" />
                         </div>
                         <div className="form-group mb-3">
                             {/* <label>Email</label> */}

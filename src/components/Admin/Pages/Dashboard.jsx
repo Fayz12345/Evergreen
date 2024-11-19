@@ -63,11 +63,12 @@ const Dashboard = () => {
 
         <div className="row d-flex justify-content-around my-5">
           {/* Bar Chart: Trade-Ins by Device */}
-          <div className="col-lg-6 bg-body-tertiary shadow border rounded p-4">
+          <div className="col-lg-6  p-4">
             <h2 className="text-center">Trade-Ins by Device</h2>
+            
             <BarChart
               width={500}
-              height={300}
+              height={400}
               data={tradeDataByDevice}
               margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
             >
@@ -80,7 +81,7 @@ const Dashboard = () => {
           </div>
 
           {/* Pie Chart: Trade-Ins by Condition */}
-          <div className="col-lg-4 bg-body-tertiary shadow border rounded p-4">
+          <div className="col-lg-6  p-4">
             <h2 className="text-center">Trade-Ins by Condition</h2>
             <PieChart width={400} height={400}>
               <Pie

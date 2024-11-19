@@ -1,0 +1,4 @@
+modelId,customerId,quantity,condition
+<sampleModelId1>,<sampleCustomerId1>,1,Working
+<sampleModelId2>,<sampleCustomerId2>,2,Defective
+<sampleModelId3>,<sampleCustomerId3>,1,Recycle

@@ -25,3 +25,25 @@ html, body {
     text-align: center;
     padding: 1rem;
 }
+
+/* Change hover color for nav-link */
+.footer-nav .nav-item .nav-link:hover {
+    color: #009800 !important; /* Replace with your desired hover color */
+    text-decoration: underline; /* Optional: Adds an underline on hover */
+}
+
+
+/* Change color for active nav-link */
+.footer-nav .nav-item  .nav-link.active {
+    color: #009800 !important; /* Replace with your desired active color */
+    font-weight: bold; /* Optional: Makes the active link bold */
+}
+
+/* Optional: Change hover background color */
+.footer-nav .nav-item  .nav-link:hover {
+    /* background-color: #f8f9fa !important; Replace with your desired background color */
+    /* border-radius: 5px; Adds rounded corners */
+    color: #009800 !important; /* Replace with your desired active color */
+    font-weight: bold; /* Optional: Makes the active link bold */
+}
+

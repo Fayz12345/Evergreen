@@ -29,7 +29,7 @@ const tradeSchema = new mongoose.Schema(
     }, // Number of devices traded
     condition: { 
       type: String, 
-      enum: ['Working', 'Defective', 'Recycled'], 
+      enum: ['Working', 'Defective', 'Recycle'], 
       required: true 
     }, // Device condition
     priceWorking: { type: Number, required: true }, // Price if working

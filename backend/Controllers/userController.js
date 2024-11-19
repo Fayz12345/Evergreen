@@ -1,5 +1,6 @@
 const User = require('../Models/userModel'); // Import User model
 const { encrypt, decrypt } = require('../utils/encryption'); // Import encryption functions
+const nodemailer = require('nodemailer'); // For sending emails
 const bcrypt = require('bcrypt');
 // Fetch all users (encrypting their IDs)
 const getUsers = async (req, res) => {
@@ -210,6 +211,66 @@ const checkEmail = async (req, res) => {
     }
 };
 
+const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required' });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User with this email does not exist' });
+    }
+
+    // Generate reset token
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const tokenExpiry = Date.now() + 3600000; // Token valid for 1 hour
+
+    // Update user with token and expiry
+    user.resetToken = resetToken;
+    user.tokenExpiry = tokenExpiry;
+    await user.save();
+
+    // Send reset link via email
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'your-email@gmail.com', // Replace with your email
+        pass: 'your-email-password', // Replace with your email password or app password
+      },
+    });
+
+    const resetURL = `http://localhost:3000/reset-password/${resetToken}`; // Replace with your frontend reset URL
+    const mailOptions = {
+      from: 'your-email@gmail.com',
+      to: email,
+      subject: 'Password Reset Request',
+      text: `You requested for a password reset. Click the link to reset your password: ${resetURL}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ message: 'Password reset email sent successfully' });
+  } catch (error) {
+    console.error('Error sending reset email:', error);
+    res.status(500).json({ message: 'Error sending reset email', error });
+  }
+};
 
 
-module.exports = { getUsers, getCustomers, loginUser, addUser, addCustomer, updateCustomer, toggleUserDisable, getCustomersById,  updateCustomersById, checkEmail};
+
+module.exports = {  getUsers, 
+                    getCustomers, 
+                    loginUser, 
+                    addUser, 
+                    addCustomer, 
+                    updateCustomer, 
+                    toggleUserDisable, 
+                    getCustomersById,  
+                    updateCustomersById, 
+                    checkEmail,
+                    forgotPassword
+                  };

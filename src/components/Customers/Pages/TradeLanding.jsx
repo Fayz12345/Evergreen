@@ -2,10 +2,14 @@
 import React from 'react';
 import { Container,Button, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-import {  Fade } from 'react-reveal'; // Import animation from react-reveal (Install via npm)
+import { motion } from 'framer-motion';
 
 const  TradeLanding= () => {
+  const fadeVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
+  
   return (
     <>
 
@@ -14,10 +18,11 @@ const  TradeLanding= () => {
                 <Container>
                     <Row className="justify-content-center text-center mt-5">
                         <Col lg={9} md={12}>
-                            <Fade top>
-                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Trade In with Evergreen Wireless</h1>
-                               
-                            </Fade>
+                        <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
+                          <h1 className="animated fadeInUp mb-3 mt-5 text-white">
+                            Trade In with Evergreen Wireless
+                          </h1>
+                        </motion.div>
                         </Col>
                     </Row>
                 </Container>

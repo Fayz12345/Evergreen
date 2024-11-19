@@ -7,8 +7,8 @@ import TradeInPage from '../../Trade/AddTrade';
 import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap';
 import { FaUpload, FaMemory, FaBatteryFull, FaPowerOff, FaUserAltSlash, FaLock } from 'react-icons/fa';
 
-import {  Fade } from 'react-reveal'; // Import animation from react-reveal (Install via npm)
 
+import { motion } from 'framer-motion';
 const TradeinForm = () => {
     const [manufacturer, setManufacturer] = useState('');
     const [model, setModel] = useState('');
@@ -27,6 +27,11 @@ const TradeinForm = () => {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
     const userId = JSON.parse(sessionStorage.getItem('user'))?._id;
+    const fadeVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
+
   
     useEffect(() => {
       setModel('');
@@ -136,10 +141,11 @@ const TradeinForm = () => {
 
       // Ensure model is reset on modal opening if needed
       const handleCheckPriceModalShow = () => {
-        setShowCheckPriceModal(true);
+        navigate('/tradein/add');
+        // setShowCheckPriceModal(true);
 
-         setManufacturer(''); // Reset manufacturer to empty when opening modal
-        setModel(''); // Reset model to empty when opening modal
+        //  setManufacturer(''); // Reset manufacturer to empty when opening modal
+        // setModel(''); // Reset model to empty when opening modal
       };
     return (
       <>
@@ -148,10 +154,11 @@ const TradeinForm = () => {
                 <Container>
                     <Row className="justify-content-center text-center mt-5">
                         <Col lg={9} md={12}>
-                            <Fade top>
-                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Upgrade to the Latest and Save Big!</h1>
-                               
-                            </Fade>
+                        <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
+                          <h1 className="animated fadeInUp mb-3 mt-5 text-white">
+                            Upgrade to the Latest and Save Big!
+                          </h1>
+                        </motion.div>
                         </Col>
                     </Row>
                 </Container>

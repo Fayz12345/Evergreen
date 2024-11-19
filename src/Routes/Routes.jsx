@@ -39,7 +39,8 @@ import AuthLayout from '../components/Customers/Layout/AuthLayout';
 import PrivacyPolicy from '../PrivacyPolicy';
 import CookiePolicy from '../CookiePolicy';
 import Batch from '../components/Admin/Pages/addBatch';
-
+import ForgotPassword from '../components/Customers/Pages/ForgotPassword ';
+import AddTrade from '../components/Trade/AddTrade';
 export default function AppRoutes() {
   return (
     <Routes>
@@ -56,6 +57,7 @@ export default function AppRoutes() {
         <Route path="profile" element={<Profile />} />
         <Route path="edit-profile" element={<EditProfile />} />
         <Route path="trade-history" element={<TradeList/>} />
+        <Route path="tradein/add" element={<AddTrade/>} /> 
       </Route>
       
       <Route path="/" element={<HomeLayout />}>
@@ -64,7 +66,8 @@ export default function AppRoutes() {
         <Route path="login-2" element={<Login />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
-        <Route path="login" element={<Auth />} />
+        <Route path="login" element={<Auth />} /> 
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
       </Route>
       

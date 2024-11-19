@@ -1,21 +1,25 @@
 import React from 'react';
 import '../Layout/TermsConditions.css'; // Optional for any custom styling
 import { Container, Row, Col} from 'react-bootstrap';
-import { Fade } from 'react-reveal'; // Import animation from react-reveal (Install via npm)
+import { motion } from 'framer-motion';
 const TermsConditions = () => {
+    const fadeVariants = {
+        hidden: { opacity: 0, y: -50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+      };
     return (
         <>
             <section className="slider text-white bg-dark py-5 mt-5">
                 <Container>
                     <Row className="justify-content-center text-center mt-5">
                         <Col lg={9} md={12}>
-                            <Fade top>
+                        <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
                                 <h1 className="animated fadeInUp mb-3 mt-5 text-white">Terms & Conditions</h1>
                                 <p className="lead text-white mb-4"> Your Terms and Conditions section is like a contract between you and your customers. 
                 You make information and services available to your customers, and your customers must 
                 follow your rules.</p>
                                
-                            </Fade>
+                </motion.div>
                         </Col>
                     </Row>
                 </Container>

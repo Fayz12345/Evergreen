@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { MdPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
+import './navigation.css';
 const Navigation = () => {
     const navigate = useNavigate();
     // const location = useLocation(); // Get the current location
@@ -24,12 +25,15 @@ const Navigation = () => {
         navigate('/login');
     };
     // const isHomePage = location.pathname === '/'; // Check if the current path is home
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     return (
 <>
 {/* <section className={`${isHomePage ? 'position-fixed ' : ''} top-0 start-0 w-100 bg-dark`} > */}
-<section className='position-fixed top-0 start-0 w-100 bg-dark'  >
-    <div className="header-top">
+<section className='position-fixed top-0 start-0 w-100 bg-dark '  >
+    <div className="header-top" style={{display:"none"}}>
         <div className="container-xl">
             <div className="row justify-content-between align-items-center">
                 <div className="col-lg-8 col-md-8">
@@ -63,11 +67,11 @@ const Navigation = () => {
         </div>
     </div>
  
-        <nav className="navbar navbar-expand-lg main-nav py-3 awake" id="navbar"   style={{ backgroundOpacity:'rgba(0, 0, 0)' }}>
+        <nav className="navbar navbar-expand-lg main-nav py-3 awake" id="navbar">
             
 		<div className="container-xl">
            
-          <Link className="navbar-brand"  to="/"> Evergreen Wireless </Link>
+          <Link className="navbar-brand text-success"  to="/"> Evergreen Wireless </Link>
 
 		  <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 			<span className="fa fa-bars"></span>
@@ -79,8 +83,9 @@ const Navigation = () => {
                 <NavLink
                     className="nav-link"
                     to="/"
+                    onClick={scrollToTop}
                     style={({ isActive }) =>
-                        isActive ? {  fontWeight: "bold" } : undefined
+                        isActive ? {  fontWeight: "bold", colour:"green important" } : undefined
                     }
                 >
                     Home
@@ -91,8 +96,9 @@ const Navigation = () => {
                 <NavLink
                     className="nav-link"
                     to="/about"
+                    onClick={scrollToTop}
                     style={({ isActive }) =>
-                        isActive ? { textDecoration: "underline  !important", fontWeight: "bold" } : undefined
+                        isActive ? { textDecoration: "underline  !important",  colour:"green important" , fontWeight: "bold" } : undefined
                     }
                 >
                     About Us
@@ -104,8 +110,9 @@ const Navigation = () => {
                <NavLink
                 className="nav-link"
                 to="/tradein"
+                onClick={scrollToTop}
                 style={({ isActive }) =>
-                    isActive ? {  fontWeight: "bold" } : undefined
+                    isActive ? {  fontWeight: "bold"  , colour:"green important" } : undefined
                 }
             >
                 Trade-In
@@ -116,8 +123,9 @@ const Navigation = () => {
                <NavLink
                 className="nav-link"
                 to="/contact"
+                onClick={scrollToTop}
                 style={({ isActive }) =>
-                    isActive ? {  fontWeight: "bold" } : undefined
+                    isActive ? {  fontWeight: "bold" , colour:"green important"  } : undefined
                 }
             >
                 Contact Us
@@ -129,19 +137,19 @@ const Navigation = () => {
                 <div className="dropdown d-inline">
                     
                
-                    <a className="nav-link dropdown-toggle" 
+                    <a className="nav-link dropdown-toggle text-success" 
                     href="/profile" id="dropdown05" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                     {user?.fullName || "User"}</a>
 					<ul className="dropdown-menu" aria-labelledby="dropdown05">
 						<li>
-                            <NavLink className="dropdown-item" to="/profile" style={({ isActive }) =>
-                                isActive ? { textDecoration: "underline  !important", fontWeight: "bold" } : undefined
+                            <NavLink className="dropdown-item" to="/profile"  onClick={scrollToTop} style={({ isActive }) =>
+                                isActive ? { textDecoration: "underline  !important", colour:"green important" , fontWeight: "bold" } : undefined
                             }>View Profile</NavLink>
                         </li>
 						<li>
-                            <NavLink className="dropdown-item" to="/trade-history" style={({ isActive }) =>
-                                isActive ? { textDecoration: "underline  !important", fontWeight: "bold" } : undefined
+                            <NavLink className="dropdown-item" to="/trade-history"  onClick={scrollToTop} style={({ isActive }) =>
+                                isActive ? { textDecoration: "underline  !important", colour:"green important" , fontWeight: "bold" } : undefined
                             }>Trade History</NavLink>
                         </li>
 
@@ -156,7 +164,7 @@ const Navigation = () => {
                 <li className="nav-item">
                 <NavLink
                     className="nav-link"
-                    to="/login"
+                    to="/login"  onClick={scrollToTop}
                     style={({ isActive }) =>
                         isActive ? {fontWeight: "bold" } : undefined
                     }

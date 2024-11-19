@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUsers, getCustomers, addUser, loginUser, addCustomer, updateCustomer, toggleUserDisable, getCustomersById , updateCustomersById, checkEmail} = require('../Controllers/userController');
+const { getUsers, getCustomers, addUser, loginUser, addCustomer, updateCustomer, toggleUserDisable, getCustomersById , updateCustomersById, checkEmail, forgotPassword} = require('../Controllers/userController');
 
 // Route to get all users
 router.get('/users', getUsers);
@@ -21,5 +21,6 @@ router.post('/login', loginUser);
 
 router.put('/toggleUserDisable/:id', toggleUserDisable);
 
+router.post('/forgot-password', forgotPassword);
 
 module.exports = router;

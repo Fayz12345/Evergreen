@@ -2,22 +2,23 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Modal, Button, Tabs, Tab } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Button, Tabs, Tab } from 'react-bootstrap';
 import ConditionCard from '../Admin/Pages/ConditionCard'; // Adjust the import path as necessary
+import { motion } from 'framer-motion';
 import '../Admin/Layout/trade.css';
 const AddTrade = () => {
   const [device, setDevice] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedDevice, setSelectedDevice] = useState(null); // Store selected device details
   const [selectedModel, setSelectedModel] = useState(null); // Store selected device details
-  const [customer, setCustomer] = useState('');
+
   const [manufacturer, setManufacturer] = useState('');
   const [model, setModel] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [condition, setCondition] = useState('Working');
   const [manufacturers, setManufacturers] = useState([]);
   const [models, setModels] = useState([]);
-  const [customers, setCustomers] = useState([]);
+
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState('single');
   const [batchFile, setBatchFile] = useState(null); // State to store selected file
@@ -27,14 +28,13 @@ const AddTrade = () => {
   const userId = JSON.parse(sessionStorage.getItem('user'))?._id;
   console.log(userId);
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/customers`)
-      .then(response => setCustomers(response.data))
-      .catch(error => console.error('Error fetching customers:', error));
+   
 
     axios.get(`${process.env.REACT_APP_API_URL}/manufacturers`)
       .then(response => setManufacturers(response.data))
       .catch(error => console.error('Error fetching manufacturers:', error));
   }, []);
+
   const handleFileSelect = (event) => {
     setBatchFile(event.target.files[0]);
   };
@@ -186,11 +186,7 @@ const openTradeModal = () => {
   ];
 
   const handleBatchUploadFile = async () => {
-    if (!batchFile || !customer) {
-      alert("Please select a file and a customer.");
-      return;
-    }
-
+ 
     // Create form data to send the file and customer ID
     const formData = new FormData();
     formData.append('file', batchFile);
@@ -209,18 +205,35 @@ const openTradeModal = () => {
       console.error('Error uploading batch file:', error);
     }
   };
-
+  const fadeVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
   return (
     <>
-     <div className="">
+        
+<section className="slider text-white bg-dark py-5 mt-5">
+                <Container>
+                    <Row className="justify-content-center text-center mt-5">
+                        <Col lg={9} md={12}>
+                        <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
+                          <h1 className="animated fadeInUp mb-3 mt-5 text-white">
+                            Get a Trade In Quote with Evergreen Wireless
+                          </h1>
+                        </motion.div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+     <div className="container-xl mb-5">
 
-      <Tabs activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mb-3">
+      <Tabs activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mb-5 mt-5">
           {/* Single Trade Tab */}
-          <Tab eventKey="single" title="Single Trade-In">
+          <Tab eventKey="single" title="Single Trade-In"  tabClassName="text-success" >
           <div className="row justify-content-center">
           <div className="col-md-12">
             <div className="card p-4">
-              <h5 className="text-center">Search Device</h5>
+              <label>Search Device</label>
 
               <input
                 type="text"
@@ -272,7 +285,7 @@ const openTradeModal = () => {
                         ))}
                         </div>
                        {isLoggedIn ? (
-                        <Button variant="primary" className="mt-3"  onClick={openTradeModal}>
+                        <Button variant="success" className="mt-3"  onClick={openTradeModal}>
                             Trade In
                         </Button>
                        
@@ -345,10 +358,18 @@ const openTradeModal = () => {
                         />
                       ))}
                     </div>
-                                  
-                  <Button variant="primary"  className="mt-3"  onClick={openTradeModal}>
+
+                                 {isLoggedIn ? ( 
+                  <Button variant="success"  className="mt-3"  onClick={openTradeModal}>
                     Trade In
                   </Button>
+                   ) : (
+
+                    <p>
+                        Please <a href="/login" className="text-success">log in</a> to proceed with the trade-in process.
+                    </p>
+          
+               )}
                 </div>
               )}
             </div>
@@ -357,27 +378,36 @@ const openTradeModal = () => {
           </Tab>
 
           {/* Batch Upload Tab */}
-          <Tab eventKey="batch" title="Batch Upload">
+          <Tab eventKey="batch" title="Batch Upload"   tabClassName="text-success" >
             <div className="row justify-content-center">
               <div className="col-md-12">
               
                 <div className="card p-4 text-center">
-                  
-                <h5>Batch Upload for Trade-In</h5>
-          
-                  <input
-                    type="file"
-                    accept=".csv"
-                    className="form-control mt-3"
-                    onChange={handleFileSelect} // Store file on selection
-                  />
-                  <h6 className="mt-3">Upload a CSV file to process multiple trade-ins at once.</h6>
-                  <Button variant="light" className="mt-3" href={`${process.env.REACT_APP_API_URL}/sample-csv`} download>
-                    Download Sample CSV
-                  </Button>
-                  <Button variant="primary" className="mt-3"  onClick={handleBatchUploadFile}>
-                    Process Batch Upload
-                  </Button>
+                {isLoggedIn ? (
+                  <>
+                    <p>Batch Upload for Trade-In</p>
+              
+                      <input
+                        type="file"
+                        accept=".csv"
+                        className="form-control mt-3"
+                        onChange={handleFileSelect} // Store file on selection
+                      />
+                      <p className="mt-3">Upload a CSV file to process multiple trade-ins at once.</p>
+                      <Button variant="light" className="mt-3" href={`${process.env.REACT_APP_API_URL}/sample-csv`} download>
+                        Download Sample CSV
+                      </Button>
+                      <Button variant="success" className="mt-3"  onClick={handleBatchUploadFile}>
+                        Process Batch Upload
+                      </Button>
+                  </>
+                   ):(
+
+                    <p>
+                      Please <a href="/login" className="text-success">log in</a> to proceed with the trade-in process.
+                   </p>
+      
+                   )}
                 </div>
               </div>
             </div>
@@ -438,7 +468,7 @@ const openTradeModal = () => {
           <option value="Recycle">Recycle - $0</option>
         </select>
       </div>
-      <Button variant="primary" type="submit">
+      <Button variant="success" type="submit">
         Submit Trade
       </Button>
     </form>

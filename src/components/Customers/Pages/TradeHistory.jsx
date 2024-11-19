@@ -2,66 +2,47 @@ import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import { Tab, Nav,Container, Row, Col } from 'react-bootstrap';
-
-import { Fade } from 'react-reveal'; // Import animation from react-reveal (Install via npm)
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 const TradeHistory = () => {
   const [tradeHistory, setTradeHistory] = useState([]);
-  const [totalDevices, setTotalDevices] = useState(0);
   const [batches, setBatches] = useState([]); // State for batch data
-  const [statusCounts, setStatusCounts] = useState({
-    pending: 0,
-    approved: 0,
-    rejected: 0,
-  });
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [tempSearchQuery, setTempSearchQuery] = useState(''); // Temporary search query for input
   const [searchQuery, setSearchQuery] = useState(''); // Applied search query for filtering
   const tradesPerPage = 10;
 
   // Get logged-in user ID from session storage
-  const userId = JSON.parse(sessionStorage.getItem('user'))._id;
-
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  const userId = user?._id || null; // Set userId to null if user is not available
   const fetchTradeHistory = useCallback(async () => {
+    if (!userId) return; // Avoid fetching if userId is null
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/trade/listByCustomer/${userId}`);
       setTradeHistory(response.data);
-      calculateReports(response.data);
     } catch (error) {
       console.error('Error fetching trade history:', error);
     }
   }, [userId]);
 
-  const calculateReports = (history) => {
-    const total = history.reduce((acc, entry) => acc + entry.quantity, 0);
-    const statusSummary = history.reduce(
-      (acc, entry) => {
-        acc[entry.status] = (acc[entry.status] || 0) + 1;
-        return acc;
-      },
-      { pending: 0, approved: 0, rejected: 0 }
-    );
-
-    setTotalDevices(total);
-    setStatusCounts(statusSummary);
-  };
 
     // Fetch batch data
     const fetchBatches = useCallback(async () => {
+      if (!userId) return; // Avoid fetching if userId is null
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/batches/customer/${userId}`);
         setBatches(response.data);
       } catch (error) {
         console.error('Error fetching batch data:', error);
       }
-    }, []);
+    }, [userId]);
 
-  useEffect(() => {
-    if (userId) {
+    useEffect(() => {
       fetchTradeHistory();
-    }
-    fetchBatches(); // Fetch batches data when component loads
-  }, [userId, fetchTradeHistory, fetchBatches]);
-
+      fetchBatches();
+    }, [fetchTradeHistory, fetchBatches]); // Ensure hooks are called when dependencies change
+  
   const handlePageClick = (event) => {
     setCurrentPage(event.selected);
   };
@@ -122,29 +103,35 @@ const TradeHistory = () => {
       alert('Failed to download CSV.');
     }
   };
-  
+  const fadeVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
 
   return (
     <>
     
-    <section className="slider text-white bg-dark py-5 mt-5">
+    <section className="slider text-white bg-dark py-5 mt-5 mb-5">
                 <Container>
                     <Row className="justify-content-center text-center mt-5">
                         <Col lg={9} md={12}>
-                            <Fade top>
+                        <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
                                 <h1 className="animated fadeInUp mb-3 mt-5 text-white">Trade History</h1>
                                 {/* <p className="lead text-white mb-4">We’d love to hear from you!</p> */}
-                               
-                            </Fade>
+                                <button className="btn btn-success me-2" onClick={() => navigate('/tradein/add')}>
+                                    Trade In
+                                  </button>
+                                </motion.div>
                         </Col>
                     </Row>
                 </Container>
             </section>
     
 
-            <Container fluid="xl"  className='mt-5'>
+            <Container fluid="xl"  className='mt-5 mb-5'>
+            
         <Tab.Container defaultActiveKey="trades">
-          <Nav variant="tabs" className="mb-3">
+          <Nav variant="tabs" className="mb-5">
             <Nav.Item>
               <Nav.Link eventKey="trades">Trade</Nav.Link>
             </Nav.Item>
@@ -160,7 +147,7 @@ const TradeHistory = () => {
                 
 
               {/* Trade History Table */}
-              <div className="mt-4">
+              <div className="mt-4 mb-5">
 
                 {/* Search Input and Buttons */}
                 <div className="mb-3 d-flex">
