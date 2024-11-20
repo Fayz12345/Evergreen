@@ -111,23 +111,29 @@ const addCustomer = async (req, res) => {
     res.status(500).json({ message: 'Error adding customer', error });
   }
 };
-
-// Login user (without JWT)
 const loginUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
-    
+    // Find user by either username or email
+    const user = await User.findOne({
+      $or: [{ username }, { email }],
+    });
+
+    // Check if user exists and validate the disabled field
+    if (!user || user.disabled === undefined) {
+      return res.status(400).json({ message: 'Invalid user or user data' });
+    }
     if (user.disabled) {
-      return res.status(401).json({ message: 'Your account has been disabled!!' });
+      return res.status(401).json({ message: 'Your account has been disabled!' });
     }
 
     // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid username or password' });
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
+
     // Determine the redirection path based on role
     const redirectPath = user.role === 'customer' ? '/tradein' : '/admin/';
     res.status(200).json({
@@ -144,6 +150,7 @@ const loginUser = async (req, res) => {
     res.status(500).json({ message: 'Server error', error });
   }
 };
+
 // Update customer by encrypted ID
 const updateCustomer = async (req, res) => {
   try {

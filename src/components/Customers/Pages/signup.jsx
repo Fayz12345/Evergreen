@@ -1,24 +1,27 @@
 // src/components/Signup.js
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
-
 import { RxReload } from "react-icons/rx";
+
 const Signup = () => {
-   
     const [formData, setFormData] = useState({
-        name: '',
+        fullName: '',
+        address: '',
         email: '',
+        role: 'customer', // Default role as 'customer'
+        username: '',
         password: '',
-        confirmPassword: '',
+        confirmPassword: '', // Not sent to backend
     });
     const [captchaInput, setCaptchaInput] = useState('');
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const apiUrl = process.env.REACT_APP_API_URL;
+
     useEffect(() => {
-        loadCaptchaEnginge(6); // Adjust CAPTCHA length as needed
+        loadCaptchaEnginge(6); // Initialize CAPTCHA
     }, []);
 
     const handleChange = (e) => {
@@ -29,7 +32,7 @@ const Signup = () => {
     const checkEmailUnique = async () => {
         try {
             const response = await axios.post(`${apiUrl}/check-email`, { email: formData.email });
-            return response.data.isUnique;
+            return response.data.isUnique; // Return the uniqueness status
         } catch (error) {
             console.error('Error checking email uniqueness:', error);
             return false;
@@ -37,10 +40,11 @@ const Signup = () => {
     };
 
     const validateForm = async () => {
-        const { name, email, password, confirmPassword } = formData;
+        const { fullName, address, email, username, password, confirmPassword } = formData;
         const newErrors = {};
-    
-        if (!name) newErrors.name = 'Name is required';
+
+        if (!fullName) newErrors.fullName = 'Full Name is required';
+        if (!address) newErrors.address = 'Address is required';
         if (!email) {
             newErrors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -49,53 +53,89 @@ const Signup = () => {
             const isEmailUnique = await checkEmailUnique();
             if (!isEmailUnique) newErrors.email = 'Email is already registered';
         }
-    
+
+        if (!username) newErrors.username = 'Username is required';
+
         if (!password) {
             newErrors.password = 'Password is required';
         } else if (password.length < 8) {
             newErrors.password = 'Password must be at least 8 characters';
         }
-    
+
         if (password !== confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
-    
+
         // Validate CAPTCHA
         if (!validateCaptcha(captchaInput)) {
             newErrors.captcha = 'Invalid CAPTCHA. Please try again.';
         }
-    
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-    
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission
+
         if (await validateForm()) {
-            localStorage.setItem('user', JSON.stringify(formData));
-            alert('Signup successful! You can now log in.');
-            navigate('/login');
+            try {
+                const response = await axios.post(`${apiUrl}/add-customers`, formData);
+
+                if (response.status === 201) {
+                    alert('Signup successful! You can now log in.');
+                // Clear the form
+                    setFormData({
+                        fullName: '',
+                        address: '',
+                        email: '',
+                        role: 'customer', // Reset role to default
+                        username: '',
+                        password: '',
+                        confirmPassword: '',
+                    });
+                    setCaptchaInput(''); // Clear CAPTCHA input
+                    loadCaptchaEnginge(6); // Reload CAPTCHA
+                    navigate('/');
+                } else {
+                    alert('An unexpected error occurred. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error during signup:', error);
+                alert('Error during signup. Please try again later.');
+            }
         } else {
-            setCaptchaInput(''); // Clear the CAPTCHA input if validation fails
+            setCaptchaInput(''); // Clear CAPTCHA input if validation fails
             loadCaptchaEnginge(6); // Reload CAPTCHA if validation fails
         }
     };
-    
 
     return (
-        <div className=" mt-5">
+        <div className="mt-5">
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Name</label>
+                    <label htmlFor="fullName" className="form-label">Full Name</label>
                     <input
                         type="text"
-                        className={`form-control ${errors.name ? 'is-invalid' : ''}`}
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                        className={`form-control ${errors.fullName ? 'is-invalid' : ''}`}
+                        id="fullName"
+                        name="fullName"
+                        value={formData.fullName}
                         onChange={handleChange}
                         required
                     />
-                    {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+                    {errors.fullName && <div className="invalid-feedback">{errors.fullName}</div>}
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="address" className="form-label">Address</label>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.address ? 'is-invalid' : ''}`}
+                        id="address"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.address && <div className="invalid-feedback">{errors.address}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
@@ -109,6 +149,19 @@ const Signup = () => {
                         required
                     />
                     {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="username" className="form-label">Username</label>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                        id="username"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.username && <div className="invalid-feedback">{errors.username}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
@@ -137,22 +190,22 @@ const Signup = () => {
                     {errors.confirmPassword && <div className="invalid-feedback">{errors.confirmPassword}</div>}
                 </div>
 
-                  {/* CAPTCHA Section */}
-            <div className="captcha-container mb-3">
-                <LoadCanvasTemplate />
-                <RxReload
-                      className="captcha-reload"
-                      onClick={() => loadCaptchaEnginge(6)} // Reload CAPTCHA on icon click
+                {/* CAPTCHA Section */}
+                <div className="captcha-container mb-3">
+                    <LoadCanvasTemplate />
+                    <RxReload
+                        className="captcha-reload"
+                        onClick={() => loadCaptchaEnginge(6)} // Reload CAPTCHA on icon click
                     />
-                <input
-                    type="text"
-                    className={`form-control ${errors.captcha ? 'is-invalid' : ''} mt-2`}
-                    placeholder="Enter CAPTCHA"
-                    value={captchaInput}
-                    onChange={(e) => setCaptchaInput(e.target.value)}
-                />
-                {errors.captcha && <div className="invalid-feedback">{errors.captcha}</div>}
-            </div>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.captcha ? 'is-invalid' : ''} mt-2`}
+                        placeholder="Enter CAPTCHA"
+                        value={captchaInput}
+                        onChange={(e) => setCaptchaInput(e.target.value)}
+                    />
+                    {errors.captcha && <div className="invalid-feedback">{errors.captcha}</div>}
+                </div>
 
                 <div className="text-center mt-4">
                     <button type="submit" className="btn btn-success">Signup</button>

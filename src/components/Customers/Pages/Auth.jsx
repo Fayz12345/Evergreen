@@ -12,6 +12,7 @@ import { motion } from 'framer-motion'; // Import framer-motion
 const Auth = () => {
   const [activeTab, setActiveTab] = useState('login');
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [captchaInput, setCaptchaInput] = useState('');
@@ -33,6 +34,7 @@ const Auth = () => {
 
     if (savedUsername && savedPassword) {
       setUsername(savedUsername);
+      setEmail(savedUsername);
       setPassword(savedPassword);
       setRememberMe(true);
     }
@@ -63,7 +65,8 @@ const Auth = () => {
     }
 
     try {
-      const response = await axios.post(`${apiUrl}/login`, { username, password });
+
+      const response = await axios.post(`${apiUrl}/login`, { username, email, password });
 
       if (response.status === 200) {
         const { token, user } = response.data;
@@ -144,7 +147,7 @@ const Auth = () => {
                     type="text"
                     className="form-control"
                     id="username"
-                    placeholder="Username"
+                    placeholder="Username or Email"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
