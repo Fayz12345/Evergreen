@@ -496,7 +496,7 @@ a:focus {
   margin-top: 15px;
   padding: 0px;
   border-radius: 0px;
-  border-top: 3px solid #4869e8;
+  border-top: 3px solid #009800;
   background: #111;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.05), -2px 0px 5px 1px rgba(0, 0, 0, 0.05);
   webkit-transform: translateY(20px);
@@ -537,7 +537,7 @@ a:focus {
 }
 
 .dropdown-item:hover {
-  background: #4869e8;
+  background: #009800;
   color: #fff;
 }
 

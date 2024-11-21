@@ -112,7 +112,7 @@ const TermsConditions = () => {
                         </ul>
                         <h5 className="fw-semibold text-secondary">5.2 Disputes</h5>
                         <ul className="text-muted">
-                            <li>Any disputes regarding device valuation or rejection must be submitted within 10 days of notification.</li>
+                            <li>Any disputes regarding device valuation or rejection must be submitted within 7 buisness days of notification.</li>
                         </ul>
                     </div>
                 </section>
@@ -145,8 +145,7 @@ const TermsConditions = () => {
                     <h2 className="text-start fw-bold text-primary">8. Governing Law and Dispute Resolution</h2>
                     <div className="ms-5">
                         <ul className="text-muted">
-                            <li><strong>Governing Law:</strong> These Terms are governed by the laws of Electronic Communication Devices.</li>
-                            <li><strong>Dispute Resolution:</strong> Any disputes arising under these Terms shall be resolved through binding arbitration or the courts of Electronic Communication Devices, as applicable.</li>
+                            <li> Any disputes arising under these Terms shall be governed by and construed in accordance with the Governing laws.</li>
                         </ul>
                     </div>
                 </section>
