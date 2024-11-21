@@ -40,7 +40,7 @@ const createTrade = async (req, res) => {
     await newTrade.save();
     res.status(201).json({ message: 'Trade saved successfully', trade: newTrade });
   } catch (error) {
-    console.error('Error saving trade:', error);
+    // console.error('Error saving trade:', error);
     res.status(500).json({ error: 'Error saving trade' });
   }
 };
@@ -63,7 +63,7 @@ const getAllTrades = async (req, res) => {
 
     res.status(200).json(trades);
   } catch (error) {
-    console.error('Error fetching trades:', error);
+    // console.error('Error fetching trades:', error);
     res.status(500).json({ error: 'Error fetching trades' });
   }
 };
@@ -90,7 +90,7 @@ const updateTradeStatus = async (req, res) => {
 
     res.status(200).json(updatedTrade);
   } catch (error) {
-    console.error('Error updating trade status:', error);
+    // console.error('Error updating trade status:', error);
     res.status(500).json({ error: 'Error updating trade status' });
   }
 };
@@ -103,7 +103,7 @@ const getTradeById = async (req, res) => {
     }
     
     const decryptedAddedBy = decrypt(addedBy);
-    console.log(decryptedAddedBy);
+    // console.log(decryptedAddedBy);
     const trade = await Trade.find({ addedBy: decryptedAddedBy })
     .populate({
         path: 'model',
@@ -120,7 +120,7 @@ const getTradeById = async (req, res) => {
     }
     res.status(200).json(trade);
   } catch (error) {
-    console.error('Error fetching trade by ID:', error);
+    // console.error('Error fetching trade by ID:', error);
     res.status(500).json({ error: 'Error fetching trade information' });
   }
 };
@@ -132,7 +132,7 @@ const getTradeByCustomerId = async (req, res) => {
     }
 
     const decryptedAddedBy = decrypt(addedBy);
-    console.log(decryptedAddedBy);
+    // console.log(decryptedAddedBy);
 
     const trade = await Trade.find({ addedBy: decryptedAddedBy })
       .populate('model')
@@ -145,13 +145,13 @@ const getTradeByCustomerId = async (req, res) => {
 
     res.status(200).json(trade);
   } catch (error) {
-    console.error('Error fetching trade by ID:', error);
+    // console.error('Error fetching trade by ID:', error);
     res.status(500).json({ error: 'Error fetching trade information' });
   }
 };
 
 const getTradeCounts = async (req, res) => {
-  console.log("getTradeCounts function called");
+  // console.log("getTradeCounts function called");
 
   try {
     const tradeCounts = await Trade.aggregate([
@@ -203,10 +203,10 @@ const getTradeCounts = async (req, res) => {
       },
     ]);
 
-    console.log("Intermediate Result:", tradeCounts); // Debug the output to see manufacturer names
+    // console.log("Intermediate Result:", tradeCounts); // Debug the output to see manufacturer names
     res.status(200).json(tradeCounts);
   } catch (error) {
-    console.error("Error fetching trade counts:", error.message);
+    // console.error("Error fetching trade counts:", error.message);
     res.status(500).json({ error: `Error fetching trade counts: ${error.message}` });
   }
 };
@@ -232,7 +232,7 @@ const getAllTradesWithCount = async (req, res) => {
 
     res.status(200).json(trades);
   } catch (error) {
-    console.error('Error fetching trades:', error);
+    // console.error('Error fetching trades:', error);
     res.status(500).json({ error: 'Error fetching trades' });
   }
 };
@@ -297,7 +297,7 @@ const getTradeCountsByManufacturer = async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    console.error('Error fetching trade counts by manufacturer:', error);
+    // console.error('Error fetching trade counts by manufacturer:', error);
     res.status(500).json({ error: 'Error fetching trade counts by manufacturer' });
   }
 };
@@ -347,10 +347,10 @@ const batchUploadTrades = async (req, res) => {
               });
 
             } else {
-              console.error(`Model not found for ID ${row.modelId}`);
+              // console.error(`Model not found for ID ${row.modelId}`);
             }
           } catch (innerError) {
-            console.error('Error in data row processing:', innerError);
+            // console.error('Error in data row processing:', innerError);
           }
         })());
       })
@@ -359,18 +359,18 @@ const batchUploadTrades = async (req, res) => {
           await Promise.all(tradePromises);
           await Trade.insertMany(trades);
           res.status(201).json({ message: 'Batch upload successful', trades });
-          console.log('Batch upload successful');
+          // console.log('Batch upload successful');
         } catch (endError) {
-          console.error('Error during final insertion:', endError);
+          // console.error('Error during final insertion:', endError);
           res.status(500).json({ error: 'Error during batch upload finalization' });
         }
       })
       .on('error', (error) => {
-        console.error('Error processing CSV file:', error);
+        // console.error('Error processing CSV file:', error);
         res.status(500).json({ error: 'Error processing CSV file' });
       });
   } catch (error) {
-    console.error('Batch upload failed:', error);
+    // console.error('Batch upload failed:', error);
     res.status(500).json({ error: 'Batch upload failed' });
   }
 };

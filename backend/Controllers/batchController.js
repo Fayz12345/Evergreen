@@ -31,13 +31,13 @@ exports.uploadBatch = async (req, res) => {
             batchNumber,
           });
         } else {
-          console.warn('Row missing "name" field:', row);
+          // console.warn('Row missing "name" field:', row);
         }
       })
       .on('end', async () => {
         try {
 
-            console.log('Parsed batch data with batch number:', batch); // Log to confirm structure
+            // console.log('Parsed batch data with batch number:', batch); // Log to confirm structure
 
             if (batch.length === 0) {
               throw new Error('No valid data rows with a name field were found in the CSV.');
@@ -60,14 +60,14 @@ exports.uploadBatch = async (req, res) => {
           await newBatch.save();
           res.status(201).json({ message: 'Batch uploaded successfully', batchNumber });
         } catch (error) {
-          console.error('Error saving batch:', error);
+          // console.error('Error saving batch:', error);
           res.status(500).json({ error: 'Failed to save batch' });
         } finally {
           fs.unlinkSync(req.file.path); // Delete file after processing
         }
       });
   } catch (error) {
-    console.error('Error processing file:', error);
+    // console.error('Error processing file:', error);
     res.status(500).json({ error: 'Error processing file' });
   }
 };
@@ -78,7 +78,7 @@ exports.getBatches = async (req, res) => {
     const batches = await Batch.find({ addedBy: decryptedAddedBy }).populate('addedBy', 'fullName').populate('customerId', 'fullName');
     res.status(200).json(batches);
   } catch (error) {
-    console.error('Error fetching batches:', error);
+    // console.error('Error fetching batches:', error);
     res.status(500).json({ error: 'Failed to fetch batch data' });
   }
 };
@@ -91,29 +91,29 @@ exports.getBatchesByAddedBy = async (req, res) => {
     }
 
     const decryptedAddedBy = decrypt(addedBy);
-    console.log(decryptedAddedBy);
+    // console.log(decryptedAddedBy);
     const batches = await Batch.find({ addedBy: decryptedAddedBy }).populate('addedBy', 'fullName').populate('customerId', 'fullName');
     res.status(200).json(batches);
   } catch (error) {
-    console.error('Error fetching batches:', error);
+    // console.error('Error fetching batches:', error);
     res.status(500).json({ error: 'Failed to fetch batch data' });
   }
 };
 exports.getBatchesByCustomer = async (req, res) => {
   try {
-    console.log(req.params);
+    // console.log(req.params);
     const { customerId } = req.params;
-    console.log('Customer id '+req.params);
+    // console.log('Customer id '+req.params);
     if (!customerId) {
       return res.status(400).json({ error: 'Missing customerId parameter' });
     }
 
     const decryptedcustomerId= decrypt(customerId);
-    console.log(decryptedcustomerId);
+    // console.log(decryptedcustomerId);
     const batches = await Batch.find({ customerId: decryptedcustomerId }).populate('addedBy', 'fullName').populate('customerId', 'fullName');
     res.status(200).json(batches);
   } catch (error) {
-    console.error('Error fetching batches:', error);
+    // console.error('Error fetching batches:', error);
     res.status(500).json({ error: 'Failed to fetch batch data' });
   }
 };
@@ -135,7 +135,7 @@ exports.downloadBatch = async (req, res) => {
     res.attachment(`${batch.fileName || 'batch'}.csv`);
     res.send(csvData);
   } catch (error) {
-    console.error('Error generating CSV:', error);
+    // console.error('Error generating CSV:', error);
     res.status(500).json({ error: 'Failed to download CSV' });
   }
 };

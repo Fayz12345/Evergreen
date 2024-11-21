@@ -13,7 +13,7 @@ const createMemory = async (req, res) => {
       memory: { ...newMemory._doc, _id: encrypt(newMemory._id.toString()) }, // Encrypt ID
     });
   } catch (error) {
-    console.error('Error adding memory:', error);
+    // console.error('Error adding memory:', error);
     res.status(500).json({ error: 'Error adding memory' });
   }
 };
@@ -28,14 +28,14 @@ const getAllMemories = async (req, res) => {
     }));
     res.status(200).json(encryptedMemories);
   } catch (error) {
-    console.error('Error fetching memories:', error);
+    // console.error('Error fetching memories:', error);
     res.status(500).json({ error: 'Error fetching memories' });
   }
 };
 const deleteMemory = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
-    console.log('Request params:', req.params); // Log to check if ID is received
+    // console.log('Request params:', req.params); // Log to check if ID is received
     // const decryptedId = decrypt(req.params.id); // Decrypt the ID
     const Id = req.params.id; // Decrypt the ID
 
@@ -46,7 +46,7 @@ const deleteMemory = async (req, res) => {
 
     res.status(200).json({ message: 'Memory deleted successfully' });
   } catch (error) {
-    console.error('Error deleting memory:', error);
+    // console.error('Error deleting memory:', error);
     res.status(500).json({ error: 'Error deleting memory' });
   }
 };
@@ -64,7 +64,7 @@ const updateMemory = async (req, res) => {
 
     res.status(200).json({ message: 'Memory updated successfully', memory: updatedMemory });
   } catch (error) {
-    console.error('Error updating memory:', error);
+    // console.error('Error updating memory:', error);
     res.status(500).json({ error: 'Error updating memory' });
   }
 };

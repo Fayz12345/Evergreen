@@ -76,20 +76,32 @@ const Contact = () => {
             </section>
         <div className="container-xl my-5">
             
-            {/* <div className="row">
+     <div className="row">
                 <div className="col-md-6">
                 <p> 
-                        <strong>Phone Number:</strong> +1(647)-406-1199
+                Phone: <a href="tel:+16474061199" className="text-success text-decoration-none">
+                           +1(647)-406-1199
+                        </a>
                         <br />
-                        <strong>Email:</strong> steve.roberts@evergreen-wireless.com
+                        Email: <a href="mailto:info@bridge-wireless.com" className="text-success text-decoration-none">
+                            info@bridge-wireless.com
+                        </a>
                     <br />
-                        <strong>Address:</strong> 2889 Brighton Rd, Oakville, ON L6H 6C9
+                    Address: <a
+            href="https://www.google.com/maps/place/2889+Brighton+Rd,+Oakville,+ON+L6H+6C9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary text-decoration-none"
+        >
+             2889 Brighton Rd, Oakville, ON L6H 6C9
+        </a>
                     </p>
                 </div>
                
-            </div> */}
+            </div> 
             <div className="row">
                 <div className="col-md-6">
+                    
                     {/* <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.35276478345!2d-79.68224382337517!3d43.51583596130373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3edefe8a3c01%3A0xa7c963bc43166a8!2sBridge%20Wireless%20Solutions%20Inc.!5e0!3m2!1sen!2sca!4v1730921588417!5m2!1sen!2sca" 
                         width="100%"

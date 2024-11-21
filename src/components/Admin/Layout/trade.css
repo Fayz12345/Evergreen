@@ -7,3 +7,6 @@
   .card>.list-group {
     border-top: none; 
 }
+.list-group.no-border {
+  border: none;
+}

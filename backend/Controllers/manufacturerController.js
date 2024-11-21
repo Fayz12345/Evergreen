@@ -12,7 +12,7 @@ const createManufacturer = async (req, res) => {
       // _id: encrypt(newManufacturer._id.toString()), // Encrypt ID for response
     });
   } catch (error) {
-    console.error('Error saving manufacturer:', error);
+    // console.error('Error saving manufacturer:', error);
     res.status(500).json({ error: 'Error saving manufacturer' });
   }
 };
@@ -27,7 +27,7 @@ const getAllManufacturers = async (req, res) => {
     }));
     res.status(200).json(encryptedManufacturers);
   } catch (error) {
-    console.error('Error fetching manufacturers:', error);
+    // console.error('Error fetching manufacturers:', error);
     res.status(500).json({ error: 'Error fetching manufacturers' });
   }
 };
@@ -54,7 +54,7 @@ const updateManufacturer = async (req, res) => {
       // _id: encrypt(updatedManufacturer._id.toString()), // Encrypt the updated ID
     });
   } catch (error) {
-    console.error('Error updating manufacturer:', error);
+    // console.error('Error updating manufacturer:', error);
     res.status(500).json({ error: 'Error updating manufacturer' });
   }
 };
@@ -67,7 +67,7 @@ const deleteManufacturer = async (req, res) => {
     await Manufacturer.findByIdAndDelete(decryptedId);
     res.status(200).json({ message: 'Manufacturer deleted successfully' });
   } catch (error) {
-    console.error('Error deleting manufacturer:', error);
+    // console.error('Error deleting manufacturer:', error);
     res.status(500).json({ error: 'Error deleting manufacturer' });
   }
 };

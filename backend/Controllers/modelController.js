@@ -37,7 +37,7 @@ const createModel = async (req, res) => {
       model: { ...newModel._doc, _id: encrypt(newModel._id.toString()) },
     });
   } catch (error) {
-    console.error('Error saving Model:', error);
+    // console.error('Error saving Model:', error);
     res.status(500).json({ error: 'Error saving Model' });
   }
 };
@@ -57,7 +57,7 @@ const getAllModels = async (req, res) => {
   
       res.status(200).json(encryptedModels);
   } catch (error) {
-    console.error('Error fetching Models:', error);
+    // console.error('Error fetching Models:', error);
     res.status(500).json({ error: 'Error fetching Models' });
   }
 };
@@ -67,7 +67,7 @@ const getModelsByManufacturer = async (req, res) => {
     const models = await Model.find({ manufacturer: manufacturerId }).populate('memory', 'size');
     res.status(200).json(models);
   } catch (error) {
-    console.error('Error fetching models:', error);
+    // console.error('Error fetching models:', error);
     res.status(500).json({ error: 'Error fetching models' });
   }
 };
@@ -101,7 +101,7 @@ const updateModel = async (req, res) => {
       _id: encrypt(updatedModel._id.toString()), // Encrypt ID for response
     });
   } catch (error) {
-    console.error('Error updating Model:', error);
+    // console.error('Error updating Model:', error);
     res.status(500).json({ error: 'Error updating Model' });
   }
 };
@@ -111,7 +111,7 @@ const   deleteModel= async (req, res) => {
     await Model.findByIdAndDelete(id);
     res.status(200).json({ message: 'Model deleted successfully' });
   } catch (error) {
-    console.error('Error deleting Model:', error);
+    // console.error('Error deleting Model:', error);
     res.status(500).json({ error: 'Error deleting Model' });
   }
 }
@@ -139,7 +139,7 @@ const getModelByID = async (req, res) => {
 };
 const search1 = async (req, res) => {
   const searchQuery = req.query.q || ""; // Default to an empty string if searchQuery is undefined
-  console.log("Search Query:", searchQuery); // This should log the search query or an empty string
+  // console.log("Search Query:", searchQuery); // This should log the search query or an empty string
 
   try {
     const models = await Model.aggregate([
@@ -204,10 +204,10 @@ const search1 = async (req, res) => {
       memoryDetails: model.memoryDetails
     }));
 
-    console.log("Aggregation result:", encryptedModels); // Log the result of the aggregation
+    // console.log("Aggregation result:", encryptedModels); // Log the result of the aggregation
     res.json(encryptedModels);
   } catch (error) {
-    console.error("Error in search function:", error); // Log the full error to debug
+    // console.error("Error in search function:", error); // Log the full error to debug
     res.status(500).json({ message: error.message });
   }
 };
@@ -220,7 +220,7 @@ const getModelList = async (req, res) => {
     }));
     res.status(200).json(modelList);
   } catch (error) {
-    console.error('Error fetching model list:', error);
+    // console.error('Error fetching model list:', error);
     res.status(500).json({ error: 'Error fetching model list' });
   }
 };
@@ -231,7 +231,7 @@ const generateSampleCSV1 = async (req, res) => {
     const models = await Model.find()
       .populate('manufacturer', 'name')
       .populate('memory', 'size');
-      console.log(models); // Log the models to inspect the structure
+      // console.log(models); // Log the models to inspect the structure
 
     // Prepare data for CSV
     const sampleData = models.slice(0, 2).map(model => ({
@@ -257,7 +257,7 @@ const generateSampleCSV1 = async (req, res) => {
     res.attachment('sample-trades.csv');
     res.send(csv);
   } catch (error) {
-    console.error('Error generating CSV:', error);
+    // console.error('Error generating CSV:', error);
     res.status(500).json({ error: 'Error generating CSV file' });
   }
 };

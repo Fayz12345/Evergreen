@@ -23,7 +23,7 @@ const getIncentiveHistory = async (req, res) => {
 
     res.status(200).json(incentiveHistory);
   } catch (error) {
-    console.error('Error fetching incentive history:', error);
+    // console.error('Error fetching incentive history:', error);
     res.status(500).json({ error: 'Error fetching incentive history' });
   }
 };

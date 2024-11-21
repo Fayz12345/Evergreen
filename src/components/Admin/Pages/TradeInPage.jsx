@@ -260,7 +260,7 @@ const openTradeModal = () => {
                      ? `${selectedModel.manufacturer.name} - ${selectedModel.name} - ${selectedModel.memory.size}`
                      : `${selectedDevice.manufacturerDetails.name} - ${selectedDevice.name} - ${selectedDevice.memoryDetails.size}`}
                  </h5>
-                 <div className="row mb-3 text-primary">
+                 <div className="row mb-3">
                    {conditionsData.map((condition, index) => (
                      <ConditionCard
                        key={index}
@@ -326,7 +326,7 @@ const openTradeModal = () => {
                         ? `${selectedModel.manufacturer.name} - ${selectedModel.name} - ${selectedModel.memory.size}`
                         : `${selectedDevice.manufacturerDetails.name} - ${selectedDevice.name} - ${selectedDevice.memoryDetails.size}`}
                     </h5>
-                    <div className="row mb-3 text-primary">
+                    <div className="row mb-3">
                       {conditionsData.map((condition, index) => (
                         <ConditionCard
                           key={index}

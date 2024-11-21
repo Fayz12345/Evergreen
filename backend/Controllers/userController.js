@@ -107,7 +107,7 @@ const addCustomer = async (req, res) => {
       _id: encrypt(savedCustomer._id.toString()), // Encrypt customer ID
     });
   } catch (error) {
-    console.error('Error adding customer:', error);
+    // console.error('Error adding customer:', error);
     res.status(500).json({ message: 'Error adding customer', error });
   }
 };
@@ -146,7 +146,7 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Server error:', error);
+    // console.error('Server error:', error);
     res.status(500).json({ message: 'Server error', error });
   }
 };
@@ -168,7 +168,7 @@ const updateCustomer = async (req, res) => {
       _id: encrypt(updatedCustomer._id.toString()), // Encrypt updated customer ID
     });
   } catch (error) {
-    console.error('Error updating customer:', error);
+    // console.error('Error updating customer:', error);
     res.status(500).json({ message: 'Error updating customer', error });
   }
 };
@@ -188,12 +188,12 @@ const updateCustomersById = async (req, res) => {
       _id: encrypt(updatedCustomer._id.toString()), // Encrypt updated customer ID
     });
   } catch (error) {
-    console.error('Error updating customer:', error);
+    // console.error('Error updating customer:', error);
     res.status(500).json({ message: 'Error updating customer', error });
   }
 };
 const toggleUserDisable = async (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   try {
 
     const user = await User.findById(req.params.id);
@@ -203,7 +203,7 @@ const toggleUserDisable = async (req, res) => {
     await user.save();
     res.status(200).json({ message: "User status updated", disabled: user.disabled });
   } catch (error) {
-    console.error("Error updating user status:", error);
+    // console.error("Error updating user status:", error);
     res.status(500).json({ message: "Error updating user status", error });
   }
 };
@@ -262,7 +262,7 @@ const forgotPassword = async (req, res) => {
 
     res.status(200).json({ message: 'Password reset email sent successfully' });
   } catch (error) {
-    console.error('Error sending reset email:', error);
+    // console.error('Error sending reset email:', error);
     res.status(500).json({ message: 'Error sending reset email', error });
   }
 };
