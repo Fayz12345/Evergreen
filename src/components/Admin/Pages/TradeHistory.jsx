@@ -54,7 +54,7 @@ const TradeHistory = () => {
       } catch (error) {
         console.error('Error fetching batch data:', error);
       }
-    }, []);
+    }, [userId]);
 
   useEffect(() => {
     if (userId) {
