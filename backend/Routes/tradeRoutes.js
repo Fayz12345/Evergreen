@@ -11,7 +11,7 @@ const upload = multer({ dest: 'uploads/' }); // Specify your desired upload dire
 // Route to create a new trade entry
 router.post('/trade', createTrade);
 router.get('/trade/list', getAllTrades);
-router.post('/trade/listByUser', getTradeById);
+router.get('/trade/listByUser/:addedBy', getTradeById);
 router.post('/trade/listByCustomer', getTradeByCustomerId);
 router.get('/trade/listByCustomer/:addedBy', getTradeByCustomerId);
 // New route to get trade by ID

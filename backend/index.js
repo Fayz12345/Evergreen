@@ -13,12 +13,16 @@ const memoryRoutes = require('./Routes/memoryRoutes');
 const incentiveRoutes = require('./Routes/incentiveRoutes');
 const batchRoutes = require('./Routes/batchRoutes');
 const app = express();
-const PORT = 5001;
+
 // Serve static files from React build
 app.use(express.static(path.join(__dirname, '../build')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
+
+
+const PORT = process.env.PORT || 5000;
+
 
 
 // Middleware

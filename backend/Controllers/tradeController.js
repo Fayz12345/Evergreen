@@ -96,7 +96,7 @@ const updateTradeStatus = async (req, res) => {
 };
 const getTradeById = async (req, res) => {
   try {
-    const { addedBy } = req.body;
+    const { addedBy } = req.params;
     
    if (!addedBy) {
       return res.status(400).json({ error: 'Missing addedBy parameter' });
