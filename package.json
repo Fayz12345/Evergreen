@@ -39,9 +39,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npx kill-port 5001 3001 && concurrently \"npm run server\" \"npm run client\"",
-    "server": "set PORT=5001 && cd backend && nodemon server.js",
-    "client": "set PORT=3001 && react-app-rewired start",
+    "start": "npm run client",
+    "server": "cd backend && nodemon server.js",
+    "client": "react-app-rewired start",
     "build-client": "cross-env NODE_OPTIONS=--openssl-legacy-provider CI=false react-scripts build",
     "build-server": "set PORT=5000 && cd backend && nodemon server.js",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider CI=false react-scripts build"
