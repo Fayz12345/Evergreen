@@ -45,5 +45,5 @@ app.use('/api', incentiveRoutes);
 app.use('/api', batchRoutes);
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on https://15.222.150.250/${PORT}`);
 });

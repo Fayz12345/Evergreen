@@ -44,7 +44,7 @@
     "client": "react-app-rewired start",
     "build-client": "cross-env NODE_OPTIONS=--openssl-legacy-provider CI=false react-scripts build",
     "build-server": "set PORT=5000 && cd backend && nodemon server.js",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider CI=false react-scripts build"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
