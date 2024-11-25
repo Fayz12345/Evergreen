@@ -92,7 +92,7 @@ const TradeinForm = () => {
 
   <div className="text-center mt-5">
     <p className="lead">Ready to upgrade and save? <strong>Trade in your device today</strong> and make the most of our exclusive offer!</p>
-    <Button variant="success" size="lg" className="me-2" onClick={navigate('/tradein/add')}>Check Price</Button>
+    <Button variant="success" size="lg" className="me-2" onClick={() => navigate('/tradein/add')}>Check Price</Button>
                   
     <Button variant="light" className='text-success' size="lg"  onClick={handlePrepareModalShow}>Prepare Your Phone</Button>
                
