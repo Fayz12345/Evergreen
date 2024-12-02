@@ -1,0 +1,19 @@
+{
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "login": "Login",
+    "welcome": "Welcome",
+    "email": "Email",
+    "username": "Username",
+    "editProfile": "Edit Profile",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "newPassword": "New Password",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loadingUserInfo": "Loading user information...",
+    "profileUpdateFailed": "Failed to update profile. Please try again.",
+    "profileUpdateSuccess": "Profile updated successfully!"
+  }
+  

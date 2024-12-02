@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next'; // Import i18n hook
+
 import { Container, Row, Col} from 'react-bootstrap';
 import { motion } from 'framer-motion';
 const Profile = () => {
+     
+  const { t } = useTranslation('common'); // Load the 'navigation' namespace
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const fadeVariants = {
@@ -33,13 +37,13 @@ const Profile = () => {
                             {user ? (
                             <>
                                 <h1 className="animated fadeInUp mb-3 mt-5 text-white">
-                                Welcome, {user.fullName || user.username || 'User'}!
+                                {t('welcome')}, {user.fullName || user.username || 'User'}!
                                 </h1>
                           
                       <Row className="justify-content-center text-white text-center mt-5">
                          <Col lg={9} md={12}>
-                        <p className="text-white"><strong>Email:</strong> {user.email}</p>
-                        <p className="text-white"><strong>Username:</strong> {user.username}</p>
+                        <p className="text-white"><strong>{t('email')}:</strong> {user.email}</p>
+                        <p className="text-white"><strong>{t('username')}:</strong> {user.username}</p>
                         {/* <p><strong>Phone:</strong> {user.phone}</p> */}
                         
                         <div className="mt-4">
@@ -47,7 +51,7 @@ const Profile = () => {
                                 className="btn btn-success me-2" 
                                 onClick={() => navigate('/edit-profile')}
                             >
-                                Edit Profile
+                                {t('editProfile')}
                             </button>
                             {/* <button 
                                 className="btn btn-secondary" 
@@ -60,7 +64,7 @@ const Profile = () => {
                     </Row>
                     </>
                 ) : (
-                    <p>Loading user information...</p>
+                    <p>{t('loadingUserInfo')}</p>
                 )}
                              </motion.div>
                         </Col>

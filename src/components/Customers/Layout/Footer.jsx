@@ -2,7 +2,10 @@ import React from 'react';
 import './Footer.css'; // Ensure this CSS file exists
 import { NavLink } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 const Footer = () => {
+    const { t } = useTranslation('navigation'); // Load the 'navigation' namespace
+
         // const isHomePage = location.pathname === '/'; // Check if the current path is home
         const scrollToTop = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -16,7 +19,7 @@ const Footer = () => {
             {/* Evergreen Wireless (Left-aligned) */}
             <div className="col-md-4">
             <span className="px-2 text-decoration-none fw-bold text-success">
-                © 2024 Evergreen Wireless | All Rights Reserved
+               {t('copyright')}
             </span>
             </div>
             
@@ -32,7 +35,7 @@ const Footer = () => {
                                 `nav-link px-2  ${isActive ? 'fw-bold text-success' : 'text-white'}`
                             }
                         >
-                            Home
+                             {t('home')}
                         </NavLink>
                     </li>
                     <li className="nav-item">
@@ -43,7 +46,7 @@ const Footer = () => {
                                 `nav-link px-2  ${isActive ? 'fw-bold text-success' : 'text-white'}`
                             }
                         >
-                            Terms & Conditions
+                             {t('terms_conditions')}
                         </NavLink>
                     </li>
                     {/* <li className="nav-item">
@@ -65,7 +68,7 @@ const Footer = () => {
                                 `nav-link px-2  ${isActive ? 'fw-bold text-success' : 'text-white'}`
                             }
                         >
-                            About Us
+                             {t('about')}
                         </NavLink>
                     </li>
                     <li className="nav-item">
@@ -76,7 +79,7 @@ const Footer = () => {
                                 `nav-link px-2  ${isActive ? 'fw-bold text-success' : 'text-white'}`
                             }
                         >
-                            Contact Us
+                             {t('contact')}
                         </NavLink>
                     </li>
                 </ul>

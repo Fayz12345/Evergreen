@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PrivacyCookiesNotice from './PrivacyCookiesNotice'; // Adjust the path as necessary
+// import PrivacyCookiesNotice from './PrivacyCookiesNotice'; // Adjust the path as necessary
 import './i18n'; // Import the i18n configuration
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-    <PrivacyCookiesNotice />
+    {/* <PrivacyCookiesNotice /> */}
   </React.StrictMode>
 );
 

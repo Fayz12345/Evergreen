@@ -1,0 +1,71 @@
+{
+    "translations": {
+      "title": "Termes et Conditions",
+      "welcomeMessage": "Bienvenue chez Evergreen Wireless",
+      "introText": "Ces Termes et Conditions régissent votre utilisation de nos services de reprise mobile et de tests de suppression de données. En accédant ou en utilisant le site et ses services, vous acceptez de respecter ces Termes. Si vous n'êtes pas d'accord, vous ne devez pas utiliser nos services.",
+      "servicesProvided": "1. Services fournis",
+      "mobileTradeIn": "1.1 Reprise mobile",
+      "mobileTradeInDetails": [
+        "Les utilisateurs peuvent soumettre leurs appareils mobiles éligibles pour une reprise afin de recevoir une évaluation basée sur l'état et les spécifications de l'appareil.",
+        "L'évaluation de l'appareil est soumise à l'inspection et à la vérification par notre équipe."
+      ],
+      "dataWipeTesting": "1.2 Tests de suppression de données",
+      "dataWipeTestingDetails": [
+        "Dans le cadre du processus de reprise, nous effectuons des tests de suppression de données pour garantir que toutes les données personnelles sont supprimées de votre appareil."
+      ],
+      "userResponsibilities": "2. Responsabilités de l'utilisateur",
+      "deviceOwnership": "2.1 Propriété de l'appareil",
+      "deviceOwnershipDetails": [
+        "En échangeant un appareil, vous confirmez que vous êtes le propriétaire légitime ou que vous avez le droit légal d'échanger l'appareil.",
+        "Les appareils volés ou obtenus illégalement sont interdits et seront signalés aux autorités."
+      ],
+      "deviceCondition": "2.2 État de l'appareil",
+      "deviceConditionDetails": [
+        "Vous devez décrire précisément l'état de votre appareil lors du processus de soumission. Toute fausse déclaration peut entraîner des modifications de l'évaluation ou le rejet de la reprise."
+      ],
+      "dataBackup": "2.3 Sauvegarde des données",
+      "dataBackupDetails": [
+        "Il est de votre responsabilité de sauvegarder toutes les données personnelles de votre appareil avant d'entamer le processus de reprise. Nous ne sommes pas responsables de la perte de données."
+      ],
+      "dataWipeTestingTitle": "3. Tests de suppression de données",
+      "dataErasure": "3.1 Suppression de données",
+      "dataErasureDetails": [
+        "Nous utilisons des logiciels certifiés de suppression de données pour garantir l'effacement sécurisé de toutes les données personnelles sur les appareils.",
+        "Un certificat de suppression de données peut être fourni sur demande."
+      ],
+      "noLiability": "3.2 Absence de responsabilité pour les données résiduelles",
+      "noLiabilityDetails": [
+        "Bien que nos outils soient conçus pour une suppression approfondie des données, nous ne pouvons garantir qu'aucune donnée résiduelle ne pourra être récupérée si l'appareil a été altéré ou modifié."
+      ],
+      "compliance": "3.3 Conformité",
+      "complianceDetails": [
+        "Le processus de suppression de données est conforme aux normes NIST."
+      ],
+      "valuationAndPayment": "4. Évaluation et paiement pour la reprise",
+      "valuation": "4.1 Évaluation",
+      "valuationDetails": [
+        "L'évaluation de l'appareil est déterminée en fonction de l'état, du modèle et des spécifications de l'appareil, comme décrit lors du processus de soumission.",
+        "L'évaluation finale est soumise à l'inspection par notre équipe."
+      ],
+      "payment": "4.2 Paiement",
+      "paymentDetails": [
+        "Les paiements seront traités via [Méthodes de paiement] après que l'appareil aura passé l'inspection et les tests de suppression de données.",
+        "Si votre appareil échoue à l'inspection, vous serez averti et des termes révisés vous seront proposés."
+      ],
+      "deviceRejectionPolicy": "5. Politique de rejet des appareils",
+      "nonEligibleDevices": "5.1 Appareils non éligibles",
+      "nonEligibleDevicesDetails": [
+        "Les appareils qui ne répondent pas aux critères d'éligibilité seront retournés à l'utilisateur ou recyclés de manière responsable à notre discrétion."
+      ],
+      "disputes": "5.2 Litiges",
+      "disputesDetails": [
+        "Tout litige concernant l'évaluation ou le rejet de l'appareil doit être soumis dans les 7 jours ouvrables suivant la notification."
+      ],
+      "contactUs": "10. Contactez-nous",
+      "contactDetails": [
+        "E-mail : info@bridge-wireless.com",
+        "Téléphone : +1(647)-406-1199"
+      ]
+    }
+  }
+  

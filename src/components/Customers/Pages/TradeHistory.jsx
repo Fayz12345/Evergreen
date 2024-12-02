@@ -4,7 +4,12 @@ import ReactPaginate from 'react-paginate';
 import { Tab, Nav,Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 const TradeHistory = () => {
+  
+  
+  const { t } = useTranslation('trade'); // Load the 'navigation' namespace
+
   const [tradeHistory, setTradeHistory] = useState([]);
   const [batches, setBatches] = useState([]); // State for batch data
   const navigate = useNavigate();
@@ -116,10 +121,10 @@ const TradeHistory = () => {
                     <Row className="justify-content-center text-center mt-5">
                         <Col lg={9} md={12}>
                         <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
-                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Trade History</h1>
+                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">{t('history.title')}</h1>
                                 {/* <p className="lead text-white mb-4">We’d love to hear from you!</p> */}
                                 <button className="btn btn-success me-2" onClick={() => navigate('/tradein/add')}>
-                                    Trade In
+                                    {t('history.tradeIn')}
                                   </button>
                                 </motion.div>
                         </Col>
@@ -133,10 +138,10 @@ const TradeHistory = () => {
         <Tab.Container defaultActiveKey="trades">
           <Nav variant="tabs" className="mb-5">
             <Nav.Item>
-              <Nav.Link eventKey="trades">Trade</Nav.Link>
+              <Nav.Link eventKey="trades">{t('history.trades')}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="batch">Batch</Nav.Link>
+              <Nav.Link eventKey="batch">{t('history.batch')}</Nav.Link>
             </Nav.Item>
           </Nav>
 
@@ -154,12 +159,12 @@ const TradeHistory = () => {
                 <input
                   type="text"
                   className="form-control me-2"
-                  placeholder="Search in all fields"
+                  placeholder={t('history.searchPlaceholder')}
                   value={tempSearchQuery}
                   onChange={(e) => setTempSearchQuery(e.target.value)}
                 />
-                <button className="btn btn-primary me-2" onClick={handleSearch}>Search</button>
-                <button className="btn btn-secondary" onClick={handleClearSearch}>Clear</button>
+                <button className="btn btn-primary me-2" onClick={handleSearch}>{t('history.searchButton')}</button>
+                <button className="btn btn-secondary" onClick={handleClearSearch}>{t('history.clearButton')}</button>
               </div>
 
                 {currentTrades.length > 0 ? (
@@ -167,14 +172,14 @@ const TradeHistory = () => {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Customer Name</th>
-                        <th>Manufacturer</th>
-                        <th>Device</th>
-                        <th>Memory</th>
-                        <th>Quantity</th>
-                        <th>Value</th>
-                        <th>Status</th>
-                        <th>Trade In Date</th>
+                        <th>{t('history.tableHeaders.customerName')}</th>
+                        <th>{t('history.tableHeaders.manufacturer')}</th>
+                        <th>{t('history.tableHeaders.device')}</th>
+                        <th>{t('history.tableHeaders.memory')}</th>
+                        <th>{t('history.tableHeaders.quantity')}</th>
+                        <th>{t('history.tableHeaders.value')}</th>
+                        <th>{t('history.tableHeaders.status')}</th>
+                        <th>{t('history.tableHeaders.tradeInDate')}</th>
                         {/* <th>isBatch</th> */}
                       </tr>
                     </thead>
@@ -207,13 +212,13 @@ const TradeHistory = () => {
                     </tbody>
                   </table>
                 ) : (
-                  <p>No trade-in history available.</p>
+                  <p>{t('history.noTradeHistory')}</p>
                 )}
 
                 {/* Pagination Controls */}
                 <ReactPaginate
-                  previousLabel={'Previous'}
-                  nextLabel={'Next'}
+                  previousLabel={t('history.paginationPrevious')}
+                  nextLabel={t('history.paginationNext')}
                   pageCount={Math.ceil(filteredTrades.length / tradesPerPage)}
                   onPageChange={handlePageClick}
                   containerClassName={'pagination justify-content-center mt-4'}
@@ -231,20 +236,20 @@ const TradeHistory = () => {
 
             {/* batches History Tab */}
             <Tab.Pane eventKey="batch">
-            <h3>Batch Upload History</h3>
+            <h3>{t('history.batchUploadHistory')}</h3>
               <div className="mt-4">
                 {batches.length > 0 ? (
                   <table className="table table-striped">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Batch Number</th>
-                        <th>Customer Name</th>
-                        <th>Added By</th>
-                        <th>File Name</th>
-                        <th>Date Uploaded</th>
+                        <th>{t('history.tableHeaders.batchNumber')}</th>
+                        <th>{t('history.tableHeaders.customerName')}</th>
+                        <th>{t('history.tableHeaders.addedBy')}</th>
+                        <th>{t('history.tableHeaders.fileName')}</th>
+                        <th>{t('history.tableHeaders.dateUploaded')}</th>
 
-                         <th>Download</th> {/* New column for download button */}
+                         <th>{t('history.download')}</th> {/* New column for download button */}
                       </tr>
                     </thead>
                     <tbody>
@@ -266,7 +271,7 @@ const TradeHistory = () => {
                               className="btn btn-primary"
                               onClick={() => handleDownload(batch._id)}
                             >
-                              Download CSV
+                              {t('history.downloadCsvButton')}
                             </button>
                           </td>
                         </tr>
@@ -274,7 +279,7 @@ const TradeHistory = () => {
                     </tbody>
                   </table>
                 ) : (
-                  <p>No batch upload history available.</p>
+                  <p>{t('history.noBatchUpload')}</p>
                 )}
               </div>
             </Tab.Pane>
