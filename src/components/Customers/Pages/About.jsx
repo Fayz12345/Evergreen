@@ -4,9 +4,10 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FaRecycle, FaHandsHelping, FaMobileAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion'; // Import Framer Motion
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 const About = () => {
     const navigate = useNavigate(); // Initialize navigate
+    const { t } = useTranslation('about'); // Load the 'navigation' namespace
 
     // Animation Variants
     const fadeVariants = {
@@ -30,11 +31,9 @@ const About = () => {
                                 animate="visible"
                                 variants={fadeVariants}
                             >
-                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Our Mission</h1>
+                                <h1 className="animated fadeInUp mb-3 mt-5 text-white">{t('our_mission_title')}</h1>
                                 <p className="lead text-white mb-4">
-                                    At Evergreen, we’re dedicated to making it easy for you to upgrade your tech while contributing
-                                    to a sustainable future. Our mission is to provide a simple, reliable, and rewarding mobile
-                                    trade-in experience that benefits both our customers and the planet.
+                                   {t('our_mission_description')}
                                 </p>
                             </motion.div>
                         </Col>
@@ -45,8 +44,8 @@ const About = () => {
             <Container className="my-5" fluid="xl">
                 <Row className="text-center mb-4">
                     <Col>
-                        <h2>Our Values</h2>
-                        <p>Here’s why we stand out in the mobile trade-in industry.</p>
+                        <h2>{t('our_values_title')}</h2>
+                        <p>{t('our_values_description')}</p>
                     </Col>
                 </Row>
 
@@ -54,18 +53,18 @@ const About = () => {
                     {[
                         {
                             icon: <FaHandsHelping size={40} className="text-success mb-3" />,
-                            title: 'Expertise',
-                            text: 'Apple, Samsung, and Google certified, you can trust our expert technicians with your device and privacy.',
+                            title: t('values.expertise_title'),
+                            text: t('values.expertise_description'),
                         },
                         {
                             icon: <FaMobileAlt size={40} className="text-success mb-3" />,
-                            title: 'Quality',
-                            text: 'Our phones undergo a 64-point inspection to ensure they function like new. Plus, they’re backed by a 1-year warranty*.',
+                            title: t('values.quality_title'),
+                            text: t('values.quality_description'),
                         },
                         {
                             icon: <FaRecycle size={40} className="text-success mb-3" />,
-                            title: 'Sustainability',
-                            text: 'Buying a certified pre-owned phone keeps devices out of landfills and reduces carbon emissions.',
+                            title: t('values.sustainability_title'),
+                            text: t('values.sustainability_description'),
                         },
                     ].map((value, index) => (
                         <Col md={4} key={index}>
@@ -94,9 +93,9 @@ const About = () => {
                             animate="visible"
                             variants={fadeVariants}
                         >
-                            <h3>Why Trade In Your Mobile Device?</h3>
+                            <h3>{t('why_trade_in_title')}</h3>
                             <p>
-                                Upgrading to a new phone shouldn't mean that your old device goes to waste. By trading in your mobile with us, you’re helping to reduce electronic waste and support a circular economy.
+                                {t('why_trade_in_description')}
                             </p>
                         </motion.div>
                     </Col>
@@ -107,11 +106,11 @@ const About = () => {
                             animate="visible"
                             variants={fadeVariants}
                         >
-                            <h3>How It Works</h3>
+                            <h3>{t('how_it_works_title')}</h3>
                             <ol>
-                                <li><strong>Get an Instant Quote:</strong> Enter your device details to see its worth.</li>
-                                <li><strong>Send Your Device:</strong> We provide a free shipping label for a hassle-free send-off.</li>
-                                <li><strong>Get Paid:</strong> Once we receive and verify your device, you’ll get paid quickly.</li>
+                                <li>{t('how_it_works_steps.step1')}</li>
+                                <li>{t('how_it_works_steps.step2')}</li>
+                                <li>{t('how_it_works_steps.step3')}</li>
                             </ol>
                         </motion.div>
                     </Col>
@@ -126,10 +125,9 @@ const About = () => {
                             animate="visible"
                             variants={fadeVariants}
                         >
-                            <h3>Join Us in Reducing E-Waste</h3>
+                            <h3>{t('join_us_title')}</h3>
                             <p>
-                                Together, we can reduce our environmental footprint. Every trade-in makes a difference.
-                                Thank you for choosing Evergreen Wireless and helping us work towards a more sustainable future!
+                                {t('join_us_description')}
                             </p>
                             <Button
                                 variant=""
@@ -137,7 +135,7 @@ const About = () => {
                                 size="lg"
                                 onClick={() => navigate('/login')}
                             >
-                                Get Started
+                                {t('get_started')}
                             </Button>
                         </motion.div>
                     </Col>

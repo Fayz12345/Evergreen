@@ -1,0 +1,155 @@
+{
+    "title": "Échangez avec Evergreen Wireless",
+    "description": "Chez Evergreen Wireless, nous croyons que votre appareil mobile devrait être plus qu’un simple téléphone. Il devrait être un outil qui améliore votre vie et vous aide à rester connecté aux personnes et aux choses qui comptent le plus. C’est pourquoi nous offrons les derniers smartphones et accessoires à des prix compétitifs. Achetez maintenant et améliorez votre expérience mobile.",
+    "buttonText": "Commencer",
+    "tradeinForm": {
+      "sliderTitle": "Mettez à niveau et économisez gros!",
+      "leadParagraph1": "Avec notre programme de reprise, vous pouvez gagner jusqu’à 800 $ de crédit en échangeant votre ancien téléphone, tablette ou montre. C’est notre façon de vous aider à obtenir l’appareil que vous souhaitez – pour moins cher.",
+      "leadParagraph2": "Prêt à passer à l'étape supérieure et à économiser? Échangez votre appareil aujourd'hui et profitez de notre offre exclusive!",
+      "checkPriceButton": "Vérifiez le prix",
+      "preparePhoneButton": "Préparez votre téléphone",
+      "howItWorks": {
+        "title": "Comment ça marche :",
+        "steps": {
+          "step1": {
+            "title": "Acheter ou mettre à niveau",
+            "description": "Lorsque vous achetez un nouvel appareil ou effectuez une mise à niveau en ligne, vous êtes éligible pour échanger un ancien appareil."
+          },
+          "step2": {
+            "title": "Envoyez votre ancien appareil",
+            "description": "Suivez simplement les instructions pour expédier gratuitement votre ancien appareil."
+          },
+          "step3": {
+            "title": "Obtenez un crédit sur votre compte",
+            "description": "Une fois approuvé, un crédit sera appliqué directement à votre facture – pas besoin d'attendre des chèques ou d'étapes supplémentaires."
+          }
+        }
+      },
+      "whyTradeIn": {
+        "title": "Pourquoi échanger?",
+        "reasons": {
+          "step1": {
+            "title": "Plus d'économies",
+            "description": "Réduisez le coût de votre nouvel appareil en échangeant de l'ancienne technologie."
+          },
+          "step2": {
+            "title": "Éco-responsable",
+            "description": "Aidez-nous à réduire les déchets électroniques en recyclant votre ancien appareil de manière responsable."
+          },
+          "step3": {
+            "title": "Rapide et facile",
+            "description": "Tout le processus est simple et peut être réalisé depuis le confort de votre domicile."
+          }
+        }
+      },
+      "modalTitle": "Préparez votre téléphone pour l'échange",
+      "steps": {
+        "step1":    {
+          "title": "Sauvegardez",
+          "description": "Sauvegardez les contacts, e-mails, photos et autres données personnelles, car le téléphone ne sera pas retourné après l'échange."
+        },
+        "step2":   {
+          "title": "Retirez les cartes mémoire et les cartes SIM",
+          "description": "Si applicable, retirez toutes les cartes mémoire."
+        },
+        "step3":   {
+          "title": "Chargez la batterie",
+          "description": "Assurez-vous que la batterie est chargée afin que nous puissions évaluer la valeur d'échange du téléphone."
+        },
+        "step4":    {
+          "title": "Supprimez tous les comptes",
+          "description": "Désactivez la fonction 'Localiser mon iPhone' ou supprimez votre compte Google pour les téléphones Android."
+        },
+        "step5":    {
+          "title": "Désactivez le verrouillage de gestion des appareils mobiles",
+          "description": "Pour les téléphones d'entreprise : identifiez et désactivez le verrouillage de gestion des appareils mobiles (MDM) sur votre téléphone."
+        },
+        "step6":    {
+          "title": "Effectuez une réinitialisation d'usine",
+          "description": "Réinitialisez votre téléphone aux paramètres d'usine d'origine."
+        }
+    }
+    },
+    "conditionDetails": {
+    "working": {
+      "title": "Fonctionnel",
+      "description": {
+        "step1" :  "L'écran est intact, sans fissures majeures.",
+         "step2" : "Les boutons, les haut-parleurs et les ports fonctionnent parfaitement.",
+         "step3" : "La batterie tient la charge, et l'appareil répond bien aux commandes."
+    }
+    },
+    "defective": {
+      "title": "Défectueux",
+      "description": {
+        "step1" : "Écran fissuré ou fortement rayé.",
+        "step2" : "Boutons non fonctionnels ou écran tactile non réactif.",
+        "step3" : "Problèmes de charge, mauvaise autonomie de la batterie ou interruptions d'alimentation.",
+        "step4" : "Haut-parleurs, microphones ou caméras endommagés ou cassés."
+      }
+    },
+    "recycle": {
+      "title": "Recyclage",
+      "description": {
+        "step1" : "L'appareil ne s'allume pas du tout.",
+        "step2" : "Dommages physiques graves, comme un boîtier plié ou cassé.",
+        "step3" : "Dommages causés par l'eau ou autres problèmes matériels irréparables.",
+        "step4" : "Composants essentiels manquants ou endommagés, tels que la batterie ou la carte mère."
+      }
+    }
+  },
+  "please": "S'il vous plaît",
+    "toProceed": "pour continuer avec le processus de reprise.",
+    "logIn": "se connecter",
+    "or": "OU",
+    "selectManufacturer": "Sélectionnez le fabricant",
+    "selectModel": "Sélectionnez le modèle",
+    "tradeInQuote": "Obtenez un devis de reprise avec Evergreen Wireless",
+    "singleTradeIn": "Reprise individuelle",
+    "batchUpload": "Téléchargement par lot",
+    "loginMessage": "S'il vous plaît <a href='/login' class='text-success'>connectez-vous</a> pour continuer avec le processus de reprise.",
+    "loginMessageStart": "S'il vous plaît",
+    "loginLinkText": "connectez-vous",
+    "loginMessageEnd": "pour continuer avec le processus de reprise.",
+    "submitTrade": "Soumettre l'échange",
+    "condition": "État",
+    "quantity": "Quantité",
+    "tradeInDevice": "Appareil de reprise",
+    "searchDevice": "Rechercher un appareil",
+    "batchUploadTitle": "Téléchargement par lot pour la reprise",
+    "batchUploadDescription": "Téléchargez un fichier CSV pour traiter plusieurs reprises en une seule fois.",
+    "downloadSampleCsv": "Télécharger un exemple de CSV",
+    "processBatchUpload": "Traiter le téléchargement par lot",
+    "history": {
+        "title": "Historique des échanges",
+        "tradeIn": "Échange",
+        "searchPlaceholder": "Rechercher dans tous les champs",
+        "searchButton": "Rechercher",
+        "clearButton": "Effacer",
+        "noTradeHistory": "Aucun historique d'échange disponible.",
+        "paginationPrevious": "Précédent",
+        "paginationNext": "Suivant",
+        "batchUploadHistory": "Historique des téléchargements par lot",
+        "noBatchUpload": "Aucun historique de téléchargement par lot disponible.",
+        "downloadCsvButton": "Télécharger le CSV",
+        "trades": "Échanges",
+        "batch": "Lot",
+        "tableHeaders": {
+        "number": "#",
+        "customerName": "Nom du client",
+        "manufacturer": "Fabricant",
+        "device": "Appareil",
+        "memory": "Mémoire",
+        "quantity": "Quantité",
+        "value": "Valeur",
+        "status": "Statut",
+        "tradeInDate": "Date de l'échange",
+        "batchNumber": "Numéro de lot",
+        "addedBy": "Ajouté par",
+        "fileName": "Nom du fichier",
+        "dateUploaded": "Date de téléchargement",
+        "download": "Télécharger"
+        }
+    }
+ 
+}

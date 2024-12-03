@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next'; // Import i18n hook
+
 const EditProfile = () => {
+     
+  const { t } = useTranslation('common'); // Load the 'navigation' namespace
     const navigate = useNavigate();
     const [user, setUser] = useState({
         fullName: '',
@@ -45,19 +49,19 @@ const EditProfile = () => {
         if (response.ok) {
             const updatedUser = await response.json();
             sessionStorage.setItem('user', JSON.stringify(updatedUser));
-            setMessage('Profile updated successfully!');
+            setMessage(t('profileUpdateSuccess'));
             setTimeout(() => navigate('/profile'), 1500); // Redirect to profile page after update
         } else {
-            setMessage('Failed to update profile. Please try again.');
+            setMessage(t('profileUpdateFailed'));
         }
     };
 
     return (
         <div className="container mt-5">
-            <h2 className="text-center">Edit Profile</h2>
+            <h2 className="text-center">{t('editProfile')}</h2>
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
-                    <label htmlFor="fullName" className="form-label">Full Name</label>
+                    <label htmlFor="fullName" className="form-label">{t('fullName')}</label>
                     <input
                         type="text"
                         className="form-control"
@@ -69,7 +73,7 @@ const EditProfile = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
+                    <label htmlFor="email" className="form-label">{t('email')}</label>
                     <input
                         type="email"
                         className="form-control"
@@ -81,7 +85,7 @@ const EditProfile = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="phone" className="form-label">Phone</label>
+                    <label htmlFor="phone" className="form-label">{t('phone')}</label>
                     <input
                         type="text"
                         className="form-control"
@@ -92,7 +96,7 @@ const EditProfile = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label">New Password</label>
+                    <label htmlFor="password" className="form-label">{t('newPassword')}</label>
                     <input
                         type="password"
                         className="form-control"
@@ -104,13 +108,13 @@ const EditProfile = () => {
                 </div>
                 {message && <p className="text-success">{message}</p>}
                 <div className="text-center mt-4">
-                    <button type="submit" className="btn btn-primary">Save Changes</button>
+                    <button type="submit" className="btn btn-primary">{t('save')}</button>
                     <button 
                         type="button" 
                         className="btn btn-secondary ms-3" 
                         onClick={() => navigate('/profile')}
                     >
-                        Cancel
+                        {t('cancel')}
                     </button>
                 </div>
             </form>

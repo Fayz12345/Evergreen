@@ -41,6 +41,7 @@ import CookiePolicy from '../CookiePolicy';
 import Batch from '../components/Admin/Pages/addBatch';
 import ForgotPassword from '../components/Customers/Pages/ForgotPassword ';
 import AddTrade from '../components/Trade/AddTrade';
+import CompetitivePricing from '../components/Customers/Pages/CompetitivePricing;';
 export default function AppRoutes() {
   return (
     <Routes>
@@ -58,9 +59,7 @@ export default function AppRoutes() {
         <Route path="edit-profile" element={<EditProfile />} />
         <Route path="trade-history" element={<TradeList/>} />
         <Route path="tradein/add" element={<AddTrade/>} /> 
-      </Route>
-      
-      <Route path="/" element={<HomeLayout />}>
+        <Route path="tradein/competitive-pricing" element={<CompetitivePricing />} />
         <Route index element={<Home />} />
         <Route path="signup" element={<Signup />} />
         <Route path="login-2" element={<Login />} />

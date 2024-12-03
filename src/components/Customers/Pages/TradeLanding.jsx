@@ -3,8 +3,10 @@ import React from 'react';
 import { Container,Button, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 
 const  TradeLanding= () => {
+  const { t } = useTranslation('trade'); // Load the 'navigation' namespace
   const fadeVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
@@ -20,7 +22,7 @@ const  TradeLanding= () => {
                         <Col lg={9} md={12}>
                         <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
                           <h1 className="animated fadeInUp mb-3 mt-5 text-white">
-                            Trade In with Evergreen Wireless
+                            {t('title')}
                           </h1>
                         </motion.div>
                         </Col>
@@ -29,13 +31,10 @@ const  TradeLanding= () => {
             </section>
             <div className="container-xl text-center my-5 mt-5 pt-5">
               <p className="lead">
-                At Evergreen Wireless, we believe that your mobile device should be more than just a phone.
-                It should be a tool that enhances your life and helps you stay connected with the people
-                and things that matter most. That’s why we offer the latest smartphones and accessories
-                at competitive prices. Shop now and take your mobile experience to the next level.
+                {t('description')}
               </p>
               <Button variant="success" size="lg" className="text-light mt-3">
-                <Link to="/tradein/trade-quote"  style={{ color: "white", textDecoration: "none" }}>Get Started</Link>  
+                <Link to="/tradein/trade-quote"  style={{ color: "white", textDecoration: "none" }}>{t('buttonText')}</Link>  
               </Button>
 
               <Row className="my-5">

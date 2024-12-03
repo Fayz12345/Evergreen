@@ -8,8 +8,10 @@ import Cookies from 'js-cookie';
 import { RxReload } from "react-icons/rx";
 import { Container, Row, Col } from 'react-bootstrap';
 import { motion } from 'framer-motion'; // Import framer-motion
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 
 const Auth = () => {
+  const { t } = useTranslation('common'); // Load the 'common' namespace
   const [activeTab, setActiveTab] = useState('login');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -110,7 +112,7 @@ const Auth = () => {
                 animate="visible"
                 variants={fadeVariants}
               >
-                <h1 className="animated fadeInUp mb-3 mt-5 text-white">Join or Login</h1>
+                <h1 className="animated fadeInUp mb-3 mt-5 text-white">{t('joinOrLogin')}</h1>
               </motion.div>
             </Col>
           </Row>
@@ -126,7 +128,7 @@ const Auth = () => {
                   className={`nav-link ${activeTab === 'login' ? 'active' : ''} text-success`}
                   onClick={() => setActiveTab('login')}
                 >
-                  Login
+                  {t('login')}
                 </button>
               </li>
               <li className="nav-item">
@@ -134,7 +136,7 @@ const Auth = () => {
                   className={`nav-link ${activeTab === 'signup' ? 'active' : ''} text-success`}
                   onClick={() => setActiveTab('signup')}
                 >
-                  Register
+                  {t('register')}
                 </button>
               </li>
             </ul>
@@ -147,7 +149,7 @@ const Auth = () => {
                     type="text"
                     className="form-control"
                     id="username"
-                    placeholder="Username or Email"
+                    placeholder={t('usernameOrEmail')}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
@@ -157,7 +159,7 @@ const Auth = () => {
                     type="password"
                     className="form-control"
                     id="password"
-                    placeholder="Password"
+                    placeholder={t('password')}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -190,14 +192,14 @@ const Auth = () => {
                     checked={rememberMe}
                     onChange={() => setRememberMe(!rememberMe)}
                   />
-                  <label htmlFor="rememberMe" className="form-check-label">Remember Me</label>
+                  <label htmlFor="rememberMe" className="form-check-label">{t('rememberMe')}</label>
                 </div>
                 <div className="col">
                   {/* <a href="#!">Forgot password?</a> */}
                 </div>
 
                 {error && <p className="text-danger">{error}</p>}
-                <button type="submit" className="btn btn-success w-100 mt-3">Login</button>
+                <button type="submit" className="btn btn-success w-100 mt-3">{t('login')}</button>
                 <div className="text-center">
                   {/* <p>Not a member? <a href="#!" className="text-success">Register</a></p> */}
                 </div>

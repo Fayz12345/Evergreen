@@ -4,8 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import { RxReload } from "react-icons/rx";
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 
 const Signup = () => {
+
+    
+  const { t } = useTranslation('common'); // Load the 'common' namespace
     const [formData, setFormData] = useState({
         fullName: '',
         address: '',
@@ -112,7 +116,7 @@ const Signup = () => {
         <div className="mt-5">
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
-                    <label htmlFor="fullName" className="form-label">Full Name</label>
+                    <label htmlFor="fullName" className="form-label">{t('fullName')}</label>
                     <input
                         type="text"
                         className={`form-control ${errors.fullName ? 'is-invalid' : ''}`}
@@ -125,7 +129,7 @@ const Signup = () => {
                     {errors.fullName && <div className="invalid-feedback">{errors.fullName}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="address" className="form-label">Address</label>
+                    <label htmlFor="address" className="form-label">{t('address')}</label>
                     <input
                         type="text"
                         className={`form-control ${errors.address ? 'is-invalid' : ''}`}
@@ -138,7 +142,7 @@ const Signup = () => {
                     {errors.address && <div className="invalid-feedback">{errors.address}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
+                    <label htmlFor="email" className="form-label">{t('email')}</label>
                     <input
                         type="email"
                         className={`form-control ${errors.email ? 'is-invalid' : ''}`}
@@ -151,7 +155,7 @@ const Signup = () => {
                     {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="username" className="form-label">Username</label>
+                    <label htmlFor="username" className="form-label">{t('username')}</label>
                     <input
                         type="text"
                         className={`form-control ${errors.username ? 'is-invalid' : ''}`}
@@ -164,7 +168,7 @@ const Signup = () => {
                     {errors.username && <div className="invalid-feedback">{errors.username}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label">{t('password')}</label>
                     <input
                         type="password"
                         className={`form-control ${errors.password ? 'is-invalid' : ''}`}
@@ -200,7 +204,7 @@ const Signup = () => {
                     <input
                         type="text"
                         className={`form-control ${errors.captcha ? 'is-invalid' : ''} mt-2`}
-                        placeholder="Enter CAPTCHA"
+                        placeholder={t('enterCaptcha')}
                         value={captchaInput}
                         onChange={(e) => setCaptchaInput(e.target.value)}
                     />
@@ -208,7 +212,7 @@ const Signup = () => {
                 </div>
 
                 <div className="text-center mt-4">
-                    <button type="submit" className="btn btn-success">Signup</button>
+                    <button type="submit" className="btn btn-success">{t('logout')}</button>
                 </div>
             </form>
         </div>

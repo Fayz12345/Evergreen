@@ -1,11 +1,15 @@
 import React from 'react';
 import { NavLink, Link, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { MdPhone } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
+import { useTranslation } from 'react-i18next'; // Import i18n hook
 import './navigation.css';
 const Navigation = () => {
     const navigate = useNavigate();
+
+    const { i18n } = useTranslation(); // Initialize useTranslation hook
+    const { t } = useTranslation('navigation'); // Load the 'navigation' namespace
+
+    
     // const location = useLocation(); // Get the current location
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
@@ -24,6 +28,13 @@ const Navigation = () => {
         setUser(null);
         navigate('/login');
     };
+
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng); // Change language globally
+    };
+
+
     // const isHomePage = location.pathname === '/'; // Check if the current path is home
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,41 +42,8 @@ const Navigation = () => {
 
     return (
 <>
-{/* <section className={`${isHomePage ? 'position-fixed ' : ''} top-0 start-0 w-100 bg-dark`} > */}
-<section className='position-fixed top-0 start-0 w-100 bg-dark '  >
-    <div className="header-top" style={{display:"none"}}>
-        <div className="container-xl">
-            <div className="row justify-content-between align-items-center">
-                <div className="col-lg-8 col-md-8">
-                    <div className="header-top-info">
-                        <a href="tel:+1(647)-406-1199"><MdPhone /><span> +1(647)-406-1199</span></a>
-                        <a href="mailto:steve.roberts@evergreen-wireless.com"><MdEmail /><span> steve.roberts@evergreen-wireless.com</span></a>
-                    </div>
-                </div>
-                <div className="col-lg-4 col-md-4">
-                    {/* <div className="header-top-socials text-center text-lg-right">
-                        <a href="https://www.facebook.com/themefisher" target="_blank"><i className="ti-facebook"></i></a>
-                        <a href="https://twitter.com/themefisher" target="_blank"><i className="ti-twitter"></i></a>
-                        <a href="https://github.com/themefisher/" target="_blank"><i className="ti-github"></i></a>
-                    </div> */}
-                    <div className="header-top-socials text-center text-lg-right">
-                        <select
-                            className="form-select form-select-sm d-inline-block w-auto"
-                            onChange={(e) => {
-                            const selectedLanguage = e.target.value;
-                            console.log('Language selected:', selectedLanguage);
-                            // Add your language change logic here
-                            }}
-                            defaultValue="en"
-                        >
-                            <option value="en">English</option>
-                            <option value="fr">French</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <section className='position-fixed top-0 start-0 w-100 bg-dark'>
+     
  
         <nav className="navbar navbar-expand-lg main-nav py-3 awake" id="navbar">
             
@@ -88,7 +66,7 @@ const Navigation = () => {
                         isActive ? {  fontWeight: "bold", colour:"green important" } : undefined
                     }
                 >
-                    Home
+                    {t('home')}
                 </NavLink>
 			  </li>
 			  <li className="nav-item">
@@ -101,7 +79,7 @@ const Navigation = () => {
                         isActive ? { textDecoration: "underline  !important",  colour:"green important" , fontWeight: "bold" } : undefined
                     }
                 >
-                    About Us
+                   {t('about')}
                 </NavLink>
                 
                 </li>
@@ -115,7 +93,7 @@ const Navigation = () => {
                     isActive ? {  fontWeight: "bold"  , colour:"green important" } : undefined
                 }
             >
-                Trade-In
+                {t('trade_in')}
             </NavLink>
 
                </li>
@@ -128,7 +106,7 @@ const Navigation = () => {
                     isActive ? {  fontWeight: "bold" , colour:"green important"  } : undefined
                 }
             >
-                Contact Us
+                {t('contact')}
             </NavLink>
 
                </li>
@@ -145,12 +123,12 @@ const Navigation = () => {
 						<li>
                             <NavLink className="dropdown-item" to="/profile"  onClick={scrollToTop} style={({ isActive }) =>
                                 isActive ? { textDecoration: "underline  !important", colour:"green important" , fontWeight: "bold" } : undefined
-                            }>View Profile</NavLink>
+                            }>{t('view_profile')}</NavLink>
                         </li>
 						<li>
                             <NavLink className="dropdown-item" to="/trade-history"  onClick={scrollToTop} style={({ isActive }) =>
                                 isActive ? { textDecoration: "underline  !important", colour:"green important" , fontWeight: "bold" } : undefined
-                            }>Trade History</NavLink>
+                            }>{t('trade_history')}</NavLink>
                         </li>
 
 						<li>
@@ -169,11 +147,23 @@ const Navigation = () => {
                         isActive ? {fontWeight: "bold" } : undefined
                     }
                 >
-                    Login
+                    {t('login')}
                 </NavLink>
                 </li>
             )}
-               
+           <li className="nav-item d-flex align-items-center">
+                {/* Language Selector */}
+                <select
+                    className="form-select form-select-sm d-inline-block w-auto ms-2"
+                    onChange={(e) => changeLanguage(e.target.value)}
+                    defaultValue={i18n.language} // Set current language as default
+                    aria-label="Language selector"
+                >
+                    <option value="en">EN</option>
+                    <option value="fr">FR</option>
+                </select>
+            </li>
+
 					
 			
 			</ul>

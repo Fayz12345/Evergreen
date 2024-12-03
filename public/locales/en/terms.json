@@ -1,0 +1,122 @@
+{
+ 
+    "title": "Terms and Conditions",
+    "welcomeMessage": "Welcome to Evergreen Wireless",
+    "introText": "These Terms and Conditions govern your use of our mobile trade-in services and data wipe testing solutions. By accessing or using the Site and its services, you agree to comply with and be bound by these Terms. If you do not agree, you must not use our services.",
+    "sections": [
+      {
+        "title": "1. Services Provided",
+        "subsections": [
+          {
+            "title": "1.1 Mobile Trade-In",
+            "details": {
+              "detail1": "Users can submit their eligible mobile devices for trade-in to receive a valuation based on the condition and specifications of the device.",
+              "detail2": "Device valuation is subject to inspection and verification by our team."
+            }
+          },
+          {
+            "title": "1.2 Data Wipe Testing",
+            "details": {
+              "detail1": "As part of the trade-in process, we provide data wipe testing using the data erasure tool to ensure all personal data is securely removed from your device."
+            }
+          }
+        ]
+      },
+      {
+        "title": "2. User Responsibilities",
+        "subsections": [
+          {
+            "title": "2.1 Device Ownership",
+            "details": {
+              "detail1": "By trading in a device, you confirm that you are the rightful owner or have the legal right to trade in the device.",
+              "detail2": "Stolen or illegally obtained devices are prohibited and will be reported to law enforcement authorities."
+            }
+          },
+          {
+            "title": "2.2 Device Condition",
+            "details": {
+              "detail1": "You must accurately describe the condition of your device during the submission process. Misrepresentation may result in changes to the valuation or rejection of the trade-in."
+            }
+          },
+          {
+            "title": "2.3 Data Backup",
+            "details": {
+              "detail1": "It is your responsibility to back up all personal data from your device before initiating the trade-in process. We are not liable for any loss of data."
+            }
+          }
+        ]
+      },
+      {
+        "title": "3. Data Wipe Testing",
+        "subsections": [
+          {
+            "title": "3.1 Data Erasure",
+            "details": {
+              "detail1": "We use certified data wiping software to ensure the secure erasure of all personal data on devices.",
+              "detail2": "A certificate of data erasure may be provided upon request."
+            }
+          },
+          {
+            "title": "3.2 No Liability for Residual Data",
+            "details": {
+              "detail1": "While our tools are designed for thorough data erasure, we cannot guarantee against the recovery of residual data if the device has been tampered with or modified."
+            }
+          },
+          {
+            "title": "3.3 Compliance",
+            "details": {
+              "detail1": "The data erasure process complies with NIST."
+            }
+          }
+        ]
+      },
+      {
+        "title": "4. Trade-In Valuation and Payment",
+        "subsections": [
+          {
+            "title": "4.1 Valuation",
+            "details": {
+              "detail1": "Device valuation is determined based on the device’s condition, model, and specifications, as described during the submission process.",
+              "detail2": "Final valuation is subject to inspection by our team."
+            }
+          },
+          {
+            "title": "4.2 Payment",
+            "details": {
+              "detail1": "Payments will be processed via {Payment Methods} after the device passes inspection and data wipe testing.",
+              "detail2": "If your device fails inspection, you will be notified, and revised terms will be offered."
+            }
+          }
+        ]
+      },
+      {
+        "title": "5. Device Rejection Policy",
+        "subsections": [
+          {
+            "title": "5.1 Non-Eligible Devices",
+            "details": {
+              "detail1": "Devices that do not meet the eligibility criteria will be returned to the user or responsibly recycled at our discretion."
+            }
+          },
+          {
+            "title": "5.2 Disputes",
+            "details": {
+              "detail1": "Any disputes regarding device valuation or rejection must be submitted within 7 business days of notification."
+            }
+          }
+        ]
+      },
+      {
+        "title": "10. Contact Us",
+        "details": {
+          "email": "info@bridge-wireless.com",
+          "phone": "+1(647)-406-1199"
+        }
+      }
+    ],
+    "acknowledgment": {
+    "title": "Acknowledgment:",
+    "text": "By using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms."
+  }
+  
+}
