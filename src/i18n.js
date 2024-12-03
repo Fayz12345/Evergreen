@@ -10,7 +10,7 @@ i18n
   .init({
     fallbackLng: 'en',
     debug: true,
-    ns: ['common','translation', 'trade' ,'home', 'about', 'navigation', 'competitivePricing'], // Define namespaces
+    ns: ['common','translation', 'trade' ,'home', 'about', 'terms', 'navigation', 'competitivePricing'], // Define namespaces
     defaultNS: 'common', // Default namespace
     interpolation: {
       escapeValue: false,
