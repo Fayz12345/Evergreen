@@ -23,5 +23,15 @@
   "joinOrLogin": "Join or Login",
   "enterCaptcha": "Enter CAPTCHA",
   "rememberMe": "Remember Me",
-  "confirmPassword": "Confirm Password"
+  "confirmPassword": "Confirm Password",
+  "placeholderName": "Enter your name",
+  "placeholderEmail": "Enter your email address",
+  "placeholderPhone": "Enter your phone number",
+  "placeholderSubject": "Enter the subject",
+  "placeholderMessage": "Enter your message",
+  "alertMessageSent": "Message sent successfully!",
+  "alertMessageFailed": "Failed to send the message. Please try again later.",
+  "contactHeading": "Contact Us",
+  "contactSubHeading": "We’d love to hear from you!",
+   "send": "Send"
 }

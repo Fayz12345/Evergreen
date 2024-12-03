@@ -1,0 +1,26 @@
+{
+    "our_mission_title": "Notre mission",
+    "our_mission_description": "Chez Evergreen, nous nous engageons à vous faciliter la mise à niveau de votre technologie tout en contribuant à un avenir durable. Notre mission est de fournir une expérience d'échange mobile simple, fiable et enrichissante qui profite à la fois à nos clients et à la planète.",
+    "our_values_title": "Nos valeurs",
+    "our_values_description": "Voici pourquoi nous nous distinguons dans l'industrie des échanges mobiles.",
+    "values": {
+      "expertise_title": "Expertise",
+      "expertise_description": "Certifiés Apple, Samsung et Google, vous pouvez faire confiance à nos techniciens experts avec votre appareil et votre confidentialité.",
+      "quality_title": "Qualité",
+      "quality_description": "Nos téléphones subissent une inspection en 64 points pour garantir qu'ils fonctionnent comme neufs. De plus, ils bénéficient d'une garantie d'un an*.",
+      "sustainability_title": "Durabilité",
+      "sustainability_description": "Acheter un téléphone d'occasion certifié empêche les appareils d'atterrir dans les décharges et réduit les émissions de carbone."
+    },
+    "why_trade_in_title": "Pourquoi échanger votre appareil mobile ?",
+    "why_trade_in_description": "Passer à un nouveau téléphone ne devrait pas signifier que votre ancien appareil est perdu. En échangeant votre mobile avec nous, vous contribuez à réduire les déchets électroniques et à soutenir une économie circulaire.",
+    "how_it_works_title": "Comment ça fonctionne",
+    "how_it_works_steps": {
+      "step1": "Obtenez un devis instantané : entrez les détails de votre appareil pour voir sa valeur.",
+      "step2": "Envoyez votre appareil : nous fournissons une étiquette d'expédition gratuite pour un envoi sans tracas.",
+      "step3": "Recevez votre paiement : une fois que nous recevons et vérifions votre appareil, vous êtes payé rapidement."
+    },
+    "join_us_title": "Rejoignez-nous pour réduire les déchets électroniques",
+    "join_us_description": "Ensemble, nous pouvons réduire notre empreinte environnementale. Chaque échange fait une différence. Merci d'avoir choisi Evergreen Wireless et de nous aider à travailler vers un avenir plus durable !",
+    "get_started": "Commencez"
+  }
+  

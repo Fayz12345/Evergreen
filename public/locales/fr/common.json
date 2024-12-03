@@ -23,5 +23,15 @@
   "logout": "Déconnexion",
   "address": "Adresse",
   "rememberMe": "Se souvenir de moi",
-  "confirmPassword": "Confirmer le mot de passe"
+  "confirmPassword": "Confirmer le mot de passe",
+  "placeholderName": "Entrez votre nom",
+  "placeholderEmail": "Entrez votre adresse email",
+  "placeholderPhone": "Entrez votre numéro de téléphone",
+  "placeholderSubject": "Entrez le sujet",
+  "placeholderMessage": "Entrez votre message",
+  "alertMessageSent": "Message envoyé avec succès !",
+  "alertMessageFailed": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
+  "contactHeading": "Contactez-nous",
+  "contactSubHeading": "Nous serions ravis de vous entendre !",
+   "send": "Envoyer"
 }

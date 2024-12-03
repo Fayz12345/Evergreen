@@ -1,0 +1,120 @@
+ {
+    "title": "Conditions Générales",
+    "welcomeMessage": "Bienvenue chez Evergreen Wireless",
+    "introText": "Ces Conditions Générales régissent votre utilisation de nos services de reprise de téléphones mobiles et de solutions de test d'effacement de données. En accédant ou en utilisant le Site et ses services, vous acceptez de vous conformer à ces Conditions. Si vous n'êtes pas d'accord, vous ne devez pas utiliser nos services.",
+    "sections": [
+      {
+        "title": "1. Services Fournis",
+        "subsections": [
+          {
+            "title": "1.1 Reprise de Téléphone Mobile",
+            "details": {
+              "detail1": "Les utilisateurs peuvent soumettre leurs appareils mobiles éligibles pour une reprise afin de recevoir une évaluation basée sur l'état et les spécifications de l'appareil.",
+              "detail2": "L'évaluation de l'appareil est soumise à l'inspection et à la vérification par notre équipe."
+            }
+          },
+          {
+            "title": "1.2 Test d'Effacement de Données",
+            "details": {
+              "detail1": "Dans le cadre du processus de reprise, nous fournissons un test d'effacement de données en utilisant un outil d'effacement certifié pour garantir que toutes les données personnelles sont supprimées en toute sécurité de votre appareil."
+            }
+          }
+        ]
+      },
+      {
+        "title": "2. Responsabilités de l'Utilisateur",
+        "subsections": [
+          {
+            "title": "2.1 Propriété de l'Appareil",
+            "details": {
+              "detail1": "En échangeant un appareil, vous confirmez que vous en êtes le propriétaire légitime ou que vous avez le droit légal de l'échanger.",
+              "detail2": "Les appareils volés ou obtenus illégalement sont interdits et seront signalés aux autorités compétentes."
+            }
+          },
+          {
+            "title": "2.2 État de l'Appareil",
+            "details": {
+              "detail1": "Vous devez décrire avec précision l'état de votre appareil lors du processus de soumission. Toute fausse déclaration peut entraîner des modifications de l'évaluation ou le rejet de la reprise."
+            }
+          },
+          {
+            "title": "2.3 Sauvegarde des Données",
+            "details": {
+              "detail1": "Il est de votre responsabilité de sauvegarder toutes les données personnelles de votre appareil avant d'initier le processus de reprise. Nous ne sommes pas responsables de toute perte de données."
+            }
+          }
+        ]
+      },
+      {
+        "title": "3. Test d'Effacement de Données",
+        "subsections": [
+          {
+            "title": "3.1 Effacement des Données",
+            "details": {
+              "detail1": "Nous utilisons un logiciel d'effacement certifié pour assurer la suppression sécurisée de toutes les données personnelles sur les appareils.",
+              "detail2": "Un certificat d'effacement des données peut être fourni sur demande."
+            }
+          },
+          {
+            "title": "3.2 Absence de Responsabilité pour les Données Résiduelles",
+            "details": {
+              "detail1": "Bien que nos outils soient conçus pour un effacement complet des données, nous ne pouvons garantir contre la récupération de données résiduelles si l'appareil a été altéré ou modifié."
+            }
+          },
+          {
+            "title": "3.3 Conformité",
+            "details": {
+              "detail1": "Le processus d'effacement des données est conforme aux normes NIST."
+            }
+          }
+        ]
+      },
+      {
+        "title": "4. Évaluation et Paiement de la Reprise",
+        "subsections": [
+          {
+            "title": "4.1 Évaluation",
+            "details": {
+              "detail1": "L'évaluation de l'appareil est déterminée en fonction de son état, de son modèle et de ses spécifications, tels que décrits lors du processus de soumission.",
+              "detail2": "L'évaluation finale est soumise à l'inspection par notre équipe."
+            }
+          },
+          {
+            "title": "4.2 Paiement",
+            "details": {
+              "detail1": "Les paiements seront effectués via {Méthodes de Paiement} après que l'appareil aura passé l'inspection et le test d'effacement des données.",
+              "detail2": "Si votre appareil échoue à l'inspection, vous serez informé, et de nouvelles conditions vous seront proposées."
+            }
+          }
+        ]
+      },
+      {
+        "title": "5. Politique de Rejet des Appareils",
+        "subsections": [
+          {
+            "title": "5.1 Appareils Non Éligibles",
+            "details": {
+              "detail1": "Les appareils qui ne répondent pas aux critères d'éligibilité seront retournés à l'utilisateur ou recyclés de manière responsable à notre discrétion."
+            }
+          },
+          {
+            "title": "5.2 Litiges",
+            "details": {
+              "detail1": "Tout litige concernant l'évaluation ou le rejet de l'appareil doit être soumis dans les 7 jours ouvrables suivant la notification."
+            }
+          }
+        ]
+      },
+      {
+        "title": "10. Contactez-Nous",
+        "details": {
+          "email": "info@bridge-wireless.com",
+          "phone": "+1(647)-406-1199"
+        }
+      }
+    ],
+    "acknowledgment": {
+    "title": "Reconnaissance :",
+    "text": "En utilisant nos services, vous reconnaissez avoir lu, compris et accepté d'être lié par ces Conditions."
+  }
+  }
