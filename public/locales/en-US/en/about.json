@@ -1,0 +1,26 @@
+{
+    "our_mission_title": "Our Mission",
+    "our_mission_description": "At Evergreen, we’re dedicated to making it easy for you to upgrade your tech while contributing to a sustainable future. Our mission is to provide a simple, reliable, and rewarding mobile trade-in experience that benefits both our customers and the planet.",
+    "our_values_title": "Our Values",
+    "our_values_description": "Here’s why we stand out in the mobile trade-in industry.",
+    "values": {
+      "expertise_title": "Expertise",
+      "expertise_description": "Apple, Samsung, and Google certified, you can trust our expert technicians with your device and privacy.",
+      "quality_title": "Quality",
+      "quality_description": "Our phones undergo a 64-point inspection to ensure they function like new. Plus, they’re backed by a 1-year warranty*.",
+      "sustainability_title": "Sustainability",
+      "sustainability_description": "Buying a certified pre-owned phone keeps devices out of landfills and reduces carbon emissions."
+    },
+    "why_trade_in_title": "Why Trade In Your Mobile Device?",
+    "why_trade_in_description": "Upgrading to a new phone shouldn't mean that your old device goes to waste. By trading in your mobile with us, you’re helping to reduce electronic waste and support a circular economy.",
+    "how_it_works_title": "How It Works",
+    "how_it_works_steps": {
+      "step1": "Get an Instant Quote: Enter your device details to see its worth.",
+      "step2": "Send Your Device: We provide a free shipping label for a hassle-free send-off.",
+      "step3": "Get Paid: Once we receive and verify your device, you’ll get paid quickly."
+    },
+    "join_us_title": "Join Us in Reducing E-Waste",
+    "join_us_description": "Together, we can reduce our environmental footprint. Every trade-in makes a difference. Thank you for choosing Evergreen Wireless and helping us work towards a more sustainable future!",
+    "get_started": "Get Started"
+  }
+  
