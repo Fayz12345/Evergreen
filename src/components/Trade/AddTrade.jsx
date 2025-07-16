@@ -313,43 +313,36 @@ const AddTrade = () => {
             <div className="row justify-content-center">
               <div className="col-md-12">
                 <div className="card p-4 text-center">
-                  {isLoggedIn ? (
-                    <>
-                      <p>{t("batchUploadTitle")}</p>
+                  <>
+                    <p>{t("batchUploadTitle")}</p>
+                    <p className="mt-3">{t("batchUploadDescription")}</p>
+                    <Button
+                      variant="light"
+                      className="mt-3"
+                      href={`${process.env.REACT_APP_URL}/sample-trades.csv`}
+                      download
+                    >
+                      {t("downloadSampleCsv")}
+                    </Button>
+                    <input
+                      type="file"
+                      accept=".csv"
+                      className="form-control mt-3"
+                      onChange={handleFileSelect} // Store file on selection
+                    />
 
-                      <input
-                        type="file"
-                        accept=".csv"
-                        className="form-control mt-3"
-                        onChange={handleFileSelect} // Store file on selection
-                      />
-                      <p className="mt-3">{t("batchUploadDescription")}</p>
-                      <Button
-                        variant="light"
-                        className="mt-3"
-                        href={`${process.env.REACT_APP_API_URL}/sample-csv`}
-                        download
-                      >
-                        {t("downloadSampleCsv")}
-                      </Button>
-                      <Button
-                        variant="success"
-                        className="mt-3"
-                        onClick={handleBatchUploadFile}
-                      >
-                        {t("processBatchUpload")}
-                      </Button>
-                    </>
-                  ) : (
-                    <p>
-                      {t("loginMessageStart")}{" "}
-                      <a href="/login" className="text-success">
-                        {" "}
-                        {t("loginLinkText")}
-                      </a>{" "}
-                      {t("loginMessageEnd")}
-                    </p>
-                  )}
+                    {/* <form>
+                      <input name="companyName" />
+                      <button type="submit">Submit</button>
+                    </form> */}
+                    <Button
+                      variant="success"
+                      className="mt-3"
+                      onClick={handleBatchUploadFile}
+                    >
+                      {t("processBatchUpload")}
+                    </Button>
+                  </>
                 </div>
               </div>
             </div>
