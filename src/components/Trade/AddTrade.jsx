@@ -3,40 +3,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Modal, Button, Tabs, Tab } from "react-bootstrap";
-import ConditionCard from "../Admin/Pages/ConditionCard"; // Adjust the import path as necessary
 import { motion } from "framer-motion";
+import useRecaptcha from "../Captcha";
+import ReCAPTCHA from "react-google-recaptcha";
+
 import { useTranslation } from "react-i18next"; // Import i18n hook
 import "../Admin/Layout/trade.css";
 const AddTrade = () => {
   const { t } = useTranslation("trade"); // Load the 'navigation' namespace
 
-  const [device, setDevice] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [selectedDevice, setSelectedDevice] = useState(null); // Store selected device details
-  const [selectedModel, setSelectedModel] = useState(null); // Store selected device details
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
 
-  const [manufacturer, setManufacturer] = useState("");
-  const [model, setModel] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [condition, setCondition] = useState("Working");
-  const [manufacturers, setManufacturers] = useState([]);
-  const [models, setModels] = useState([]);
+  const [batchErrors, setBatchErrors] = useState({});
 
-  const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState("single");
   const [batchFile, setBatchFile] = useState(null); // State to store selected file
-  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
   const navigate = useNavigate();
-  const userId = JSON.parse(sessionStorage.getItem("user"))?._id;
-
-  console.log(userId);
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/manufacturers`)
-      .then((response) => setManufacturers(response.data))
-      .catch((error) => console.error("Error fetching manufacturers:", error));
-  }, []);
 
   const iframeRef = useRef(null);
 
@@ -76,170 +61,27 @@ const AddTrade = () => {
     setBatchFile(event.target.files[0]);
   };
 
-  // Fetch models based on selected manufacturer
-  const handleManufacturerChange = async (e) => {
-    const manufacturerId = e.target.value;
-    setManufacturer(manufacturerId);
-
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/models?manufacturer=${manufacturerId}`
-      );
-      setModels(response.data);
-    } catch (error) {
-      console.error("Error fetching models:", error);
-    }
-  };
-
-  const handleDeviceSearch = async (e) => {
-    const searchQuery = e.target.value;
-    setDevice(searchQuery);
-    if (searchQuery.length > 1) {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/search?q=${searchQuery}`
-        );
-        setSearchResults(response.data);
-      } catch (error) {
-        console.error("Error searching devices:", error);
-      }
-    } else {
-      // console.error("REACT_APP_API_URL is not defined.");
-      setSearchResults([]);
-    }
-  };
-
-  // Display device details upon selection
-  const handleDeviceSelect = (selected) => {
-    // Construct the full text to show in the input field
-    const fullText = `${selected.manufacturerDetails?.name} ${selected.name} - ${selected.memoryDetails?.size}`;
-    setModel(selected._id);
-    // Update device input field with the full selected text
-    setDevice(fullText);
-    setSelectedDevice(selected);
-    // setDevice(selected.modelName);
-
-    setSearchResults([]);
-    // Clear selected model when a device is selected
-    setSelectedModel(null);
-  };
-
-  const [modalContent, setModalContent] = useState(null); // State to hold modal content
-
-  const openTradeModal = () => {
-    // Determine which content to display based on selectedModel or selectedDevice
-    const content = selectedModel
-      ? {
-          title: `${selectedModel.manufacturer.name} - ${selectedModel.name} - ${selectedModel.memory.size}`,
-          conditions: conditionsData,
-        }
-      : selectedDevice
-      ? {
-          title: `${selectedDevice.manufacturerDetails.name} - ${selectedDevice.name} - ${selectedDevice.memoryDetails.size}`,
-          conditions: conditionsData,
-        }
-      : null;
-
-    setModalContent(content);
-    setShowModal(true);
-  };
-
-  // Close trade-in modal
-  const closeTradeModal = () => setShowModal(false);
-
-  // Submit trade-in details
-  const handleTradeSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/trade`, {
-        modelId: model,
-        customerId: userId,
-        quantity,
-        condition,
-        price: selectedDevice ? selectedDevice[`price${condition}`] : 0,
-        addedBy: userId,
-      });
-      closeTradeModal();
-      navigate("/trade-history");
-    } catch (error) {
-      console.error("Error saving trade:", error);
-    }
-  };
-  const handleModelSelectPrint = async (modelId) => {
-    setModel(modelId);
-    if (modelId) {
-      try {
-        // Fetch selected model details
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/models/${modelId}`
-        );
-        const selectedModel = response.data;
-
-        // Set selected model and clear selected device
-        setSelectedModel(selectedModel);
-        setSelectedDevice(null);
-        setDevice("");
-      } catch (error) {
-        console.error("Error fetching model details:", error);
-      }
-    }
-  };
-  const conditionsData = [
-    {
-      title: t("conditionDetails.working.title"),
-      price: selectedModel
-        ? selectedModel.priceWorking
-        : selectedDevice
-        ? selectedDevice.priceWorking
-        : 0,
-      items: [
-        t("conditionDetails.working.description.step1"),
-        t("conditionDetails.working.description.step2"),
-        t("conditionDetails.working.description.step3"),
-      ],
-      badgeColor: "bg-success",
-      badgeSymbol: "✔",
-    },
-    {
-      title: t("conditionDetails.defective.title"),
-      price: selectedModel
-        ? selectedModel.priceDamaged
-        : selectedDevice
-        ? selectedDevice.priceDamaged
-        : 0,
-      items: [
-        t("conditionDetails.defective.description.step1"),
-        t("conditionDetails.defective.description.step2"),
-        t("conditionDetails.defective.description.step3"),
-        t("conditionDetails.defective.description.step4"),
-      ],
-      badgeColor: "bg-warning text-dark",
-      badgeSymbol: "⚠",
-    },
-    {
-      title: t("conditionDetails.recycle.title"),
-      price: selectedModel
-        ? selectedModel.priceRecycle
-        : selectedDevice
-        ? selectedDevice.priceRecycle
-        : 0,
-      items: [
-        t("conditionDetails.recycle.description.step1"),
-        t("conditionDetails.recycle.description.step2"),
-        t("conditionDetails.recycle.description.step3"),
-        t("conditionDetails.recycle.description.step4"),
-      ],
-      badgeColor: "bg-danger",
-      badgeSymbol: "✖",
-    },
-  ];
-
   const handleBatchUploadFile = async () => {
-    // Create form data to send the file and customer ID
+    const errors = {};
+    if (!username) errors.username = "Company name is required.";
+    if (!email) errors.email = "Email is required.";
+    if (!batchFile) errors.file = "CSV file is required.";
+    if (!capchaToken) errors.captcha = "Captcha is required.";
+
+    setBatchErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      return; // Stop if there are errors
+    }
+    console.log("username:", username);
+    console.log("email:", email);
     const formData = new FormData();
     formData.append("file", batchFile);
-    formData.append("customerId", userId);
-    formData.append("addedBy", userId);
+    formData.append("companyName", username);
+    formData.append("email", email);
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/batch`, formData, {
         headers: {
@@ -324,17 +166,111 @@ const AddTrade = () => {
                     >
                       {t("downloadSampleCsv")}
                     </Button>
+
                     <input
                       type="file"
                       accept=".csv"
-                      className="form-control mt-3"
-                      onChange={handleFileSelect} // Store file on selection
+                      className={`form-control mt-3 ${
+                        batchErrors.file ? "is-invalid" : ""
+                      }`}
+                      onChange={(e) => {
+                        handleFileSelect(e);
+                        if (batchErrors.file && e.target.files.length > 0) {
+                          setBatchErrors((prev) => ({
+                            ...prev,
+                            file: undefined,
+                          }));
+                        }
+                      }}
                     />
+                    {batchErrors.file && (
+                      <div className="invalid-feedback">{batchErrors.file}</div>
+                    )}
 
-                    {/* <form>
-                      <input name="companyName" />
-                      <button type="submit">Submit</button>
-                    </form> */}
+                    <div className="card-body text-left">
+                      <form>
+                        <div className="form-group mb-3">
+                          <label htmlFor="username">Company Name</label>
+                          <input
+                            type="text"
+                            className={`form-control ${
+                              batchErrors.username ? "is-invalid" : ""
+                            }`}
+                            id="username"
+                            placeholder=""
+                            value={username}
+                            onChange={(e) => {
+                              setUsername(e.target.value);
+                              if (
+                                batchErrors.username &&
+                                e.target.value.trim() !== ""
+                              ) {
+                                setBatchErrors((prev) => ({
+                                  ...prev,
+                                  username: undefined,
+                                }));
+                              }
+                            }}
+                          />
+                          {batchErrors.username && (
+                            <div className="invalid-feedback">
+                              {batchErrors.username}
+                            </div>
+                          )}
+                        </div>
+                        <div className="form-group mb-3">
+                          <label htmlFor="email">Email</label>
+                          <input
+                            type="email"
+                            className={`form-control ${
+                              batchErrors.email ? "is-invalid" : ""
+                            }`}
+                            id="email"
+                            placeholder=""
+                            value={email}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                              if (
+                                batchErrors.email &&
+                                e.target.value.trim() !== ""
+                              ) {
+                                setBatchErrors((prev) => ({
+                                  ...prev,
+                                  email: undefined,
+                                }));
+                              }
+                            }}
+                          />
+                          {batchErrors.email && (
+                            <div className="invalid-feedback">
+                              {batchErrors.email}
+                            </div>
+                          )}
+                        </div>
+                      </form>
+                    </div>
+
+                    <div className="text-center">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.REACT_APP_CAPTCHA_SITE_KEY}
+                        onChange={(token) => {
+                          handleRecaptcha(token);
+                          if (batchErrors.captcha && token) {
+                            setBatchErrors((prev) => ({
+                              ...prev,
+                              captcha: undefined,
+                            }));
+                          }
+                        }}
+                      />{" "}
+                      {batchErrors.captcha && (
+                        <div className="text-danger mt-2">
+                          {batchErrors.captcha}
+                        </div>
+                      )}
+                    </div>
+
                     <Button
                       variant="success"
                       className="mt-3"
@@ -349,68 +285,6 @@ const AddTrade = () => {
           </Tab>
         </Tabs>
       </div>
-
-      {/* Trade-In Modal */}
-      <Modal show={showModal} size="xl" onHide={closeTradeModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{t("tradeInDevice")}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {modalContent && (
-            <>
-              <h5>{modalContent.title}</h5>
-            </>
-          )}
-          <form onSubmit={handleTradeSubmit}>
-            <input type="hidden" value={model} name="modelId" />{" "}
-            {/* Hidden field for model ID */}
-            <input type="hidden" name="customerId" value={userId} />
-            <div className="mb-3">
-              <label>{t("quantity")}</label>
-              <input
-                type="number"
-                className="form-control"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-                min="1"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label>{t("condition")}</label>
-              <select
-                className="form-control"
-                value={condition}
-                onChange={(e) => setCondition(e.target.value)}
-                required
-              >
-                <option value="Working">
-                  {t("conditionDetails.working.title")} - $
-                  {selectedModel
-                    ? selectedModel.priceWorking
-                    : selectedDevice
-                    ? selectedDevice.priceWorking
-                    : 0}
-                </option>
-                <option value="Defective">
-                  {t("conditionDetails.defective.title")} - $
-                  {selectedModel
-                    ? selectedModel.priceDamaged
-                    : selectedDevice
-                    ? selectedDevice.priceDamaged
-                    : 0}
-                </option>
-                <option value="Recycle">
-                  {t("conditionDetails.recycle.title")} - $0
-                </option>
-              </select>
-            </div>
-            <Button variant="success" type="submit">
-              {t("submitTrade")}
-            </Button>
-          </form>
-        </Modal.Body>
-      </Modal>
     </>
   );
 };
