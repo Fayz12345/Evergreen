@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Modal, Button, Tabs, Tab } from "react-bootstrap";
+import { Container, Row, Col, Button, Tabs, Tab } from "react-bootstrap";
 import { motion } from "framer-motion";
 import useRecaptcha from "../Captcha";
 import ReCAPTCHA from "react-google-recaptcha";
