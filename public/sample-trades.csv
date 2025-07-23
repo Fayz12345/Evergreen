@@ -1,4 +1,5 @@
-modelId,customerId,quantity,condition
-<sampleModelId1>,<sampleCustomerId1>,1,Working
-<sampleModelId2>,<sampleCustomerId2>,2,Defective
-<sampleModelId3>,<sampleCustomerId3>,1,Recycle
+IMEI,Manufacturer,Model,Colour,Memory
+="357435934166494",Apple,iPhone 16 Pro Max,Black Titanium,512 GB
+="350505562936256",Samsung,Galaxy S25,Mint,256 GB
+="350266809250825",Google,Pixel 9,Obsidian,128 GB
+
