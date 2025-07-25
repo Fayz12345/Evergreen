@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../components/Customers/Pages/Home";
 import Contact from "../components/Customers/Pages/Contact";
 import NoPage from "../components/Customers/Pages/NoPage";
-import TradeLanding from "../components/Customers/Pages/TradeLanding";
 import About from "../components/Customers/Pages/About";
 import TermsConditions from "../components/Customers/Pages/TermsConditions";
 import TradeinForm from "../components/Customers/Pages/TradeinForm";
