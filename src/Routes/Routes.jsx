@@ -22,7 +22,7 @@ export default function AppRoutes() {
       <Route path="/" element={<HomeLayout />}>
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
-        <Route path="tradein" element={<TradeLanding />} />
+        <Route path="tradein" element={<TradeinForm />} />
         <Route path="terms" element={<TermsConditions />} />
         <Route path="tradein/trade-quote" element={<TradeinForm />} />
         <Route path="tradein/customer-info" element={<CustomerInfoForm />} />
