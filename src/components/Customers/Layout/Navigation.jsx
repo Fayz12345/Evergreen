@@ -29,9 +29,16 @@ const Navigation = () => {
           id="navbar"
         >
           <div className="container-xl">
-            <Link className="navbar-brand text-success" to="/">
-              {" "}
-              Evergreen Wireless{" "}
+            <Link className="navbar-brand" to="/" aria-label="Home">
+              <img
+                src="/images/logo_dark.png"
+                alt={
+                  t
+                    ? t("brand_name") ?? "Evergreen Wireless"
+                    : "Evergreen Wireless"
+                }
+                style={{ height: 45, width: "auto" }}
+              />
             </Link>
 
             <button
@@ -94,6 +101,52 @@ const Navigation = () => {
                     {t("trade_in")}
                   </NavLink>
                 </li>
+
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to="/cpodevices"
+                    onClick={scrollToTop}
+                    style={({ isActive }) =>
+                      isActive
+                        ? { fontWeight: "bold", colour: "green important" }
+                        : undefined
+                    }
+                  >
+                    {t("cpo_devices")}
+                  </NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to="/newdevices"
+                    onClick={scrollToTop}
+                    style={({ isActive }) =>
+                      isActive
+                        ? { fontWeight: "bold", colour: "green important" }
+                        : undefined
+                    }
+                  >
+                    {t("new_devices")}
+                  </NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to="/leasing"
+                    onClick={scrollToTop}
+                    style={({ isActive }) =>
+                      isActive
+                        ? { fontWeight: "bold", colour: "green important" }
+                        : undefined
+                    }
+                  >
+                    {t("leasing")}
+                  </NavLink>
+                </li>
+
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"

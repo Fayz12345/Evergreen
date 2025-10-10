@@ -1,13 +1,15 @@
 {
-    "home": "Home",
-    "about": "About Us",
-    "contact": "Contact Us",
-    "login": "Login",
-    "trade_in": "Trade-In",
-    "trade_history": "Trade History",
-    "logout": "Logout",
-    "view_profile": "View Profile",
-    "copyright": "© 2024 Evergreen Wireless | All Rights Reserved",
-    "terms_conditions": "Terms & Conditions"
-  }
-  
+  "home": "Home",
+  "about": "About Us",
+  "contact": "Contact Us",
+  "login": "Login",
+  "trade_in": "Trade-In",
+  "cpo_devices": "CPO Devices",
+  "new_devices": "New Devices",
+  "leasing": "Leasing",
+  "trade_history": "Trade History",
+  "logout": "Logout",
+  "view_profile": "View Profile",
+  "copyright": "© 2024 Evergreen Wireless | All Rights Reserved",
+  "terms_conditions": "Terms & Conditions"
+}
