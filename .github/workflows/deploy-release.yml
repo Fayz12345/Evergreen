@@ -1,4 +1,4 @@
-name: Deploy TradeInWeb on release merge
+name: Deploy via SSM (No SSH)
 
 on:
   push:
@@ -7,17 +7,23 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ${{ secrets.EC2_TARGET_DIR }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to EC2
+        uses: aws-actions/amazon-ssm-send-command@v1
+        with:
+          instance-ids: ${{ secrets.EC2_INSTANCE_ID }}
+          document-name: AWS-RunShellScript
+          working-directory: /var/www/TradeInWeb
+          commands: |
             git checkout release
             git pull origin release
             npm install
