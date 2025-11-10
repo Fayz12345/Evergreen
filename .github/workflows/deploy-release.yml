@@ -1,4 +1,4 @@
-name: Deploy via SSM (Full Logs)
+name: Deploy via SSM (Final)
 
 on:
   push:
@@ -28,11 +28,10 @@ jobs:
               "commands": [
                 "set -e",
                 "cd /var/www/TradeInWeb",
-                "echo \"=== FIX GIT OWNERSHIP ===\"",
-                "git config --global --add safe.directory /var/www/TradeInWeb",
+                "echo \"=== FIX GIT OWNERSHIP (no global) ===\"",
+                "git config --system safe.directory /var/www/TradeInWeb",
                 "echo \"=== INSTALL NODE.JS ===\"",
-                "sudo apt update -y",
-                "sudo apt install -y nodejs npm",
+                "command -v node >/dev/null || (sudo apt update -y && sudo apt install -y nodejs npm)",
                 "echo \"=== GIT PULL ===\"",
                 "git checkout release",
                 "git pull origin release",
