@@ -26,9 +26,13 @@ jobs:
             --comment "GitHub Actions Deploy" \
             --parameters '{
               "commands": [
- tàu
                 "set -e",
                 "cd /var/www/TradeInWeb",
+                "echo \"=== FIX GIT OWNERSHIP ===\"",
+                "git config --global --add safe.directory /var/www/TradeInWeb",
+                "echo \"=== INSTALL NODE.JS ===\"",
+                "sudo apt update -y",
+                "sudo apt install -y nodejs npm",
                 "echo \"=== GIT PULL ===\"",
                 "git checkout release",
                 "git pull origin release",
