@@ -1,4 +1,4 @@
-name: Deploy via SSM (Final)
+name: Deploy TradeInWeb
 
 on:
   push:
@@ -11,65 +11,30 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - name: Configure AWS Credentials
+      - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Deploy to EC2 via SSM
+      - name: Deploy via SSM
         run: |
-          echo "Sending deploy command..."
-          COMMAND_ID=$(aws ssm send-command \
+          aws ssm send-command \
             --instance-ids "${{ secrets.EC2_INSTANCE_ID }}" \
             --document-name "AWS-RunShellScript" \
-            --comment "GitHub Actions Deploy" \
+            --comment "Deploy from GitHub" \
             --parameters '{
               "commands": [
-                "set -e",
                 "cd /var/www/TradeInWeb",
-                "echo \"=== FIX DPKG ===\"",
-                "sudo dpkg --configure -a || true",
-                "sudo apt clean",
-                "echo \"=== FIX GIT OWNERSHIP ===\"",
                 "git config --system safe.directory /var/www/TradeInWeb",
-                "echo \"=== INSTALL NODE.JS (if missing) ===\"",
-                "if ! command -v node >/dev/null; then sudo DEBIAN_FRONTEND=noninteractive apt update -y && sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs npm; fi",
-                "echo \"=== GIT PULL ===\"",
                 "git checkout release",
                 "git pull origin release",
-                "echo \"=== NPM BUILD ===\"",
-                "npm install",
+                "npm ci --omit=dev",
                 "npm run build",
-                "echo \"=== COPY BUILD ===\"",
                 "sudo rm -rf static index.html asset-manifest.json",
                 "sudo cp -r build/* .",
                 "sudo chown -R www-data:www-data .",
                 "sudo systemctl restart nginx",
                 "echo \"DEPLOYED AT $(date)\""
               ]
-            }' \
-            --query 'Command.CommandId' --output text)
-
-          echo "Command ID: $COMMAND_ID"
-          echo "Waiting for completion..."
-
-          for i in {1..60}; do
-            STATUS=$(aws ssm get-command-invocation \
-              --command-id "$COMMAND_ID" \
-              --instance-id "${{ secrets.EC2_INSTANCE_ID }}" \
-              --query 'Status' --output text 2>/dev/null || echo "Pending")
-            
-            if [ "$STATUS" = "Success" ]; then
-              echo "SUCCESS!"
-              aws ssm get-command-invocation --command-id "$COMMAND_ID" --instance-id "${{ secrets.EC2_INSTANCE_ID }}" --query 'StandardOutputContent' --output text
-              exit 0
-            elif [ "$STATUS" = "Failed" ]; then
-              echo "FAILED!"
-              aws ssm get-command-invocation --command-id "$COMMAND_ID" --instance-id "${{ secrets.EC2_INSTANCE_ID }}" --query 'StandardErrorContent' --output text
-              exit 1
-            fi
-            sleep 10
-          done
-          echo "TIMEOUT"
-          exit 1
+            }'
