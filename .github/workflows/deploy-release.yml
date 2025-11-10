@@ -24,17 +24,17 @@ jobs:
             --instance-ids "${{ secrets.EC2_INSTANCE_ID }}" \
             --document-name "AWS-RunShellScript" \
             --comment "GitHub Actions Deploy" \
-                        --parameters '{
+            --parameters '{
               "commands": [
                 "set -e",
                 "cd /var/www/TradeInWeb",
-                "echo \"=== CLEAN DISK ===\"",
+                "echo \"=== FIX DPKG ===\"",
+                "sudo dpkg --configure -a || true",
                 "sudo apt clean",
-                "sudo rm -rf node_modules build",
                 "echo \"=== FIX GIT OWNERSHIP ===\"",
                 "git config --system safe.directory /var/www/TradeInWeb",
                 "echo \"=== INSTALL NODE.JS (if missing) ===\"",
-                "if ! command -v node >/dev/null; then sudo apt update -y && sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs npm; fi",
+                "if ! command -v node >/dev/null; then sudo DEBIAN_FRONTEND=noninteractive apt update -y && sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs npm; fi",
                 "echo \"=== GIT PULL ===\"",
                 "git checkout release",
                 "git pull origin release",
