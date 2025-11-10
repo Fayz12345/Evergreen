@@ -1,4 +1,4 @@
-name: Deploy via SSM (AWS CLI)
+name: Deploy via SSM (Full Logs)
 
 on:
   push:
@@ -19,34 +19,51 @@ jobs:
 
       - name: Deploy to EC2 via SSM
         run: |
-          # Run all commands in /var/www/TradeInWeb
-          aws ssm send-command \
+          echo "Sending deploy command..."
+          COMMAND_ID=$(aws ssm send-command \
             --instance-ids "${{ secrets.EC2_INSTANCE_ID }}" \
             --document-name "AWS-RunShellScript" \
             --comment "GitHub Actions Deploy" \
             --parameters '{
               "commands": [
+ tàu
+                "set -e",
                 "cd /var/www/TradeInWeb",
+                "echo \"=== GIT PULL ===\"",
                 "git checkout release",
                 "git pull origin release",
+                "echo \"=== NPM BUILD ===\"",
                 "npm install",
                 "npm run build",
+                "echo \"=== COPY BUILD ===\"",
+                "sudo rm -rf static index.html asset-manifest.json",
                 "sudo cp -r build/* .",
                 "sudo chown -R www-data:www-data .",
                 "sudo systemctl restart nginx",
-                "echo \"Deployed at $(date)\""
+                "echo \"DEPLOYED AT $(date)\""
               ]
             }' \
-            --output text
+            --query 'Command.CommandId' --output text)
 
-          echo "Deploy command sent. Waiting for completion..."
+          echo "Command ID: $COMMAND_ID"
+          echo "Waiting for completion..."
 
-          # Wait for success (poll every 10s, up to 5 min)
-          for i in {1..30}; do
-            STATUS=$(aws ssm list-commands --filters "key=Status,value=InProgress" --query 'Commands[0].Status' --output text)
-            if [ "$STATUS" != "InProgress" ]; then
-              echo "Deploy finished!"
-              break
+          for i in {1..60}; do
+            STATUS=$(aws ssm get-command-invocation \
+              --command-id "$COMMAND_ID" \
+              --instance-id "${{ secrets.EC2_INSTANCE_ID }}" \
+              --query 'Status' --output text 2>/dev/null || echo "Pending")
+            
+            if [ "$STATUS" = "Success" ]; then
+              echo "SUCCESS!"
+              aws ssm get-command-invocation --command-id "$COMMAND_ID" --instance-id "${{ secrets.EC2_INSTANCE_ID }}" --query 'StandardOutputContent' --output text
+              exit 0
+            elif [ "$STATUS" = "Failed" ]; then
+              echo "FAILED!"
+              aws ssm get-command-invocation --command-id "$COMMAND_ID" --instance-id "${{ secrets.EC2_INSTANCE_ID }}" --query 'StandardErrorContent' --output text
+              exit 1
             fi
             sleep 10
           done
+          echo "TIMEOUT"
+          exit 1
