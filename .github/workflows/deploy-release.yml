@@ -26,24 +26,15 @@ jobs:
             --comment "GitHub Actions Deploy" \
             --parameters '{
               "commands": [
-                "set -e",
                 "cd /var/www/TradeInWeb",
-                "echo \"=== FIX GIT OWNERSHIP (no global) ===\"",
                 "git config --system safe.directory /var/www/TradeInWeb",
-                "echo \"=== INSTALL NODE.JS ===\"",
-                "command -v node >/dev/null || (sudo apt update -y && sudo apt install -y nodejs npm)",
-                "echo \"=== GIT PULL ===\"",
                 "git checkout release",
                 "git pull origin release",
-                "echo \"=== NPM BUILD ===\"",
-                "npm install",
+                "npm ci --omit=dev",
                 "npm run build",
-                "echo \"=== COPY BUILD ===\"",
-                "sudo rm -rf static index.html asset-manifest.json",
                 "sudo cp -r build/* .",
                 "sudo chown -R www-data:www-data .",
-                "sudo systemctl restart nginx",
-                "echo \"DEPLOYED AT $(date)\""
+                "sudo systemctl restart nginx"
               ]
             }' \
             --query 'Command.CommandId' --output text)
