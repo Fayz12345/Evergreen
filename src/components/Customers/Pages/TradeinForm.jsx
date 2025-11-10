@@ -171,30 +171,7 @@ const TradeinForm = () => {
         </Modal.Header>
         <Modal.Body className="modal-body-scrollable mb-5">
           {/* Download Buttons Section */}
-          <div className="text-center mb-4">
-            <h5 className="mb-3">Download Manual</h5>
-            <div className="d-flex justify-content-center gap-3 flex-wrap">
-              <Button
-                variant="success"
-                href="/manuals/phone-preparation-manual-en.pdf"
-                download
-                className="border border-2 border-success"
-                style={{ borderWidth: "2px !important" }}
-              >
-                Download Manual (EN)
-              </Button>
-              <Button
-                variant="success"
-                href="/manuals/phone-preparation-manual-fr.pdf"
-                download
-                className="border border-2 border-success"
-                style={{ borderWidth: "2px !important" }}
-              >
-                Download Manual (FR)
-              </Button>
-            </div>
-            <hr className="my-4" />
-          </div>
+
           {/* <Row>
                         {steps.map((step, index) => (
                              <Col key={index} md={6} className="d-flex align-items-center justify-content-center mb-4">

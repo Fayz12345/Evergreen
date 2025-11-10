@@ -59,7 +59,7 @@ const NewDevices = () => {
       </div>
 
       <div className="text-center mb-4">
-        <h5 className="mb-3">Download Manual</h5>
+        <h5 className="mb-3">Download Manual </h5>
         <div className="d-flex justify-content-center gap-3 flex-wrap">
           <Button
             variant="success"
