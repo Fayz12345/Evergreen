@@ -11,6 +11,7 @@ const Navigation = () => {
 
   // const location = useLocation(); // Get the current location
   const [user, setUser] = useState(null);
+  const [newDevicesOpen, setNewDevicesOpen] = useState(false);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng); // Change language globally
@@ -21,9 +22,14 @@ const Navigation = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleNewDevicesNavClick = () => {
+    scrollToTop();
+    setNewDevicesOpen(false);
+  };
+
   return (
     <>
-      <section className="position-fixed top-0 start-0 w-100 bg-dark">
+      <section className="position-fixed top-0 start-0 w-100 header-bar">
         <nav
           className="navbar navbar-expand-lg main-nav py-3 awake"
           id="navbar"
@@ -37,7 +43,7 @@ const Navigation = () => {
                     ? t("brand_name") ?? "Evergreen Wireless"
                     : "Evergreen Wireless"
                 }
-                style={{ height: 45, width: "auto" }}
+                className="brand-logo"
               />
             </Link>
 
@@ -117,19 +123,43 @@ const Navigation = () => {
                   </NavLink>
                 </li>
 
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to="/newdevices"
-                    onClick={scrollToTop}
-                    style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "bold", colour: "green important" }
-                        : undefined
-                    }
+                <li
+                  className={`nav-item dropdown ${
+                    newDevicesOpen ? "show" : ""
+                  }`}
+                  onMouseEnter={() => setNewDevicesOpen(true)}
+                  onMouseLeave={() => setNewDevicesOpen(false)}
+                >
+                  <button
+                    type="button"
+                    className="nav-link dropdown-toggle text-white bg-transparent border-0"
+                    aria-expanded={newDevicesOpen}
+                    onClick={() => setNewDevicesOpen((prev) => !prev)}
                   >
                     {t("new_devices")}
-                  </NavLink>
+                  </button>
+                  <ul
+                    className={`dropdown-menu ${newDevicesOpen ? "show" : ""}`}
+                  >
+                    <li>
+                      <NavLink
+                        className="dropdown-item"
+                        to="/newdevices"
+                        onClick={handleNewDevicesNavClick}
+                      >
+                        {t("new_devices")}
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className="dropdown-item"
+                        to="/manuals"
+                        onClick={handleNewDevicesNavClick}
+                      >
+                        {t("manuals")}
+                      </NavLink>
+                    </li>
+                  </ul>
                 </li>
 
                 <li className="nav-item">

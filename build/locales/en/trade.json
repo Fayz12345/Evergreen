@@ -1,156 +1,154 @@
 {
-    "title": "Trade In with Evergreen Wireless",
-    "description": "At Evergreen Wireless, we believe that your mobile device should be more than just a phone. It should be a tool that enhances your life and helps you stay connected with the people and things that matter most. That’s why we offer the latest smartphones and accessories at competitive prices. Shop now and take your mobile experience to the next level.",
-    "buttonText": "Get Started",
-    "tradeinForm": {
-      "sliderTitle": "Upgrade to the Latest and Save Big!",
-      "leadParagraph1": "With our Trade-In Program, you can earn up to $800 in credit by trading in your old phone, tablet, or watch. It’s our way of helping you get the device you want – for less.",
-      "leadParagraph2": "Ready to upgrade and save? Trade in your device today and make the most of our exclusive offer!",
-      "checkPriceButton": "Check Price",
-      "preparePhoneButton": "Prepare Your Phone",
-      "howItWorks": {
-        "title": "How It Works:",
-        "steps": {
-          "step1": {
-            "title": "Buy or Upgrade",
-            "description": "When you purchase a new device or upgrade online, you’re eligible to trade in an old device."
-          },
-          "step2": {
-            "title": "Send in Your Old Device",
-            "description": "Simply follow the instructions to ship your old device for free."
-          },
-          "step3": {
-            "title": "Get Credit on Your Account",
-            "description": "Once approved, a credit will be applied directly to your bill – no waiting for checks or extra steps."
-          }
-        }
-      },
-      "whyTradeIn": {
-        "title": "Why Trade In?",
-        "reasons": {
-          "step1": {
-            "title": "More Savings",
-            "description": "Reduce the cost of your new device by trading in old tech."
-          },
-          "step2": {
-            "title": "Eco-Friendly",
-            "description": "Help us reduce e-waste by recycling your old device responsibly."
-          },
-          "step3": {
-            "title": "Fast & Easy",
-            "description": "The whole process is hassle-free and can be completed from the comfort of your home."
-          }
-        }
-      },
-      "modalTitle": "Prepare Your Phone for Trade-In",
+  "title": "Trade In with Evergreen Wireless!!!!!",
+  "description": "At Evergreen Wireless, we believe that your mobile device should be more than just a phone. It should be a tool that enhances your life and helps you stay connected with the people and things that matter most. That’s why we offer the latest smartphones and accessories at competitive prices. Shop now and take your mobile experience to the next level.",
+  "buttonText": "Get Started",
+  "tradeinForm": {
+    "sliderTitle": "Upgrade to the Latest and Save Big!",
+    "leadParagraph1": "With our Trade-In Program, you can earn up to $800 in credit by trading in your old phone, tablet, or watch. It’s our way of helping you get the device you want – for less.",
+    "leadParagraph2": "Ready to upgrade and save? Trade in your device today and make the most of our exclusive offer!",
+    "checkPriceButton": "Check Price",
+    "preparePhoneButton": "Prepare Your Phone",
+    "howItWorks": {
+      "title": "How It Works:",
       "steps": {
-        "step1":    {
-            "title": "Back up",
-            "description": "Back up contacts, emails, photos, and other personal data, as the phone won't be returned after trade-in."
-            },
-            "step2":   {
-            "title": "Remove memory cards and SIM cards",
-            "description": "If applicable, remove any memory cards."
-            },
-            "step3":   {
-            "title": "Charge battery",
-            "description": "Ensure the battery is charged so that we can evaluate the phone’s trade-in value."
-            },
-            "step4":   {
-            "title": "Remove all accounts",
-            "description": "Turn off the 'Find my iPhone' feature, or remove your Google account for Android phones."
-            },
-            "step5":    {
-            "title": "Disable Mobile Device Management lock",
-            "description": "For business/corporate phones: identify and disable the Mobile Device Management (MDM) lock on your phone."
-            },
-            "step6":  {
-            "title": "Perform a factory reset",
-            "description": "Reset your phone to the original factory settings."
-            }
-        }
-    },
-    "conditionDetails": {
-      "working": {
-        "title": "Working",
-        "description": {
-         "step1" : "The screen is intact, with no major cracks.",
-          "step2" : "Buttons, speakers, and ports work perfectly.",
-          "step3" : "Battery holds a charge, and the device responds smoothly to input."
-        }
-      },
-      "defective": {
-        "title": "Defective",
-        "description": {
-         "step1" :  "Cracked or heavily scratched screen.",
-         "step2" :  "Non-functional buttons or unresponsive touch screen.",
-         "step3" :  "Charging issues, poor battery life, or intermittent power problems.",
-         "step4" :  "Damaged or broken speakers, microphones, or cameras."
-        }
-      },
-      "recycle": {
-        "title": "Recycle",
-        "description":{
-         "step1" :  "The device does not power on at all.",
-         "step2" :  "Severe physical damage, such as bent or broken body.",
-         "step3" :  "Water damage or other irreparable hardware issues.",
-         "step4" :  "Missing or damaged essential components like the battery or motherboard."
+        "step1": {
+          "title": "Buy or Upgrade",
+          "description": "When you purchase a new device or upgrade online, you’re eligible to trade in an old device."
+        },
+        "step2": {
+          "title": "Send in Your Old Device",
+          "description": "Simply follow the instructions to ship your old device for free."
+        },
+        "step3": {
+          "title": "Get Credit on Your Account",
+          "description": "Once approved, a credit will be applied directly to your bill – no waiting for checks or extra steps."
         }
       }
     },
-    "please": "Please",
-    "toProceed": "to proceed with the trade-in process.",
-    "logIn": "log in",
-    "or": "OR",
-    "selectManufacturer": "Select Manufacturer",
-    "selectModel": "Select Model",
-    "tradeInQuote": "Get a Trade In Quote with Evergreen Wireless",
-    "singleTradeIn": "Single Trade-in",
-    "batchUpload": "Batch Upload",
-    "loginMessage": "Please <a href='/login' class='text-success'>log in</a> to proceed with the trade-in process.",
-    "loginMessageStart": "Please",
-    "loginLinkText": "log in",
-    "loginMessageEnd": "to proceed with the trade-in process.",
-    "submitTrade": "Submit Trade",
-    "condition": "Condition",
-    "quantity": "Quantity",
-    "tradeInDevice": "Trade In Device",
-    "searchDevice": "Search Device",
-    "batchUploadTitle": "Batch Upload for Trade-In",
-    "batchUploadDescription": "Upload a CSV file to process multiple trade-ins at once.",
-    "downloadSampleCsv": "Download Sample CSV",
-    "processBatchUpload": "Process Batch Upload",
-    "history": {
-        "title": "Trade History",
-        "tradeIn": "Trade In",
-        "searchPlaceholder": "Search in all fields",
-        "searchButton": "Search",
-        "clearButton": "Clear",
-        "noTradeHistory": "No trade-in history available.",
-        "paginationPrevious": "Previous",
-        "paginationNext": "Next",
-        "batchUploadHistory": "Batch Upload History",
-        "noBatchUpload": "No batch upload history available.",
-        "downloadCsvButton": "Download CSV",
-        "trades": "Trades",
-        "batch": "Batch",
-        "tableHeaders": {
-          "number": "#",
-          "customerName": "Customer Name",
-          "manufacturer": "Manufacturer",
-          "device": "Device",
-          "memory": "Memory",
-          "quantity": "Quantity",
-          "value": "Value",
-          "status": "Status",
-          "tradeInDate": "Trade In Date",
-          "batchNumber": "Batch Number",
-          "addedBy": "Added By",
-          "fileName": "File Name",
-          "dateUploaded": "Date Uploaded",
-          "download": "Download"
+    "whyTradeIn": {
+      "title": "Why Trade In?",
+      "reasons": {
+        "step1": {
+          "title": "More Savings",
+          "description": "Reduce the cost of your new device by trading in old tech."
+        },
+        "step2": {
+          "title": "Eco-Friendly",
+          "description": "Help us reduce e-waste by recycling your old device responsibly."
+        },
+        "step3": {
+          "title": "Fast & Easy",
+          "description": "The whole process is hassle-free and can be completed from the comfort of your home."
         }
       }
-  
+    },
+    "modalTitle": "Prepare Your Phone for Trade-In",
+    "steps": {
+      "step1": {
+        "title": "Back up",
+        "description": "Back up contacts, emails, photos, and other personal data, as the phone won't be returned after trade-in."
+      },
+      "step2": {
+        "title": "Remove memory cards and SIM cards",
+        "description": "If applicable, remove any memory cards."
+      },
+      "step3": {
+        "title": "Charge battery",
+        "description": "Ensure the battery is charged so that we can evaluate the phone’s trade-in value."
+      },
+      "step4": {
+        "title": "Remove all accounts",
+        "description": "Turn off the 'Find my iPhone' feature, or remove your Google account for Android phones."
+      },
+      "step5": {
+        "title": "Disable Mobile Device Management lock",
+        "description": "For business/corporate phones: identify and disable the Mobile Device Management (MDM) lock on your phone."
+      },
+      "step6": {
+        "title": "Perform a factory reset",
+        "description": "Reset your phone to the original factory settings."
+      }
+    }
+  },
+  "conditionDetails": {
+    "working": {
+      "title": "Working",
+      "description": {
+        "step1": "The screen is intact, with no major cracks.",
+        "step2": "Buttons, speakers, and ports work perfectly.",
+        "step3": "Battery holds a charge, and the device responds smoothly to input."
+      }
+    },
+    "defective": {
+      "title": "Defective",
+      "description": {
+        "step1": "Cracked or heavily scratched screen.",
+        "step2": "Non-functional buttons or unresponsive touch screen.",
+        "step3": "Charging issues, poor battery life, or intermittent power problems.",
+        "step4": "Damaged or broken speakers, microphones, or cameras."
+      }
+    },
+    "recycle": {
+      "title": "Recycle",
+      "description": {
+        "step1": "The device does not power on at all.",
+        "step2": "Severe physical damage, such as bent or broken body.",
+        "step3": "Water damage or other irreparable hardware issues.",
+        "step4": "Missing or damaged essential components like the battery or motherboard."
+      }
+    }
+  },
+  "please": "Please",
+  "toProceed": "to proceed with the trade-in process.",
+  "logIn": "log in",
+  "or": "OR",
+  "selectManufacturer": "Select Manufacturer",
+  "selectModel": "Select Model",
+  "tradeInQuote": "Get a Trade In Quote with Evergreen Wireless",
+  "singleTradeIn": "Single Trade-in",
+  "batchUpload": "Batch Upload",
+  "loginMessage": "Please <a href='/login' class='text-success'>log in</a> to proceed with the trade-in process.",
+  "loginMessageStart": "Please",
+  "loginLinkText": "log in",
+  "loginMessageEnd": "to proceed with the trade-in process.",
+  "submitTrade": "Submit Trade",
+  "condition": "Condition",
+  "quantity": "Quantity",
+  "tradeInDevice": "Trade In Device",
+  "searchDevice": "Search Device",
+  "batchUploadTitle": "Batch Upload for Trade-In",
+  "batchUploadDescription": "Upload a CSV file to process multiple trade-ins at once.",
+  "downloadSampleCsv": "Download Sample CSV",
+  "processBatchUpload": "Process Batch Upload",
+  "history": {
+    "title": "Trade History",
+    "tradeIn": "Trade In",
+    "searchPlaceholder": "Search in all fields",
+    "searchButton": "Search",
+    "clearButton": "Clear",
+    "noTradeHistory": "No trade-in history available.",
+    "paginationPrevious": "Previous",
+    "paginationNext": "Next",
+    "batchUploadHistory": "Batch Upload History",
+    "noBatchUpload": "No batch upload history available.",
+    "downloadCsvButton": "Download CSV",
+    "trades": "Trades",
+    "batch": "Batch",
+    "tableHeaders": {
+      "number": "#",
+      "customerName": "Customer Name",
+      "manufacturer": "Manufacturer",
+      "device": "Device",
+      "memory": "Memory",
+      "quantity": "Quantity",
+      "value": "Value",
+      "status": "Status",
+      "tradeInDate": "Trade In Date",
+      "batchNumber": "Batch Number",
+      "addedBy": "Added By",
+      "fileName": "File Name",
+      "dateUploaded": "Date Uploaded",
+      "download": "Download"
+    }
   }
-  
+}
