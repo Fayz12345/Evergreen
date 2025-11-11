@@ -1,12 +1,16 @@
 {
   "home": "Accueil",
-  "about": "À propos de nous",
+  "about": "A propos de nous",
   "contact": "Contactez-nous",
   "login": "Connexion",
-  "trade_in": "Échange",
-  "trade_history": "Historique des échanges",
-  "logout": "Déconnexion",
+  "trade_in": "Echange",
+  "cpo_devices": "Appareils CPO",
+  "new_devices": "Nouveaux appareils",
+  "manuals": "Manuels",
+  "leasing": "Location",
+  "trade_history": "Historique des echanges",
+  "logout": "Deconnexion",
   "view_profile": "Voir le profil",
-  "copyright": "Evergreen Wireless | Tous droits réservés",
-  "terms_conditions": "Conditions générales"
+  "copyright": "Evergreen Wireless | Tous droits reserves",
+  "terms_conditions": "Conditions generales"
 }

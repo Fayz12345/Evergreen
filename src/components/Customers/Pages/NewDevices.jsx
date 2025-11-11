@@ -41,6 +41,8 @@ const NewDevices = () => {
                 <h1 className="animated fadeInUp mb-3 mt-5 text-white">
                   {t("title")}
                 </h1>
+
+                <p className="lead text-white mb-4">{t("leadParagraph1")}</p>
               </motion.div>
             </Col>
           </Row>
@@ -49,38 +51,13 @@ const NewDevices = () => {
 
       <div className="container-xl my-5">
         <div className="text-center">
-          <p className="lead">{t("leadParagraph1")}</p>
+          <p className="lead">{t("leadParagraph2")}</p>
           <img
             src={`/images/trade.jpeg`}
             alt="Trade-in Devices"
             className="img-fluid"
           />
         </div>
-      </div>
-
-      <div className="text-center mb-4">
-        <h5 className="mb-3">Download Manual </h5>
-        <div className="d-flex justify-content-center gap-3 flex-wrap">
-          <Button
-            variant="success"
-            href="/manuals/phone-preparation-manual-en.pdf"
-            download
-            className="border border-2 border-success"
-            style={{ borderWidth: "2px !important" }}
-          >
-            Download Manual (EN)
-          </Button>
-          <Button
-            variant="success"
-            href="/manuals/phone-preparation-manual-fr.pdf"
-            download
-            className="border border-2 border-success"
-            style={{ borderWidth: "2px !important" }}
-          >
-            Download Manual (FR)
-          </Button>
-        </div>
-        <hr className="my-4" />
       </div>
     </>
   );
