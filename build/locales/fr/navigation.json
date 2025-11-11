@@ -1,13 +1,12 @@
 {
-    "home": "Accueil",
-    "about": "À propos de nous",
-    "contact": "Contactez-nous",
-    "login": "Connexion",
-    "trade_in": "Échange",
-    "trade_history": "Historique des échanges",
-    "logout": "Déconnexion",
-    "view_profile": "Voir le profil",
-    "copyright": "© 2024 Evergreen Wireless | Tous droits réservés",
-    "terms_conditions": "Conditions générales"
-  }
-  
+  "home": "Accueil",
+  "about": "À propos de nous",
+  "contact": "Contactez-nous",
+  "login": "Connexion",
+  "trade_in": "Échange",
+  "trade_history": "Historique des échanges",
+  "logout": "Déconnexion",
+  "view_profile": "Voir le profil",
+  "copyright": "Evergreen Wireless | Tous droits réservés",
+  "terms_conditions": "Conditions générales"
+}
