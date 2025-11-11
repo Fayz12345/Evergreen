@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="py-3 bg-dark text-white">
+  <footer className="py-3 footer-bar text-white">
         <div className="container-xl ">
           <div className="row align-items-center">
             {/* Evergreen Wireless (Left-aligned) */}

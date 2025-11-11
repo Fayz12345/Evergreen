@@ -29,7 +29,7 @@ const Navigation = () => {
 
   return (
     <>
-      <section className="position-fixed top-0 start-0 w-100 bg-dark">
+      <section className="position-fixed top-0 start-0 w-100 header-bar">
         <nav
           className="navbar navbar-expand-lg main-nav py-3 awake"
           id="navbar"
@@ -43,7 +43,7 @@ const Navigation = () => {
                     ? t("brand_name") ?? "Evergreen Wireless"
                     : "Evergreen Wireless"
                 }
-                style={{ height: 45, width: "auto" }}
+                className="brand-logo"
               />
             </Link>
 

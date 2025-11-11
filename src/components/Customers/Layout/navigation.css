@@ -24,7 +24,7 @@
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-menu {
-    background-color: #343a40; /* Match header bg-dark */
+    background-color: #4a4f57; /* Match header tone */
     border: none;
 }
 
@@ -36,4 +36,13 @@
 .navbar-nav .nav-item.dropdown .dropdown-item:focus {
     background-color: #009800;
     color: #ffffff;
+}
+
+.header-bar {
+    background-color: #4a4f57 !important;
+}
+
+.brand-logo {
+    height: 60px;
+    width: auto;
 }
