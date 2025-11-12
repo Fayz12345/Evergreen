@@ -27,6 +27,12 @@ const Navigation = () => {
     setNewDevicesOpen(false);
   };
 
+  const activeLinkStyle = {
+    textDecoration: "underline !important",
+    color: "#00a651",
+    fontWeight: 500,
+  };
+
   return (
     <>
       <section className="position-fixed top-0 start-0 w-100 header-bar">
@@ -67,9 +73,7 @@ const Navigation = () => {
                     to="/"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("home")}
@@ -81,13 +85,7 @@ const Navigation = () => {
                     to="/about"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? {
-                            textDecoration: "underline  !important",
-                            colour: "green important",
-                            fontWeight: "normal",
-                          }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("about")}
@@ -99,9 +97,7 @@ const Navigation = () => {
                     to="/tradein"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("trade_in")}
@@ -114,9 +110,7 @@ const Navigation = () => {
                     to="/cpodevices"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("cpo_devices")}
@@ -171,9 +165,7 @@ const Navigation = () => {
                     to="/leasing"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("leasing")}
@@ -186,9 +178,7 @@ const Navigation = () => {
                     to="/contact"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("contact")}
@@ -212,13 +202,7 @@ const Navigation = () => {
                           to="/profile"
                           onClick={scrollToTop}
                           style={({ isActive }) =>
-                            isActive
-                              ? {
-                                  textDecoration: "underline  !important",
-                                  colour: "green important",
-                                  fontWeight: "normal",
-                                }
-                              : undefined
+                            isActive ? activeLinkStyle : undefined
                           }
                         >
                           {t("view_profile")}
@@ -230,13 +214,7 @@ const Navigation = () => {
                           to="/trade-history"
                           onClick={scrollToTop}
                           style={({ isActive }) =>
-                            isActive
-                              ? {
-                                  textDecoration: "underline  !important",
-                                  colour: "green important",
-                                  fontWeight: "normal",
-                                }
-                              : undefined
+                            isActive ? activeLinkStyle : undefined
                           }
                         >
                           {t("trade_history")}
