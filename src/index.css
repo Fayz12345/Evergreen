@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Manrope", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,5 +10,45 @@ h1,
 h2,
 h3,
 p {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Manrope", sans-serif;
+}
+
+.slider {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.slider-home {
+  min-height: 140px !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2.5rem !important;
+  text-align: center;
+  background: linear-gradient(135deg, #2b3a45 0%, #111922 100%);
+  color: #ffffff;
+}
+
+.slider-home h1 {
+  margin-bottom: 3rem !important;
+  color: #ffffff;
+}
+
+.slider-home .btn {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .slider {
+    min-height: 320px;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .slider-home {
+    min-height: 180px !important;
+    padding-top: 10rem !important;
+    padding-bottom: 10rem !important;
+  }
 }

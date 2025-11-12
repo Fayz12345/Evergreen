@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Layout/TradeinForm.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { FaHandshake } from "react-icons/fa";
+import { FaHandshake, FaShieldAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
@@ -17,6 +17,8 @@ const Leasing = () => {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
+
+  const benefits = t("benefits", { returnObjects: true }) || [];
 
   return (
     <>
@@ -39,7 +41,7 @@ const Leasing = () => {
         </Container>
       </section>
 
-      <section className="py-4 bg-light">
+      <section className="py-5 bg-light">
         <Container>
           <Row className="g-4">
             <Col md={6}>
@@ -64,7 +66,7 @@ const Leasing = () => {
         </Container>
       </section>
 
-      <section className="py-1">
+      <section className="py-5">
         <Container>
           <Row className="align-items-center">
             <Col lg={7}>
@@ -96,12 +98,12 @@ const Leasing = () => {
         </Container>
       </section>
 
-      <section className="py-5 bg-white">
-        <Row className="justify-content-center">
-          <Col lg={8} md={10}>
-            <Card className="border-0 shadow-sm h-100 text-center">
+      <section className="py-5 bg-white align-items-center">
+        <Row className="g-4 align-items-center">
+          <Col lg={7}>
+            <Card className="border-0 shadow-sm h-100">
               <Card.Body>
-                <div className="d-flex justify-content-center align-items-center mb-3">
+                <div className="d-flex align-items-center mb-3">
                   <FaHandshake className="text-success fs-1 me-3" />
                   <h4 className="mb-0">{t("partnerTitle")}</h4>
                 </div>
@@ -117,3 +119,4 @@ const Leasing = () => {
 };
 
 export default Leasing;
+
