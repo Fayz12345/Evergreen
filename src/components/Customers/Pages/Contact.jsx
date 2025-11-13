@@ -56,73 +56,58 @@ const Contact = () => {
         </Container>
       </section>
       <div className="container-xl my-5">
-        <div className="row">
-          <div className="col-md-6">
-            <p>
-              {t("phone")}:{" "}
-              <a
-                href="tel:+16474061199"
-                className="text-success text-decoration-none"
-              >
-                +1(647)-406-1199
-              </a>
-              <br />
-              {t("email")}:{" "}
-              <a
-                href="mailto:support@evergreen-wireless.com"
-                className="text-success text-decoration-none"
-              >
-                support@evergreen-wireless.com
-              </a>
-              <br />
-              {t("address")}:{" "}
-              <a
-                href="https://www.google.com/maps/place/2889+Brighton+Rd,+Oakville,+ON+L6H+6C9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary text-decoration-none"
-              >
-                2889 Brighton Rd, Oakville, ON L6H 6C9
-              </a>
-            </p>
+        <div className="row g-4 align-items-stretch">
+          <div className="col-md-6 d-flex flex-column">
+            <div className="contact-intro mb-3">
+              <p className="mb-0">
+                {/* {t("phone")}:{" "}
+                <a
+                  href="tel:+16474061199"
+                  className="text-success text-decoration-none"
+                >
+                  +1(647)-406-1199
+                </a>
+                <br /> */}
+                {t("email")}:{" "}
+                <a
+                  href="mailto:support@evergreen-wireless.com"
+                  className="text-success text-decoration-none"
+                >
+                  support@evergreen-wireless.com
+                </a>
+                <br />
+                {t("address")}:{" "}
+                <a
+                  href="https://www.google.com/maps/place/2889+Brighton+Rd,+Oakville,+ON+L6H+6C9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary text-decoration-none"
+                >
+                  2889 Brighton Rd, Oakville, ON L6H 6C9
+                </a>
+              </p>
+            </div>
+            <div className="contact-map flex-grow-1 d-flex">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5786.706220015706!2d-79.68223182451993!3d43.51582876130582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b43a74210acc1%3A0x9fcd452e8cde4cac!2s2889%20Brighton%20Rd%2C%20Oakville%2C%20ON%20L6H%206C9!5e0!3m2!1sen!2sca!4v1731680954495!5m2!1sen!2sca"
+                width="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                aria-hidden="false"
+                tabIndex="0"
+                title="Our Location"
+                className="border rounded flex-fill"
+              ></iframe>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            {/* <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.35276478345!2d-79.68224382337517!3d43.51583596130373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3edefe8a3c01%3A0xa7c963bc43166a8!2sBridge%20Wireless%20Solutions%20Inc.!5e0!3m2!1sen!2sca!4v1730921588417!5m2!1sen!2sca" 
-                        width="100%"
-                        height="100%"
-                        frameBorder="1"
-                        style={{ border: 0 }}
-                        allowFullScreen=""
-                        aria-hidden="false"
-                        tabIndex="0"
-                        title="Our Location"
-                        className="border rounded"
-                    ></iframe> */}
-            {/* <Map
-                        center={{ lat: 43.515550, lng: -79.679270 }}
-                        zoom={12}
-                        places={data}
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?key="
-                        loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={{ height: `100%` }} />}
-                        mapElement={<div style={{ height: `100%` }} />}
-                    /> */}
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5786.706220015706!2d-79.68223182451993!3d43.51582876130582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b43a74210acc1%3A0x9fcd452e8cde4cac!2s2889%20Brighton%20Rd%2C%20Oakville%2C%20ON%20L6H%206C9!5e0!3m2!1sen!2sca!4v1731680954495!5m2!1sen!2sca"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              aria-hidden="false"
-              tabIndex="0"
-              title="Our Location"
-              className="border rounded"
-            ></iframe>
-          </div>
-          <div className="col-md-6 mb-4">
+          <div className="col-md-6 mb-4 d-flex flex-column">
+            <div className="contact-intro mb-3">
+              <p className="text-muted medium fw-semibold mb-0">
+                For warranty support, please include details including the
+                original purchase date, copy of your purchase invoice, and the
+                device IMEI (serial number) for faster service.
+              </p>
+            </div>
             <form ref={form} onSubmit={sendEmail}>
               <div className="form-group mb-3">
                 {/* <label>Name</label> */}

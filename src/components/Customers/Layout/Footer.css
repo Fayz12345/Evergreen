@@ -1,49 +1,52 @@
 /* Ensure the body takes full height */
-html, body {
-    height: 100%; /* Full height for the body and html */
-    margin: 0;
-    padding: 0;
+html,
+body {
+  height: 100%; /* Full height for the body and html */
+  margin: 0;
+  padding: 0;
 }
 
 /* Wrapper to contain the whole layout */
 .wrapper {
-    min-height: 100vh; /* Full height of the viewport */
-    display: flex;
-    flex-direction: column; /* Column layout for header, content, and footer */
+  min-height: 100vh; /* Full height of the viewport */
+  display: flex;
+  flex-direction: column; /* Column layout for header, content, and footer */
 }
 
 /* Content should grow to take available space */
 .content {
-    flex: 1;
+  flex: 1;
 }
 
 /* Footer styling */
 .footer {
-    background-color: #f8f9fa;
-    color: #000;
-    border-top: 1px solid #e0e0e0;
-    text-align: center;
-    padding: 1rem;
+  background-color: #f8f9fa;
+  color: #000;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 1rem;
 }
 
 /* Change hover color for nav-link */
 .footer-nav .nav-item .nav-link:hover {
-    color: #009800 !important; /* Replace with your desired hover color */
-    text-decoration: underline; /* Optional: Adds an underline on hover */
+  color: #009800 !important; /* Replace with your desired hover color */
+  text-decoration: underline; /* Optional: Adds an underline on hover */
 }
 
-
 /* Change color for active nav-link */
-.footer-nav .nav-item  .nav-link.active {
-    color: #009800 !important; /* Replace with your desired active color */
-    font-weight: bold; /* Optional: Makes the active link bold */
+.footer-nav .nav-item .nav-link.active {
+  color: #009800 !important; /* Replace with your desired active color */
+  font-weight: bold; /* Optional: Makes the active link bold */
 }
 
 /* Optional: Change hover background color */
-.footer-nav .nav-item  .nav-link:hover {
-    /* background-color: #f8f9fa !important; Replace with your desired background color */
-    /* border-radius: 5px; Adds rounded corners */
-    color: #009800 !important; /* Replace with your desired active color */
-    font-weight: bold; /* Optional: Makes the active link bold */
+.footer-nav .nav-item .nav-link:hover {
+  /* background-color: #f8f9fa !important; Replace with your desired background color */
+  /* border-radius: 5px; Adds rounded corners */
+  color: #009800 !important; /* Replace with your desired active color */
+  font-weight: bold; /* Optional: Makes the active link bold */
 }
 
+.footer-bar {
+  background-color: #4a4f57 !important;
+}

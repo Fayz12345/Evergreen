@@ -2,7 +2,7 @@ name: Deploy via SSM (Final)
 
 on:
   push:
-    branches: [ release ]
+    branches:
 
 jobs:
   deploy:

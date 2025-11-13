@@ -1,0 +1,37 @@
+{
+  "title": "Certified Pre-Owned Devices",
+  "heroDescription": "Evergreen Wireless redefines value in the Certified Pre-Owned (CPO) industry—delivering top-tier devices at competitive prices, all backed by a standard two-year warranty for peace of mind.",
+  "heroButton": "Explore CPO Solutions",
+  "valueHeading": "Why Evergreen CPO",
+  "valueLead": "Every Evergreen Wireless CPO device comes bundled with premium accessories at no extra cost, making it a complete out-of-the-box solution.",
+  "bundleTitle": "Included In Every Bundle",
+  "bundleItems": [
+    "Grade A Certified Pre-Owned device",
+    "Two-year device warranty",
+    "Protective case",
+    "Screen protector",
+    "Charging cable",
+    "Wall charger"
+  ],
+  "valueFooter": "Experience quality, reliability, and unbeatable value—only with Evergreen Wireless.",
+  "warrantyHeading": "Advance Exchange Warranty Support",
+  "warrantyDescription": "In the very unlikely event that your Evergreen Wireless CPO device requires repair during the warranty period, we will send you a replacement device of the same or better model. You then have 30 days to migrate your data and return the original unit—simple and worry-free.",
+  "warrantyCta": "Download Advance Exchange Process",
+  "warrantyLink": "/manuals/advance-exchange-process.pdf",
+  "refurbHeading": "Device Refurbishment Process",
+  "refurbDescription": "Evergreen Wireless utilizes certified Device Repair Technicians to replace defective parts and restore devices back to like-new condition through a multi-step process:",
+  "refurbSteps": [
+    "Inspection and testing",
+    "Secure data wiping",
+    "Component repair or replacement",
+    "Full cosmetic and functional restore",
+    "Retesting and quality assurance",
+    "Grading and final detailing"
+  ],
+  "refurbCta": "Download Refurbishment Process",
+  "refurbLink": "/manuals/device-refurbishment-process.pdf",
+  "gradingHeading": "Consistent Grading Standards",
+  "gradingDescription": "Evergreen Wireless uses industry-standard grading for all CPO devices, ensuring compliance, transparency, and a predictable user experience every time.",
+  "gradingCta": "Download CPO Grading Standards",
+  "gradingLink": "/manuals/cpo-grading-standards.pdf"
+}
