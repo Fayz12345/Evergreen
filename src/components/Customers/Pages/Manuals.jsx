@@ -28,21 +28,21 @@ const Manuals = () => {
         <div className="d-flex justify-content-center align-items-center gap-3 flex-wrap">
           <Button
             variant="success"
-            href="/manuals/phone-preparation-manual-en.pdf"
+            href="/manuals/Sky-65Pro-manual-en.pdf"
             download
             className="border border-2 border-success"
             style={{ borderWidth: "2px !important" }}
           >
-            Download Sky Devices Manual (EN)
+            Download Sky 65Pro Manual (EN)
           </Button>
           <Button
             variant="success"
-            href="/manuals/phone-preparation-manual-fr.pdf"
+            href="/manuals/Sky-65Pro-manual-fr.pdf"
             download
             className="border border-2 border-success"
             style={{ borderWidth: "2px !important" }}
           >
-            Download Sky Devices Manual (FR)
+            Download Sky 65Pro Manual (FR)
           </Button>
         </div>
       </div>
