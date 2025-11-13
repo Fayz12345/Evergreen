@@ -27,11 +27,17 @@ const Navigation = () => {
     setNewDevicesOpen(false);
   };
 
+  const activeLinkStyle = {
+    textDecoration: "underline !important",
+    color: "#00a651",
+    fontWeight: 500,
+  };
+
   return (
     <>
       <section className="position-fixed top-0 start-0 w-100 header-bar">
         <nav
-          className="navbar navbar-expand-lg main-nav py-3 awake"
+          className="navbar navbar-expand-lg main-nav py-2 awake"
           id="navbar"
         >
           <div className="container-xl">
@@ -67,9 +73,7 @@ const Navigation = () => {
                     to="/"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "bold", colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("home")}
@@ -81,13 +85,7 @@ const Navigation = () => {
                     to="/about"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? {
-                            textDecoration: "underline  !important",
-                            colour: "green important",
-                            fontWeight: "bold",
-                          }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("about")}
@@ -99,9 +97,7 @@ const Navigation = () => {
                     to="/tradein"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "bold", colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("trade_in")}
@@ -114,9 +110,7 @@ const Navigation = () => {
                     to="/cpodevices"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "bold", colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("cpo_devices")}
@@ -132,11 +126,14 @@ const Navigation = () => {
                 >
                   <button
                     type="button"
-                    className="nav-link dropdown-toggle text-white bg-transparent border-0"
+                    className="nav-link dropdown-toggle text-white bg-transparent border-0 d-flex align-items-center gap-1"
                     aria-expanded={newDevicesOpen}
                     onClick={() => setNewDevicesOpen((prev) => !prev)}
                   >
-                    {t("new_devices")}
+                    <span>{t("new_devices")}</span>
+                    <span className="dropdown-arrow">
+                      {newDevicesOpen ? "▴" : "▾"}
+                    </span>
                   </button>
                   <ul
                     className={`dropdown-menu ${newDevicesOpen ? "show" : ""}`}
@@ -168,9 +165,7 @@ const Navigation = () => {
                     to="/leasing"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "bold", colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("leasing")}
@@ -183,9 +178,7 @@ const Navigation = () => {
                     to="/contact"
                     onClick={scrollToTop}
                     style={({ isActive }) =>
-                      isActive
-                        ? { fontWeight: "bold", colour: "green important" }
-                        : undefined
+                      isActive ? activeLinkStyle : undefined
                     }
                   >
                     {t("contact")}
@@ -209,13 +202,7 @@ const Navigation = () => {
                           to="/profile"
                           onClick={scrollToTop}
                           style={({ isActive }) =>
-                            isActive
-                              ? {
-                                  textDecoration: "underline  !important",
-                                  colour: "green important",
-                                  fontWeight: "bold",
-                                }
-                              : undefined
+                            isActive ? activeLinkStyle : undefined
                           }
                         >
                           {t("view_profile")}
@@ -227,13 +214,7 @@ const Navigation = () => {
                           to="/trade-history"
                           onClick={scrollToTop}
                           style={({ isActive }) =>
-                            isActive
-                              ? {
-                                  textDecoration: "underline  !important",
-                                  colour: "green important",
-                                  fontWeight: "bold",
-                                }
-                              : undefined
+                            isActive ? activeLinkStyle : undefined
                           }
                         >
                           {t("trade_history")}

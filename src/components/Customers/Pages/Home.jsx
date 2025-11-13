@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="slider">
+      <section className="slider slider-home">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-9 col-md-12">
