@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Layout/TradeinForm.css";
-import { Container, Row, Col, Card, Button, ListGroup } from "react-bootstrap";
+import "./CPODevices.css";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
@@ -14,8 +15,8 @@ const CPODevices = () => {
   const refurbSteps = t("refurbSteps", { returnObjects: true }) || [];
 
   const fadeVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
   };
 
   return (
@@ -32,105 +33,118 @@ const CPODevices = () => {
                 <h1 className="animated fadeInUp mb-3 mt-5 text-white">
                   {t("title")}
                 </h1>
-                <p className="lead text-white-50">{t("heroDescription")}</p>
-                <Button
-                  variant="success"
-                  className="mt-3"
-                  onClick={() => navigate("/contact")}
-                >
-                  {t("heroButton")}
-                </Button>
+                <p className="lead text-white-50 mb-4">
+                  {t("heroDescription")}
+                </p>
               </motion.div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      <section className="py-5 bg-light">
+      <section className="cpo-section cpo-section--light">
         <Container>
-          <Row className="g-4 align-items-center">
-            <Col lg={6}>
-              <h3 className="text-success text-uppercase small mb-2">
-                {t("valueHeading")}
-              </h3>
-              <p className="lead">{t("valueLead")}</p>
-              <p className="text-muted">{t("valueFooter")}</p>
+          <Row className="gy-4 align-items-stretch">
+            <Col lg={5}>
+              <motion.div
+                className="cpo-value-card h-100"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeVariants}
+              >
+                <span className="cpo-eyebrow">{t("valueHeading")}</span>
+                <h3 className="mb-3">{t("valueLead")}</h3>
+                <p className="mb-0 text-muted">{t("valueFooter")}</p>
+              </motion.div>
             </Col>
-            <Col lg={6}>
-              <Card className="border-0 shadow-sm h-100">
-                <Card.Body>
-                  <h5 className="fw-semibold mb-3">{t("bundleTitle")}</h5>
-                  <ListGroup variant="flush">
+            <Col lg={7}>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100">
+                  <h5 className="mb-3">{t("bundleTitle")}</h5>
+                  <div className="cpo-pill-list">
                     {bundleItems.map((item, idx) => (
-                      <ListGroup.Item key={idx} className="border-0 ps-0">
-                        - {item}
-                      </ListGroup.Item>
+                      <span key={idx} className="cpo-pill">
+                        {item}
+                      </span>
                     ))}
-                  </ListGroup>
-                </Card.Body>
-              </Card>
+                  </div>
+                </div>
+              </motion.div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      <section className="py-5">
+      <section className="cpo-section">
         <Container>
-          <Row className="g-4">
-            <Col md={6}>
-              <Card className="border-0 shadow-sm h-100">
-                <Card.Body>
-                  <h4 className="mb-3 text-success">{t("warrantyHeading")}</h4>
+          <Row className="gy-4">
+            <Col lg={6}>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100 text-center">
+                  <span className="cpo-eyebrow text-success">
+                    {t("warrantyHeading")}
+                  </span>
                   <p className="mb-4">{t("warrantyDescription")}</p>
-                  <Button
-                    variant="outline-success"
-                    href={t("warrantyLink")}
-                    download
-                  >
+                  <Button variant="success" href={t("warrantyLink")} download>
                     {t("warrantyCta")}
                   </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="border-0 shadow-sm h-100">
-                <Card.Body>
-                  <h4 className="mb-3 text-success">{t("refurbHeading")}</h4>
-                  <p>{t("refurbDescription")}</p>
-                  <ol className="ps-3">
-                    {refurbSteps.map((step, idx) => (
-                      <li key={idx} className="mb-2">
-                        {step}
-                      </li>
-                    ))}
-                  </ol>
-                  <Button
-                    variant="outline-success"
-                    href={t("refurbLink")}
-                    download
-                  >
-                    {t("refurbCta")}
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      <section className="py-5 bg-light">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={8}>
-              <Card className="border-0 shadow-sm text-center">
-                <Card.Body>
-                  <h4 className="mb-3 text-success">{t("gradingHeading")}</h4>
+                </div>
+              </motion.div>
+              <br></br>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100 text-center">
+                  <span className="cpo-eyebrow text-success">
+                    {t("gradingHeading")}
+                  </span>
                   <p className="mb-4">{t("gradingDescription")}</p>
                   <Button variant="success" href={t("gradingLink")} download>
                     {t("gradingCta")}
                   </Button>
-                </Card.Body>
-              </Card>
+                </div>
+              </motion.div>
+            </Col>
+
+            <Col lg={6}>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100">
+                  <span className="cpo-eyebrow text-success">
+                    {t("refurbHeading")}
+                  </span>
+                  <p className="mb-4">{t("refurbDescription")}</p>
+                  <ol className="cpo-stepper list-unstyled mb-4">
+                    {refurbSteps.map((step, idx) => (
+                      <li key={idx}>
+                        <span className="cpo-step-index">{idx + 1}</span>
+                        <p className="mb-0">{step}</p>
+                      </li>
+                    ))}
+                  </ol>
+                  <Button variant="success" href={t("refurbLink")} download>
+                    {t("refurbCta")}
+                  </Button>
+                </div>
+              </motion.div>
             </Col>
           </Row>
         </Container>
