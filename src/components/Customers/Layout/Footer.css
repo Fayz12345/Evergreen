@@ -50,3 +50,8 @@ body {
 .footer-bar {
   background-color: #4a4f57 !important;
 }
+
+.footer-copy {
+  white-space: nowrap;
+  display: inline-block;
+}
