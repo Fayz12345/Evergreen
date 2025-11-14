@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="row align-items-center">
             {/* Evergreen Wireless (Left-aligned) */}
             <div className="col-md-4">
-              <span className="px-2 text-decoration-none fw-bold text-success">
+              <span className="px-2 text-decoration-none fw-bold text-success footer-copy">
                 &copy; {currentYear} {t("copyright")}
               </span>
             </div>
