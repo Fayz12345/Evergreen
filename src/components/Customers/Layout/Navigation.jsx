@@ -185,45 +185,6 @@ const Navigation = () => {
                   </NavLink>
                 </li>
 
-                <li className="nav-item dropdown">
-                  <div className="dropdown d-inline">
-                    <a
-                      className="nav-link dropdown-toggle text-success"
-                      href="/profile"
-                      id="dropdown05"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    ></a>
-                    <ul className="dropdown-menu" aria-labelledby="dropdown05">
-                      <li>
-                        <NavLink
-                          className="dropdown-item"
-                          to="/profile"
-                          onClick={scrollToTop}
-                          style={({ isActive }) =>
-                            isActive ? activeLinkStyle : undefined
-                          }
-                        >
-                          {t("view_profile")}
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          className="dropdown-item"
-                          to="/trade-history"
-                          onClick={scrollToTop}
-                          style={({ isActive }) =>
-                            isActive ? activeLinkStyle : undefined
-                          }
-                        >
-                          {t("trade_history")}
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-
                 <li className="nav-item d-flex align-items-center">
                   {/* Language Selector */}
                   <select

@@ -1,0 +1,37 @@
+{
+  "title": "Appareils certifiés remis à neuf",
+  "heroDescription": "Evergreen Wireless redéfinit la valeur dans l'industrie des appareils certifiés remis à neuf en offrant des appareils haut de gamme à des prix concurrentiels, tous assortis d'une garantie standard de deux ans pour une tranquillité d'esprit totale.",
+  "heroButton": "Découvrir les solutions CPO",
+  "valueHeading": "Pourquoi choisir Evergreen CPO",
+  "valueLead": "Chaque appareil CPO Evergreen Wireless est fourni avec des accessoires haut de gamme sans frais supplémentaires, pour une solution complète prête à l'emploi.",
+  "bundleTitle": "Inclus dans chaque ensemble",
+  "bundleItems": [
+    "Appareil certifié remis à neuf de grade A",
+    "Garantie de deux ans sur l'appareil",
+    "Coque de protection",
+    "Protecteur d'écran",
+    "Câble de recharge",
+    "Bloc d'alimentation"
+  ],
+  "valueFooter": "Découvrez la qualité, la fiabilité et une valeur imbattable - uniquement chez Evergreen Wireless.",
+  "warrantyHeading": "Assistance garantie par échange avancé",
+  "warrantyDescription": "Dans le cas peu probable où votre appareil CPO Evergreen Wireless exigerait une réparation pendant la période de garantie, nous vous enverrons un appareil de remplacement identique ou supérieur. Vous disposez ensuite de 30 jours pour migrer vos données et retourner l'unité originale - simple et sans souci.",
+  "warrantyCta": "Télécharger le processus d'échange avancé",
+  "warrantyLink": "/manuals/advance-exchange-process.pdf",
+  "refurbHeading": "Processus de remise à neuf des appareils",
+  "refurbDescription": "Evergreen Wireless fait appel à des techniciens certifiés en réparation d'appareils pour remplacer les pièces défectueuses et restaurer les appareils dans un état quasi neuf grâce à un processus en plusieurs étapes :",
+  "refurbSteps": [
+    "Inspection et tests",
+    "Suppression sécurisée des données",
+    "Réparation ou remplacement des composants",
+    "Restauration complète esthétique et fonctionnelle",
+    "Nouvelle série de tests et assurance qualité",
+    "Classification et finition finales"
+  ],
+  "refurbCta": "Télécharger le processus de remise à neuf",
+  "refurbLink": "/manuals/device-refurbishment-process.pdf",
+  "gradingHeading": "Normes de classification uniformes",
+  "gradingDescription": "Evergreen Wireless applique des normes de classification reconnues dans l'industrie pour tous les appareils CPO, garantissant conformité, transparence et expérience utilisateur prévisible.",
+  "gradingCta": "Télécharger les normes de classification CPO",
+  "gradingLink": "/manuals/cpo-grading-standards.pdf"
+}

@@ -48,3 +48,12 @@
 .dropdown-arrow {
   font-size: 0.8rem;
 }
+
+/* Prevent long translated labels from breaking onto multiple lines on wide screens */
+@media (min-width: 992px) {
+  .navbar-nav .nav-link,
+  .navbar-nav .dropdown-toggle,
+  .navbar-nav .dropdown-item {
+    white-space: nowrap;
+  }
+}
