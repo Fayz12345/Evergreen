@@ -4,8 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Tabs, Tab } from "react-bootstrap";
 import { motion } from "framer-motion";
-import useRecaptcha from "../Captcha";
-import ReCAPTCHA from "react-google-recaptcha";
+// import useRecaptcha from "../Captcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 import { useTranslation } from "react-i18next"; // Import i18n hook
 import "../Admin/Layout/trade.css";
@@ -14,7 +14,7 @@ const AddTrade = () => {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
+  // const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
 
   const [batchErrors, setBatchErrors] = useState({});
 
@@ -66,7 +66,7 @@ const AddTrade = () => {
     if (!username) errors.username = "Company name is required.";
     if (!email) errors.email = "Email is required.";
     if (!batchFile) errors.file = "CSV file is required.";
-    if (!capchaToken) errors.captcha = "Captcha is required.";
+    // if (!capchaToken) errors.captcha = "Captcha is required.";
 
     setBatchErrors(errors);
 
@@ -250,7 +250,7 @@ const AddTrade = () => {
                       </form>
                     </div>
 
-                    <div className="text-center">
+                    {/* <div className="text-center">
                       <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.REACT_APP_CAPTCHA_SITE_KEY}
@@ -269,7 +269,7 @@ const AddTrade = () => {
                           {batchErrors.captcha}
                         </div>
                       )}
-                    </div>
+                    </div> */}
 
                     <Button
                       variant="success"

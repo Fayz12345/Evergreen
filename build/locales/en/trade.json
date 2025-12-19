@@ -51,6 +51,13 @@
           "title": "Broken Electronic Parts and/or Devices",
           "description": "Devices that are non-functioning and are comprised of broken parts, are offered to companies that acquire such products for alternative uses. Devices that are not fit to be sold as above or for parts, are only processed by a government certified e-waste company for proper disposal and/or recycling."
         }
+      }
+    },
+    "modalTitle": "Prepare Your Phone for Trade-In",
+    "steps": {
+      "step1": {
+        "title": "Back up",
+        "description": "Back up contacts, emails, photos, and other personal data, as the phone won't be returned after trade-in."
       },
       "buttonText": "Download Device Recycling Process Overview"
     },

@@ -1,0 +1,112 @@
+.cpo-section {
+  padding: 3rem 0;
+}
+
+.cpo-section--light {
+  background: #f6f9fc;
+}
+
+.cpo-value-card {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  padding: 2.5rem;
+  background: #fff;
+  box-shadow: 0 35px 60px -30px rgba(15, 23, 42, 0.35);
+}
+
+.cpo-panel {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: none;
+  padding: 2rem;
+}
+
+.cpo-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0f8a4b;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.cpo-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cpo-pill {
+  background: #e9f7ef;
+  color: #0f5f33;
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.cpo-stepper {
+  margin: 0;
+  padding: 0;
+}
+
+.cpo-stepper li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 0.9rem;
+}
+
+.cpo-step-index {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: #d1fae5;
+  color: #036b39;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(3, 107, 57, 0.15);
+}
+
+.cpo-stepper p {
+  flex: 1;
+  color: #475467;
+}
+
+@media (max-width: 991.98px) {
+  .cpo-section {
+    padding: 2.5rem 0;
+  }
+
+  .cpo-value-card,
+  .cpo-panel {
+    border-radius: 22px;
+  }
+
+  .cpo-value-card {
+    padding: 2rem;
+  }
+  .cpo-panel {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cpo-section {
+    padding: 2rem 0;
+  }
+
+  .cpo-value-card {
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
+
+  .cpo-panel {
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
+}

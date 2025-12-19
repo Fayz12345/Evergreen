@@ -132,7 +132,14 @@ const Contact = () => {
               className="border rounded"
             ></iframe>
           </div>
-          <div className="col-md-6 mb-4">
+          <div className="col-md-6 mb-4 d-flex flex-column">
+            <div className="contact-intro mb-3">
+              <p className="text-muted medium fw-semibold mb-0">
+                For warranty support, please include details including the
+                original purchase date, copy of your purchase invoice, and the
+                device IMEI (serial number) for faster service.
+              </p>
+            </div>
             <form ref={form} onSubmit={sendEmail}>
               <div className="form-group mb-3">
                 {/* <label>Name</label> */}
