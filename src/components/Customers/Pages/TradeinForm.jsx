@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Layout/TradeinForm.css'; // Ensure custom CSS for additional styling
 import { Container, Row, Col, Card, Modal, Button } from 'react-bootstrap';
-import { FaUpload, FaMemory, FaBatteryFull, FaPowerOff, FaUserAltSlash, FaLock } from 'react-icons/fa';
+import { FaUpload, FaMemory, FaBatteryFull, FaPowerOff, FaUserAltSlash, FaLock, FaFilePdf, FaDownload, FaShieldAlt, FaRecycle } from 'react-icons/fa';
 
 
 import { useTranslation } from 'react-i18next'; // Import i18n hook
@@ -118,7 +118,7 @@ const TradeinForm = () => {
 
         <p>
         <strong>{t('tradeinForm.whyTradeIn.reasons.step1.title')} :</strong>{t('tradeinForm.whyTradeIn.reasons.step1.description')}
-         
+
         </p>
         <br />
         <p>
@@ -128,6 +128,88 @@ const TradeinForm = () => {
         <strong>{t('tradeinForm.whyTradeIn.reasons.step3.title')} :</strong>{t('tradeinForm.whyTradeIn.reasons.step3.description')}
         </p>
     </div>
+  </div>
+
+  {/* Buy-Back Program PDF Download */}
+  <div className="text-center my-5 p-4 bg-light rounded">
+    <FaFilePdf size={50} className="text-success mb-3" />
+    <h4 className="fw-bold mb-3">{t('tradeinForm.buyBackDownload.title')}</h4>
+    <p>{t('tradeinForm.buyBackDownload.description')}</p>
+    <a
+      href="/downloads/Evergreen Wireless - Device Buy Back Program.pdf"
+      className="btn btn-success"
+      download
+    >
+      <FaDownload className="me-2" />
+      {t('tradeinForm.buyBackDownload.buttonText')}
+    </a>
+  </div>
+
+  {/* Data Security Section */}
+  <div className="my-5">
+    <Row className="align-items-center">
+      <Col md={6}>
+        <FaShieldAlt size={60} className="text-success mb-3" />
+        <h3 className="fw-bold mb-3">{t('tradeinForm.dataSecurity.title')}</h3>
+        <p>{t('tradeinForm.dataSecurity.description')}</p>
+        <a
+          href="/downloads/Evergreen Wireless - Data Wipe Process.pdf"
+          className="btn btn-outline-success"
+          download
+        >
+          <FaDownload className="me-2" />
+          {t('tradeinForm.dataSecurity.buttonText')}
+        </a>
+      </Col>
+      <Col md={6} className="mt-4 mt-md-0">
+        <img
+          src="/images/data-security.jpg"
+          alt="Data Security"
+          className="img-fluid rounded shadow-sm"
+          onError={(e) => {e.target.style.display='none'}}
+        />
+      </Col>
+    </Row>
+  </div>
+
+  {/* E-Waste Reduction Section */}
+  <div className="my-5 p-5 bg-light rounded">
+    <Row>
+      <Col md={12}>
+        <div className="text-center mb-4">
+          <FaRecycle size={60} className="text-success mb-3" />
+          <h3 className="fw-bold">{t('tradeinForm.eWaste.title')}</h3>
+          <p className="mt-3">{t('tradeinForm.eWaste.description')}</p>
+        </div>
+      </Col>
+    </Row>
+    <Row>
+      <Col md={12}>
+        <h5 className="fw-bold mt-4 mb-3">{t('tradeinForm.eWaste.processing.title')}</h5>
+
+        <h6 className="fw-bold mt-3">{t('tradeinForm.eWaste.processing.batteries.title')}</h6>
+        <p>{t('tradeinForm.eWaste.processing.batteries.description')}</p>
+        <ul>
+          <li>{t('tradeinForm.eWaste.processing.batteries.point1')}</li>
+          <li>{t('tradeinForm.eWaste.processing.batteries.point2')}</li>
+        </ul>
+        <p className="fst-italic">{t('tradeinForm.eWaste.processing.batteries.note')}</p>
+
+        <h6 className="fw-bold mt-4">{t('tradeinForm.eWaste.processing.parts.title')}</h6>
+        <p>{t('tradeinForm.eWaste.processing.parts.description')}</p>
+
+        <div className="text-center mt-4">
+          <a
+            href="/downloads/Evergreen Wireless - Device Recycling.pdf"
+            className="btn btn-success"
+            download
+          >
+            <FaDownload className="me-2" />
+            {t('tradeinForm.eWaste.buttonText')}
+          </a>
+        </div>
+      </Col>
+    </Row>
   </div>
 
 </div>

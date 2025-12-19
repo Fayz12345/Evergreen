@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "Nouveaux appareils",
+    "subtitle": "Appareils de qualité supérieure à une valeur exceptionnelle"
+  },
+  "intro": {
+    "paragraph": "Evergreen Wireless s'associe à des partenaires fabricants d'appareils d'origine (ODM) sélectionnés pour offrir aux Canadiens des appareils de qualité supérieure d'entrée et de milieu de gamme."
+  },
+  "deviceTypes": {
+    "title": "Notre portefeuille de nouveaux appareils comprend:",
+    "phones": "Téléphones",
+    "tablets": "Tablettes",
+    "broadband": "Internet sans fil, IoT, appareils portables et trackers",
+    "iot": "Maison intelligente et appareils de streaming"
+  },
+  "bundles": {
+    "title": "Forfaits prépayés connectés",
+    "description": "En plus des appareils en gros, Evergreen Wireless offre également des solutions prêtes pour la vente au détail. Nos forfaits prépayés connectés offrent simplicité et valeur:",
+    "instantConnect": {
+      "title": "Forfait prépayé INSTANT-CONNECT",
+      "description": "Téléphone intelligent LTE SKY avec une carte SIM Koodo pré-activée – Prêt instantanément avec un plan prépayé complet pour 30 jours."
+    },
+    "easyConnect": {
+      "title": "Forfait prépayé EASY-CONNECT",
+      "description": "Téléphone intelligent LTE SKY avec une carte SIM prépayée Koodo – Tout ce dont vous avez besoin pour vous connecter."
+    },
+    "learnMore": "En savoir plus"
+  },
+  "cta": {
+    "title": "Prêt à commencer?",
+    "description": "Contactez-nous pour en savoir plus sur nos offres de nouveaux appareils et forfaits prépayés.",
+    "buttonText": "Contactez-nous"
+  }
+}

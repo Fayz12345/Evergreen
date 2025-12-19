@@ -56,6 +56,16 @@ const Contact = () => {
         </Container>
       </section>
       <div className="container-xl my-5">
+        {/* Warranty Support Note */}
+        <div className="row mb-4">
+          <div className="col-12">
+            <div className="alert alert-info border-start border-primary border-4">
+              <h5 className="fw-bold mb-2">{t("warrantySupport.title")}</h5>
+              <p className="mb-0">{t("warrantySupport.description")}</p>
+            </div>
+          </div>
+        </div>
+
         <div className="row">
           <div className="col-md-6">
             <p>
