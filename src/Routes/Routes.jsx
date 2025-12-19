@@ -39,6 +39,10 @@ export default function AppRoutes() {
           path="tradein/competitive-pricing"
           element={<CompetitivePricing />}
         />
+        <Route path="cpodevices" element={<CPODevices />} />
+        <Route path="newdevices" element={<NewDevices />} />
+        <Route path="manuals" element={<Manuals />} />
+        <Route path="leasing" element={<Leasing />} />
         <Route index element={<Home />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />

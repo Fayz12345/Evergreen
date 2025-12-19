@@ -1,8 +1,8 @@
-import React from 'react';
-import './Footer.css'; // Ensure this CSS file exists
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import "./Footer.css"; // Ensure this CSS file exists
+import { NavLink } from "react-router-dom";
 
-import { useTranslation } from 'react-i18next'; // Import i18n hook
+import { useTranslation } from "react-i18next"; // Import i18n hook
 const Footer = () => {
     const { t } = useTranslation('navigation'); // Load the 'navigation' namespace
     const currentYear = new Date().getFullYear();
@@ -73,6 +73,7 @@ const Footer = () => {
                     </li>
                 </ul>
             </div>
+          </div>
         </div>
     </div>
 </footer>
