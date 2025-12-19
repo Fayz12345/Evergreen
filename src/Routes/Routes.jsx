@@ -13,7 +13,7 @@ import AuthLayout from "../components/Customers/Layout/AuthLayout";
 import PrivacyPolicy from "../PrivacyPolicy";
 import CookiePolicy from "../CookiePolicy";
 import AddTrade from "../components/Trade/AddTrade";
-import CompetitivePricing from "../components/Customers/Pages/CompetitivePricing;";
+import CompetitivePricing from "../components/Customers/Pages/CompetitivePricing";
 import CpoDevices from "../components/Customers/Pages/CpoDevices";
 import NewDevices from "../components/Customers/Pages/NewDevices";
 import Leasing from "../components/Customers/Pages/Leasing";
