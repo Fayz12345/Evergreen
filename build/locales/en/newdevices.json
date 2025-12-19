@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "New Devices",
+    "subtitle": "Premium quality devices at exceptional value"
+  },
+  "intro": {
+    "paragraph": "Evergreen Wireless partners with select Original Device Manufacturers (ODM) partners to bring Canadians premium quality entry and mid-range level devices."
+  },
+  "deviceTypes": {
+    "title": "Our Portfolio of New Devices Includes:",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "broadband": "Wireless Broadband, IoT, Wearables, and Trackers",
+    "iot": "Smart Home & Streaming Devices"
+  },
+  "bundles": {
+    "title": "Connected Prepaid Bundles",
+    "description": "In addition to wholesale devices, Evergreen Wireless also provides retail-ready solutions. Our Connected Prepaid Bundles offer simplicity and value:",
+    "instantConnect": {
+      "title": "INSTANT-CONNECT Prepaid Bundle",
+      "description": "LTE SKY Smartphone with a pre-activated Koodo SIM Card – Instantly ready to go with a full prepaid plan for 30 days."
+    },
+    "easyConnect": {
+      "title": "EASY-CONNECT Prepaid Bundle",
+      "description": "LTE SKY Smartphone with a Koodo Prepaid SIM Card – Everything you need to get connected."
+    },
+    "learnMore": "Learn More"
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "description": "Contact us to learn more about our new device offerings and prepaid bundles.",
+    "buttonText": "Contact Us"
+  }
+}

@@ -3,27 +3,56 @@
   "description": "At Evergreen Wireless, we believe that your mobile device should be more than just a phone. It should be a tool that enhances your life and helps you stay connected with the people and things that matter most. That’s why we offer the latest smartphones and accessories at competitive prices. Shop now and take your mobile experience to the next level.",
   "buttonText": "Get Started",
   "tradeinForm": {
-    "sliderTitle": "Trade In with Evergreen Wireless",
-    "leadParagraph1": "At Evergreen Wireless, we believe that your mobile device should be more than just a phone. It should be a tool that enhances your life and helps you stay connected with the people and things that matter most. That’s why we offer the latest smartphones and accessories at competitive prices. Shop now and take your mobile experience to the next level. With our Trade-In Program, you can earn up to $800 in credit by trading in your old phone, tablet, or watch. It’s our way of helping you get the device you want – for less.",
-    "leadParagraph2": "Ready to upgrade and save? Trade in your device today and make the most of our exclusive offer!",
+    "sliderTitle": "Evergreen Wireless Buy-Back Program",
+    "leadParagraph1": "The Evergreen Wireless Buy-Back program ensures that you maximize your mobile device investment while minimizing the effect on our environment. Our simple 3-step process allows you to quickly get a credit for your previously used devices, regardless of their condition, and receive maximum trade-in market value for them.",
+    "leadParagraph2": "Ready to get a quote? Use the tool below or send us an email with the details of your devices.",
     "checkPriceButton": "Check Price",
     "preparePhoneButton": "Prepare Your Phone",
     "howItWorks": {
       "title": "How It Works:",
       "steps": {
         "step1": {
-          "title": "Buy or Upgrade",
-          "description": "When you purchase a new device or upgrade online, you’re eligible to trade in an old device."
+          "title": "STEP 1",
+          "description": "Let us know what product you have by using the tool below, or for several devices send us an email with the details, and you will receive the buy-back quote."
         },
         "step2": {
-          "title": "Send in Your Old Device",
-          "description": "Simply follow the instructions to ship your old device for free."
+          "title": "STEP 2",
+          "description": "Ship your devices to us. Note: Account ID's and Device Management Software (MDM) must be removed or disabled."
         },
         "step3": {
-          "title": "Get Credit on Your Account",
-          "description": "Once approved, a credit will be applied directly to your bill – no waiting for checks or extra steps."
+          "title": "STEP 3",
+          "description": "Get your trade-in device credit!"
         }
       }
+    },
+    "buyBackDownload": {
+      "title": "Device Buy-Back Program Overview",
+      "description": "Download our comprehensive guide to learn more about our buy-back program.",
+      "buttonText": "Download Buy-Back Program Overview"
+    },
+    "dataSecurity": {
+      "title": "Your Data is Safe With Us",
+      "description": "Rest assured, any data on your returned devices is safe with us. Using government-grade tools and processes, Evergreen Wireless adheres to the strictest industry standards for permanently removing data from previously used devices. A detailed report, including all testing results and data erasure confirmation is issued for each individual device, including a final certificate of compliance.",
+      "buttonText": "Download Data Wipe Process Overview"
+    },
+    "eWaste": {
+      "title": "Reducing E-Waste",
+      "description": "When a device reaches the processing stage, our certified recycling protocols ensure it's handled responsibly and in accordance with strict environmental standards. Our priority is to always bring a non-functioning device back to life by making reasonable repairs to it and returning it to an active device pool. When a reasonable repair is not feasible, or the device is simply unrepairable, we remove all good functioning parts from it and utilize them to repair other devices, thus keeping authentic OEM parts in the device and avoiding the need to buy additional replacement parts.",
+      "processing": {
+        "title": "Processing E-Waste",
+        "batteries": {
+          "title": "Batteries",
+          "description": "Swollen or unusable batteries that were removed from a device are susceptible to combustion and/or leaking. The following precautions are taken to minimize any danger or toxins when they are processed:",
+          "point1": "The electrical contacts of the battery are covered to ensure they do not short-circuit the battery if they come in contact with another object.",
+          "point2": "The batteries are stored in a fire-resistant bag in a cool place.",
+          "note": "Our batteries are only processed by a government certified e-waste company for proper disposal."
+        },
+        "parts": {
+          "title": "Broken Electronic Parts and/or Devices",
+          "description": "Devices that are non-functioning and are comprised of broken parts, are offered to companies that acquire such products for alternative uses. Devices that are not fit to be sold as above or for parts, are only processed by a government certified e-waste company for proper disposal and/or recycling."
+        }
+      },
+      "buttonText": "Download Device Recycling Process Overview"
     },
     "whyTradeIn": {
       "title": "Why Trade In?",
