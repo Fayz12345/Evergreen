@@ -1,39 +1,40 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../Layout/TradeinForm.css";
+import "./CPODevices.css";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import { FaShieldAlt, FaBox, FaCertificate, FaTools, FaDownload } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const CpoDevices = () => {
+const CPODevices = () => {
   const { t } = useTranslation("cpo");
+  const navigate = useNavigate();
+
+  const bundleItems = t("bundleItems", { returnObjects: true }) || [];
+  const refurbSteps = t("refurbSteps", { returnObjects: true }) || [];
 
   const fadeVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
   };
-
-  const bundleIncludes = [
-    { icon: <FaCertificate size={30} />, text: t("bundle.item1") },
-    { icon: <FaShieldAlt size={30} />, text: t("bundle.item2") },
-    { icon: <FaBox size={30} />, text: t("bundle.item3") },
-    { icon: <FaBox size={30} />, text: t("bundle.item4") },
-    { icon: <FaBox size={30} />, text: t("bundle.item5") },
-    { icon: <FaBox size={30} />, text: t("bundle.item6") },
-  ];
 
   return (
     <>
-      {/* Hero Section */}
       <section className="slider text-white bg-dark py-5 mt-5">
         <Container>
           <Row className="justify-content-center text-center mt-5">
             <Col lg={9} md={12}>
-              <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeVariants}
+              >
                 <h1 className="animated fadeInUp mb-3 mt-5 text-white">
-                  {t("hero.title")}
+                  {t("title")}
                 </h1>
-                <p className="lead text-white mb-4">
-                  {t("hero.subtitle")}
+                <p className="lead text-white-50 mb-4">
+                  {t("heroDescription")}
                 </p>
               </motion.div>
             </Col>
@@ -41,107 +42,115 @@ const CpoDevices = () => {
         </Container>
       </section>
 
-      {/* Main Content */}
-      <Container className="my-5">
-        {/* Intro Section */}
-        <Row className="justify-content-center mb-5">
-          <Col lg={10}>
-            <p className="lead text-center">{t("intro.paragraph2")}</p>
-          </Col>
-        </Row>
-
-        {/* Bundle Includes */}
-        <section className="bg-light py-5 px-4 rounded mb-5">
-          <h3 className="text-center fw-bold mb-4">{t("bundle.title")}</h3>
-          <Row className="g-4">
-            {bundleIncludes.map((item, index) => (
-              <Col key={index} md={6} lg={4}>
-                <div className="d-flex align-items-center">
-                  <div className="text-success me-3">{item.icon}</div>
-                  <p className="mb-0">{item.text}</p>
+      <section className="cpo-section cpo-section--light">
+        <Container>
+          <Row className="gy-4 align-items-stretch">
+            <Col lg={5}>
+              <motion.div
+                className="cpo-value-card h-100"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeVariants}
+              >
+                <span className="cpo-eyebrow">{t("valueHeading")}</span>
+                <h3 className="mb-3">{t("valueLead")}</h3>
+                <p className="mb-0 text-muted">{t("valueFooter")}</p>
+              </motion.div>
+            </Col>
+            <Col lg={7}>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100">
+                  <h5 className="mb-3">{t("bundleTitle")}</h5>
+                  <div className="cpo-pill-list">
+                    {bundleItems.map((item, idx) => (
+                      <span key={idx} className="cpo-pill">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </Col>
-            ))}
-          </Row>
-        </section>
-
-        {/* Advance Exchange Section */}
-        <Row className="mb-5 align-items-center">
-          <Col md={6}>
-            <FaShieldAlt size={60} className="text-success mb-3" />
-            <h3 className="fw-bold mb-3">{t("advanceExchange.title")}</h3>
-            <p>{t("advanceExchange.description")}</p>
-            <a
-              href="/downloads/Evergreen Wireless - Advance Exchnge Process.pdf"
-              className="btn btn-success"
-              download
-            >
-              <FaDownload className="me-2" />
-              {t("advanceExchange.buttonText")}
-            </a>
-          </Col>
-          <Col md={6} className="mt-4 mt-md-0">
-            <img
-              src="/images/warranty-support.jpg"
-              alt="Advance Exchange"
-              className="img-fluid rounded shadow-sm"
-              onError={(e) => {e.target.style.display='none'}}
-            />
-          </Col>
-        </Row>
-
-        {/* Refurbishment Process Section */}
-        <section className="bg-light py-5 px-4 rounded mb-5">
-          <Row>
-            <Col md={6}>
-              <FaTools size={60} className="text-success mb-3" />
-              <h3 className="fw-bold mb-3">{t("refurbishment.title")}</h3>
-              <p>{t("refurbishment.description")}</p>
-              <ul>
-                <li>{t("refurbishment.step1")}</li>
-                <li>{t("refurbishment.step2")}</li>
-                <li>{t("refurbishment.step3")}</li>
-                <li>{t("refurbishment.step4")}</li>
-                <li>{t("refurbishment.step5")}</li>
-                <li>{t("refurbishment.step6")}</li>
-              </ul>
-            </Col>
-            <Col md={6} className="d-flex align-items-center justify-content-center">
-              <a
-                href="/downloads/Evergreen Wireless - Device Refurbishment Process.pdf"
-                className="btn btn-success btn-lg"
-                download
-              >
-                <FaDownload className="me-2" />
-                {t("refurbishment.buttonText")}
-              </a>
+              </motion.div>
             </Col>
           </Row>
-        </section>
+        </Container>
+      </section>
 
-        {/* Grading Standards Section */}
-        <Row className="mb-5">
-          <Col md={12}>
-            <div className="text-center mb-4">
-              <FaCertificate size={60} className="text-success mb-3" />
-              <h3 className="fw-bold">{t("grading.title")}</h3>
-            </div>
-            <p className="text-center">{t("grading.description")}</p>
-            <div className="text-center mt-4">
-              <a
-                href="/downloads/Evergreen Wireless - CPO Grading Standards.pdf"
-                className="btn btn-success btn-lg"
-                download
+      <section className="cpo-section">
+        <Container>
+          <Row className="gy-4">
+            <Col lg={6}>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeVariants}
               >
-                <FaDownload className="me-2" />
-                {t("grading.buttonText")}
-              </a>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+                <div className="cpo-panel h-100 text-center">
+                  <span className="cpo-eyebrow text-success">
+                    {t("warrantyHeading")}
+                  </span>
+                  <p className="mb-4">{t("warrantyDescription")}</p>
+                  <Button variant="success" href={t("warrantyLink")} download>
+                    {t("warrantyCta")}
+                  </Button>
+                </div>
+              </motion.div>
+              <br></br>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100 text-center">
+                  <span className="cpo-eyebrow text-success">
+                    {t("gradingHeading")}
+                  </span>
+                  <p className="mb-4">{t("gradingDescription")}</p>
+                  <Button variant="success" href={t("gradingLink")} download>
+                    {t("gradingCta")}
+                  </Button>
+                </div>
+              </motion.div>
+            </Col>
+
+            <Col lg={6}>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeVariants}
+              >
+                <div className="cpo-panel h-100">
+                  <span className="cpo-eyebrow text-success">
+                    {t("refurbHeading")}
+                  </span>
+                  <p className="mb-4">{t("refurbDescription")}</p>
+                  <ol className="cpo-stepper list-unstyled mb-4">
+                    {refurbSteps.map((step, idx) => (
+                      <li key={idx}>
+                        <span className="cpo-step-index">{idx + 1}</span>
+                        <p className="mb-0">{step}</p>
+                      </li>
+                    ))}
+                  </ol>
+                  <Button variant="success" href={t("refurbLink")} download>
+                    {t("refurbCta")}
+                  </Button>
+                </div>
+              </motion.div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </>
   );
 };
 
-export default CpoDevices;
+export default CPODevices;
