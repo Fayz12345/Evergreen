@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "Certified Pre-Owned Devices",
+    "subtitle": "Evergreen Wireless redefines value in the Certified Pre-Owned (CPO) industry—delivering top-tier devices at competitive prices, all backed by a standard two-year warranty for peace of mind."
+  },
+  "intro": {
+    "paragraph1": "Evergreen Wireless redefines value in the Certified Pre-Owned (CPO) industry—delivering top-tier devices at competitive prices, all backed by a standard two-year warranty for peace of mind.",
+    "paragraph2": "But that's just the beginning. Every Evergreen Wireless CPO device comes bundled with premium accessories at no extra cost, making it a complete out-of-the-box solution."
+  },
+  "bundle": {
+    "title": "Every CPO Device Bundle Includes:",
+    "item1": "Grade A Certified Pre-Owned device",
+    "item2": "Two-year device warranty",
+    "item3": "Protective case",
+    "item4": "Screen protector",
+    "item5": "Charging cable",
+    "item6": "Wall charger"
+  },
+  "advanceExchange": {
+    "title": "Advance Exchange Warranty Support",
+    "description": "In the very unlikely event that your Evergreen Wireless CPO device does require repair during the warranty period, we will send you a replacement device of the same or better model. You will then have 30 days to move your data over to the new device and ensure it is setup to your liking, before sending back the defective device. Simple and worry-free.",
+    "buttonText": "Download Advance Exchange Process Document"
+  },
+  "refurbishment": {
+    "title": "Device Refurbishment Process",
+    "description": "Evergreen Wireless utilizes certified Device Repair Technicians to replace defective parts and worn components, restoring devices back to working condition and improving their grade value. This refurbishment process involves several steps to restore used or damaged devices back to like-new condition:",
+    "step1": "Inspection and testing",
+    "step2": "Data wiping",
+    "step3": "Repair",
+    "step4": "Restore",
+    "step5": "Retesting",
+    "step6": "Grading and cleaning",
+    "buttonText": "Download Device Refurbishment Process Document"
+  },
+  "grading": {
+    "title": "CPO Grading Standards",
+    "description": "Evergreen Wireless uses industry standard grading for all CPO Devices. This ensures compliance and transparency across all devices, for a consistent and predictable user experience. The same grading is used on all devices, all the time. The latest grading tools provide for a scientific grading rather than a subjective opinion - and our functional condition grading is guaranteed!",
+    "buttonText": "Download CPO Grading Standards"
+  }
+}

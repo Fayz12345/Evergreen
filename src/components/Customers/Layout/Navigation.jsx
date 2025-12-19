@@ -35,7 +35,7 @@ const Navigation = () => {
 
   return (
     <>
-      <section className="position-fixed top-0 start-0 w-100 header-bar">
+      <section className="position-fixed top-0 start-0 w-100" style={{ backgroundColor: '#2d3436' }}>
         <nav
           className="navbar navbar-expand-lg main-nav py-2 awake"
           id="navbar"

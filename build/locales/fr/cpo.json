@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "Appareils certifiés d'occasion",
+    "subtitle": "Evergreen Wireless redéfinit la valeur dans l'industrie des appareils certifiés d'occasion (CPO) — offrant des appareils de premier ordre à des prix compétitifs, tous soutenus par une garantie standard de deux ans pour votre tranquillité d'esprit."
+  },
+  "intro": {
+    "paragraph1": "Evergreen Wireless redéfinit la valeur dans l'industrie des appareils certifiés d'occasion (CPO) — offrant des appareils de premier ordre à des prix compétitifs, tous soutenus par une garantie standard de deux ans pour votre tranquillité d'esprit.",
+    "paragraph2": "Mais ce n'est que le début. Chaque appareil CPO Evergreen Wireless est livré avec des accessoires haut de gamme sans frais supplémentaires, ce qui en fait une solution complète prête à l'emploi."
+  },
+  "bundle": {
+    "title": "Chaque forfait d'appareil CPO comprend:",
+    "item1": "Appareil certifié d'occasion de grade A",
+    "item2": "Garantie d'appareil de deux ans",
+    "item3": "Étui protecteur",
+    "item4": "Protecteur d'écran",
+    "item5": "Câble de charge",
+    "item6": "Chargeur mural"
+  },
+  "advanceExchange": {
+    "title": "Support de garantie par échange avancé",
+    "description": "Dans le cas très improbable où votre appareil CPO Evergreen Wireless nécessiterait une réparation pendant la période de garantie, nous vous enverrons un appareil de remplacement du même modèle ou d'un modèle supérieur. Vous disposerez alors de 30 jours pour transférer vos données sur le nouvel appareil et vous assurer qu'il est configuré à votre goût, avant de renvoyer l'appareil défectueux. Simple et sans souci.",
+    "buttonText": "Télécharger le document du processus d'échange avancé"
+  },
+  "refurbishment": {
+    "title": "Processus de remise à neuf des appareils",
+    "description": "Evergreen Wireless utilise des techniciens de réparation d'appareils certifiés pour remplacer les pièces défectueuses et les composants usés, restaurant les appareils en état de marche et améliorant leur valeur de grade. Ce processus de remise à neuf implique plusieurs étapes pour restaurer les appareils usagés ou endommagés à l'état neuf:",
+    "step1": "Inspection et test",
+    "step2": "Effacement des données",
+    "step3": "Réparation",
+    "step4": "Restauration",
+    "step5": "Nouveau test",
+    "step6": "Classement et nettoyage",
+    "buttonText": "Télécharger le document du processus de remise à neuf"
+  },
+  "grading": {
+    "title": "Normes de classement CPO",
+    "description": "Evergreen Wireless utilise un classement standard de l'industrie pour tous les appareils CPO. Cela garantit la conformité et la transparence sur tous les appareils, pour une expérience utilisateur cohérente et prévisible. Le même classement est utilisé sur tous les appareils, tout le temps. Les derniers outils de classement permettent un classement scientifique plutôt qu'une opinion subjective - et notre classement d'état fonctionnel est garanti!",
+    "buttonText": "Télécharger les normes de classement CPO"
+  }
+}

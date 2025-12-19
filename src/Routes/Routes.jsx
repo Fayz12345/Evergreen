@@ -14,10 +14,10 @@ import PrivacyPolicy from "../PrivacyPolicy";
 import CookiePolicy from "../CookiePolicy";
 import AddTrade from "../components/Trade/AddTrade";
 import CompetitivePricing from "../components/Customers/Pages/CompetitivePricing;";
-import CPODevices from "../components/Customers/Pages/CPODevices";
+import CpoDevices from "../components/Customers/Pages/CpoDevices";
 import NewDevices from "../components/Customers/Pages/NewDevices";
 import Leasing from "../components/Customers/Pages/Leasing";
-import Manuals from "../components/Customers/Pages/Manuals";
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -26,6 +26,9 @@ export default function AppRoutes() {
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
         <Route path="tradein" element={<TradeinForm />} />
+        <Route path="cpodevices" element={<CpoDevices />} />
+        <Route path="newdevices" element={<NewDevices />} />
+        <Route path="leasing" element={<Leasing />} />
         <Route path="terms" element={<TermsConditions />} />
         <Route path="tradein/trade-quote" element={<TradeinForm />} />
         <Route path="tradein/customer-info" element={<CustomerInfoForm />} />
