@@ -19,6 +19,7 @@ i18n
       "terms",
       "cpo",
       "newdev",
+      "newdevices",
       "leasing",
       "navigation",
       "competitivePricing",

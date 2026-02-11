@@ -17,6 +17,7 @@ import CompetitivePricing from "../components/Customers/Pages/CompetitivePricing
 import CPODevices from "../components/Customers/Pages/CPODevices";
 import NewDevices from "../components/Customers/Pages/NewDevices";
 import Leasing from "../components/Customers/Pages/Leasing";
+import Manuals from "../components/Customers/Pages/Manuals";
 
 export default function AppRoutes() {
   return (
@@ -29,6 +30,7 @@ export default function AppRoutes() {
         <Route path="cpodevices" element={<CPODevices />} />
         <Route path="newdevices" element={<NewDevices />} />
         <Route path="leasing" element={<Leasing />} />
+        <Route path="manuals" element={<Manuals />} />
         <Route path="terms" element={<TermsConditions />} />
         <Route path="tradein/trade-quote" element={<TradeinForm />} />
         <Route path="tradein/customer-info" element={<CustomerInfoForm />} />
