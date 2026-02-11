@@ -10,8 +10,7 @@ const Manuals = () => {
             <Col lg={9} md={12}>
               <h1 className="mb-3 mt-5 text-white">Device Manuals</h1>
               <p className="lead text-white mb-4">
-                Download the latest Evergreen Wireless preparation manuals to
-                keep your team aligned with our intake standards.
+                Download our device User Manuals to get the most out of your device.
               </p>
             </Col>
           </Row>
