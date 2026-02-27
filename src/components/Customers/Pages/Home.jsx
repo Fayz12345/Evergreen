@@ -134,19 +134,7 @@ const Home = () => {
         </Row>
       </Container>
 
-      {/* Certification Badges */}
-      <Container className="my-5">
-        <Row className="justify-content-center">
-          <Col lg={8} className="text-center">
-            <img
-              src="/images/R2Footer.png"
-              alt="ISO Certifications and R2 Certified"
-              className="img-fluid"
-              style={{ maxHeight: '100px', width: 'auto' }}
-            />
-          </Col>
-        </Row>
-      </Container>
+
     </>
   );
 };
