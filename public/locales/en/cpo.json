@@ -1,0 +1,36 @@
+{
+  "title": "Certified Pre-Owned Devices",
+  "heroDescription": "Evergreen Wireless redefines value in the Certified Pre-Owned (CPO) industry—delivering top-tier devices at competitive prices, all backed by a standard two-year warranty for peace of mind.",
+  "valueHeading": "Unmatched Value",
+  "valueLead": "Every Evergreen Wireless CPO device comes bundled with premium accessories at no extra cost, making it a complete out-of-the-box solution.",
+  "valueFooter": "Top-tier devices at competitive prices with a standard two-year warranty.",
+  "bundleTitle": "Every CPO Device Bundle Includes:",
+  "bundleItems": [
+    "Grade A Certified Pre-Owned device",
+    "Two-year device warranty",
+    "Protective case",
+    "Screen protector",
+    "Charging cable",
+    "Wall charger"
+  ],
+  "warrantyHeading": "Advance Exchange Warranty Support",
+  "warrantyDescription": "In the unlikely event that your CPO device requires repair during the warranty period, we will send you a replacement device of the same or better model. You have 30 days to transfer your data before returning the defective device.",
+  "warrantyLink": "/manuals/advance-exchange-process.pdf",
+  "warrantyCta": "Download Advance Exchange Process",
+  "gradingHeading": "CPO Grading Standards",
+  "gradingDescription": "Evergreen Wireless uses industry standard grading for all CPO Devices, ensuring compliance and transparency. Our functional condition grading is guaranteed!",
+  "gradingLink": "/manuals/cpo-grading-standards.pdf",
+  "gradingCta": "Download CPO Grading Standards",
+  "refurbHeading": "Device Refurbishment Process",
+  "refurbDescription": "Evergreen Wireless utilizes certified Device Repair Technicians to restore devices back to like-new condition through our comprehensive refurbishment process:",
+  "refurbSteps": [
+    "Inspection and testing",
+    "Data wiping",
+    "Repair",
+    "Restore",
+    "Retesting",
+    "Grading and cleaning"
+  ],
+  "refurbLink": "/manuals/device-refurbishment-process.pdf",
+  "refurbCta": "Download Refurbishment Process"
+}

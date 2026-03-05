@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "Location d'appareils à court terme",
+    "subtitle": "Solutions flexibles pour votre main-d'œuvre dynamique"
+  },
+  "intro": {
+    "paragraph1": "Dans l'environnement de main-d'œuvre dynamique d'aujourd'hui, les entreprises recherchent de plus en plus des solutions flexibles pour fournir les derniers téléphones intelligents aux employés non permanents, sans le fardeau des coûts de propriété complète des appareils.",
+    "paragraph2": "Le programme de location d'appareils à court terme d'Evergreen Wireless offre une alternative innovante, permettant aux entreprises de louer des forfaits d'appareils CPO pour une durée fixe offrant une flexibilité financière ultime."
+  },
+  "benefits": {
+    "title": "Pourquoi choisir la location d'appareils?",
+    "fixedCosts": {
+      "title": "Coûts mensuels fixes",
+      "description": "Dépenses mensuelles prévisibles à partir de 50,00 $ par mois"
+    },
+    "flexibility": {
+      "title": "Conditions flexibles",
+      "description": "Périodes de location à partir de 6 mois pour répondre aux besoins de votre entreprise"
+    },
+    "noUpfront": {
+      "title": "Aucun coût initial",
+      "description": "Éliminez les coûts initiaux tout en accédant aux dernières technologies"
+    }
+  },
+  "download": {
+    "title": "Programme de location d'appareils",
+    "description": "Téléchargez notre guide complet pour en savoir plus sur notre programme de location d'appareils à court terme et comment il peut bénéficier à votre organisation.",
+    "buttonText": "Télécharger l'aperçu du programme de location d'appareils"
+  },
+  "financing": {
+    "title": "Options de financement flexibles",
+    "description": "Evergreen Wireless s'est associé à l'une des plus grandes sociétés indépendantes de financement de technologies et d'équipements en Amérique du Nord, pour offrir aux entreprises canadiennes la flexibilité financière et des options pour l'achat de produits et solutions d'appareils mobiles. Notre équipe de vente pourra vous fournir un aperçu des options qui minimisent les risques et maximisent votre investissement."
+  }
+}

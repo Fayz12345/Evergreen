@@ -32,6 +32,10 @@
   "alertMessageSent": "Message sent successfully!",
   "alertMessageFailed": "Failed to send the message. Please try again later.",
   "contactHeading": "Contact Us",
-  "contactSubHeading": "We’d love to hear from you!",
-   "send": "Send"
+  "contactSubHeading": "We'd love to hear from you!",
+  "send": "Send",
+  "warrantySupport": {
+    "title": "Warranty Support",
+    "description": "For warranty support, please include details including the original purchase date, copy of your purchase invoice, and the device IMEI (serial number) for faster service."
+  }
 }

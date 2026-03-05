@@ -33,5 +33,9 @@
   "alertMessageFailed": "Échec de l'envoi du message. Veuillez réessayer plus tard.",
   "contactHeading": "Contactez-nous",
   "contactSubHeading": "Nous serions ravis de vous entendre !",
-   "send": "Envoyer"
+  "send": "Envoyer",
+  "warrantySupport": {
+    "title": "Support de garantie",
+    "description": "Pour le support de garantie, veuillez inclure les détails suivants : la date d'achat d'origine, une copie de votre facture d'achat et le numéro IMEI (numéro de série) de l'appareil pour un service plus rapide."
+  }
 }

@@ -20,7 +20,7 @@ const Header= ({ children }) => {
 
     return (
         <>
-            <div className="sticky-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-dark border-bottom box-shadow  text-decoration-none">
+            <div className="sticky-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 header-bar border-bottom box-shadow text-decoration-none">
             {/* <h5 className="my-0 mr-md-auto font-weight-normal"><Link to="/" className="text-success" >Evergreen Wireless</Link></h5> */}
                 <Navigation />
             </div>

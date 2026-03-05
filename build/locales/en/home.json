@@ -1,16 +1,22 @@
 {
-  "title": "Stay Connected Everywhere You Go!",
-  "explore_now": "Explore Now",
-  "our_expertise": "Our Expertise",
-  "our_expertise_description": "At Evergreen Wireless, we have a team of experts who are knowledgeable about the latest mobile and cellular phone technologies. We are committed to staying up-to-date with the latest trends and innovations in the industry, so we can offer our customers the best possible products and services.",
-  "our_commitment": "Our Commitment",
-  "our_commitment_description": "Our commitment at Evergreen Wireless is to provide our customers with a hassle-free shopping experience. We want to make it easy for our customers to find the perfect device and offer a variety of payment and shipping options to make the process as seamless as possible.",
-  "our_community": "Our Community",
-  "our_community_description": "At Evergreen Wireless, we believe in giving back to our community. We are committed to supporting local charities and organizations, and strive to make a positive impact in the lives of those around us.",
-  "dont_gamble": "Don’t gamble on a used phone.",
-  "dont_gamble_description": "Our certified pre-owned phones are tested, inspected, and cleaned by expert technicians to work like new at a fraction of the cost. Plus, you get extra peace of mind with a 1-year warranty* and no-blacklist guarantee, which means we never sell lost or stolen phones.",
-  "trades_section_title": "Trades",
-  "apple": "Apple",
-  "samsung": "Samsung",
-  "other": "Other"
-}
+    "title": "Partnering with you to build a more sustainable tomorrow.",
+    "subtitle": "Evergreen Wireless is committed to our environment, providing businesses with eco-positive, sustainable, products and services.",
+    "intro_paragraph": "As an industry-leading provider of Certified Pre-Owned (CPO) smartphones and complementary Buy Back programs for enterprise clients, Evergreen Wireless assists businesses in reducing e-waste, optimizing device lifecycles, and managing mobile device investments. Our comprehensive portfolio of products and services delivers turnkey mobile device solutions that drive a measurable environmental benefit.",
+    "buyback_title": "Buy Back",
+    "buyback_desc": "Receive a high value trade-in credit for used devices, regardless of their condition, maximizing the device investment and minimizing the environmental impact.",
+    "cpo_title": "CPO Device Bundles",
+    "cpo_desc": "Our Grade A certified devices are in like-new condition, backed by a 2-Year warranty and include a protective case, screen protector, charger and cable – packaged in a biodegradable box.",
+    "new_devices_title": "New Devices",
+    "new_devices_desc": "Through strategic partnerships with select manufacturers, Evergreen Wireless offers exceptional value on mobile phones, tablets, mobile hotspots, wireless home phone, wireless broadband solutions, smart home IOT and streaming set-top boxes.",
+    "custom_kitting_title": "Custom Kitting",
+    "custom_kitting_desc": "From tailored kitting to end-to-end MDM setup and oversight, Evergreen Wireless delivers turnkey staging and deployment solutions that streamline operations and accelerate readiness.",
+    "connected_bundles_title": "Connected Bundles",
+    "connected_bundles_desc": "Two prepaid retail-ready bundles are available. Get a new 6.6\" LTE smartphone with either a pre-activated 30-day plan, or a ready-to-activate plan of your choice.",
+    "leasing_title": "Short-Term Device Leasing",
+    "leasing_desc": "A flexible solution for organizations with a dynamic workforce. Lease CPO devices for up to 6-month terms for as little as $50.00 per month. Simple, predictable and cost-effective.",
+    "warranty_title": "Extended Warranty",
+    "warranty_desc": "With Evergreen ExtendedCare+, your device warranty term extends to match your carrier plan—delivering uninterrupted coverage and peace of mind for the entire contract duration.",
+    "bridge_partnership": "Evergreen Wireless is part of the Bridge Wireless family, a strategic partnership rooted in innovation and backed by industry certifications for reliability and trust.",
+    "learn_more": "Learn More"
+  }
+  
